@@ -1,8 +1,9 @@
 package edu.utep.trustlab.toolkitOperators.ncl;
+
 import edu.utep.trustlab.toolkitOperators.PassByReferenceOperator;
-import edu.utep.trustlab.toolkitOperators.ncl.util.CommandRunner;
-import edu.utep.trustlab.toolkitOperators.ncl.util.FileUtils;
-import edu.utep.trustlab.toolkitOperators.ncl.util.GetURLContents;
+import edu.utep.trustlab.toolkitOperators.util.CommandRunner;
+import edu.utep.trustlab.toolkitOperators.util.FileUtils;
+import edu.utep.trustlab.toolkitOperators.util.GetURLContents;
 
 public class NetCDFToContourMapPS extends PassByReferenceOperator
 {
@@ -13,7 +14,7 @@ public class NetCDFToContourMapPS extends PassByReferenceOperator
 	String outputDatasetFilePath;
 	String outputDatasetURL;
 
-	private static final String SCRIPT_CONTOUR = FileUtils.getScriptsDir() +  "netCDFGridContour.sh ";
+	private static final String SCRIPT_CONTOUR = FileUtils.getNCLScripts() +  "netCDFGridContour.sh ";
 	
 	public NetCDFToContourMapPS(String netCDFURL)
 	{	
@@ -24,14 +25,14 @@ public class NetCDFToContourMapPS extends PassByReferenceOperator
 	{
 		netCDFDataset = GetURLContents.downloadFile(netCDFURL);
 		inputDatasetFileName = "netCDF-"+ FileUtils.getRandomString() + ".nc";
-		inputDatasetFilePath = FileUtils.writeBinaryFile(netCDFDataset, FileUtils.getWorkspaceDir(), inputDatasetFileName);
+		inputDatasetFilePath = FileUtils.writeBinaryFile(netCDFDataset, FileUtils.getNCLWorkspace(), inputDatasetFileName);
 	}
 	
 	protected void setUpOutputs()
 	{
 		outputDatasetFileName = "contourMapPS-" + FileUtils.getRandomString(); //no need to append .ps, ncl does that
-		outputDatasetFilePath = FileUtils.makeFullPath(FileUtils.getWorkspaceDir(),outputDatasetFileName);
-		outputDatasetURL = FileUtils.getURLPrefix() + outputDatasetFileName + ".ps";
+		outputDatasetFilePath = FileUtils.makeFullPath(FileUtils.getNCLWorkspace(),outputDatasetFileName);
+		outputDatasetURL = FileUtils.getNCLOutputURLPrefix() + outputDatasetFileName + ".ps";
 	}
 	
 	public String transform(

@@ -1,12 +1,11 @@
 package edu.utep.trustlab.toolkitOperators.vtk;
 
 import edu.utep.trustlab.toolkitOperators.PassByReferenceOperator;
-import edu.utep.trustlab.toolkitOperators.vtk.util.FileUtils;
-import edu.utep.trustlab.toolkitOperators.vtk.util.GetURLContents;
+import edu.utep.trustlab.toolkitOperators.util.FileUtils;
+import edu.utep.trustlab.toolkitOperators.util.GetURLContents;
 import vtk.*;
 
-public class VTKPolyDataMapper extends PassByReferenceOperator
-{
+public class VTKPolyDataMapper extends PassByReferenceOperator{
 	String contoursPolyData;
 	String inputDatasetFileName;
 	String inputDatasetFilePath;
@@ -22,15 +21,15 @@ public class VTKPolyDataMapper extends PassByReferenceOperator
 		contoursPolyData = GetURLContents.downloadText(velocityImageData3DURL);
 		inputDatasetFileName = "contoursPolyData-"+ FileUtils.getRandomString() + ".xml";
 		inputDatasetFilePath = FileUtils.writeTextFile(contoursPolyData,
-				FileUtils.getHolesVisWorkspaceDir(), inputDatasetFileName);
+				FileUtils.getVTKWorkspace(), inputDatasetFileName);
 	}
 
 	protected void setUpOutputs() {
 		outputDatasetFileName = "contoursJPEG-"
 			+ FileUtils.getRandomString() + ".jpg";
 		outputDatasetFilePath = FileUtils.makeFullPath(FileUtils
-				.getHolesVisWorkspaceDir(), outputDatasetFileName);
-		outputDatasetURL = FileUtils.getHolesVisURLPrefix()
+				.getVTKWorkspace(), outputDatasetFileName);
+		outputDatasetURL = FileUtils.getVTKOutputURLPrefix()
 		+ outputDatasetFileName;
 	}
 

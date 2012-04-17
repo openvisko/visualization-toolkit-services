@@ -1,10 +1,9 @@
 package edu.utep.trustlab.toolkitOperators.vtk;
 import edu.utep.trustlab.toolkitOperators.PassByReferenceOperator;
-import edu.utep.trustlab.toolkitOperators.vtk.util.*;
+import edu.utep.trustlab.toolkitOperators.util.*;
 import vtk.*;
 
-public class VTKImageDataReaderFloats extends PassByReferenceOperator
-{
+public class VTKImageDataReaderFloats extends PassByReferenceOperator{
 	byte[] shortIntGrid;
 	String inputDatasetFileName;
 	String inputDatasetFilePath;
@@ -12,28 +11,24 @@ public class VTKImageDataReaderFloats extends PassByReferenceOperator
 	String outputDatasetFilePath;
 	String outputDatasetURL;
 	
-	public VTKImageDataReaderFloats(String coverageModelShortIntURL)
-	{
+	public VTKImageDataReaderFloats(String coverageModelShortIntURL){
 		super(coverageModelShortIntURL);
 	}
 
 
-	protected void downloadInputs(String coverageModelShortIntURL)
-	{
+	protected void downloadInputs(String coverageModelShortIntURL){
 		shortIntGrid = GetURLContents.downloadFile(coverageModelShortIntURL);
 		inputDatasetFileName = "shortIntGrid-"+ FileUtils.getRandomString() + ".3d";
-		inputDatasetFilePath = FileUtils.writeBinaryFile(shortIntGrid, FileUtils.getHolesVisWorkspaceDir(), inputDatasetFileName);
+		inputDatasetFilePath = FileUtils.writeBinaryFile(shortIntGrid, FileUtils.getVTKWorkspace(), inputDatasetFileName);
 	}
 	
-	protected void setUpOutputs()
-	{
+	protected void setUpOutputs(){
 		outputDatasetFileName = "imageData3D-" + FileUtils.getRandomString() + ".xml";
-		outputDatasetFilePath = FileUtils.makeFullPath(FileUtils.getHolesVisWorkspaceDir(),outputDatasetFileName);
-		outputDatasetURL = FileUtils.getHolesVisURLPrefix() + outputDatasetFileName;
+		outputDatasetFilePath = FileUtils.makeFullPath(FileUtils.getVTKWorkspace(),outputDatasetFileName);
+		outputDatasetURL = FileUtils.getVTKOutputURLPrefix() + outputDatasetFileName;
 	}
 	
-	public String transform(String littleEndian, String dim, String dataOrigin, String dataSpacing, String dataExtent, String numScalarComponents, String readLowerLeft)
-	{	
+	public String transform(String littleEndian, String dim, String dataOrigin, String dataSpacing, String dataExtent, String numScalarComponents, String readLowerLeft){	
 		// Create the reader for the data
 		vtkImageReader reader = new vtkImageReader();
 		reader.SetFileName(inputDatasetFilePath);

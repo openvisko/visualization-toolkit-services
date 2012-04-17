@@ -1,8 +1,8 @@
 package edu.utep.trustlab.toolkitOperators.ncl;
 import edu.utep.trustlab.toolkitOperators.PassByReferenceOperator;
-import edu.utep.trustlab.toolkitOperators.ncl.util.CommandRunner;
-import edu.utep.trustlab.toolkitOperators.ncl.util.FileUtils;
-import edu.utep.trustlab.toolkitOperators.ncl.util.GetURLContents;
+import edu.utep.trustlab.toolkitOperators.util.CommandRunner;
+import edu.utep.trustlab.toolkitOperators.util.FileUtils;
+import edu.utep.trustlab.toolkitOperators.util.GetURLContents;
 
 public class ESRIGriddedToRasterMapPS extends PassByReferenceOperator
 {
@@ -13,7 +13,7 @@ public class ESRIGriddedToRasterMapPS extends PassByReferenceOperator
 	String outputDatasetFilePath;
 	String outputDatasetURL;
 
-	private static final String SCRIPT_CONTOUR = FileUtils.getScriptsDir() +  "esriGridRaster.sh ";
+	private static final String SCRIPT_CONTOUR = FileUtils.getNCLScripts() +  "esriGridRaster.sh ";
 	
 	public ESRIGriddedToRasterMapPS(String esriGriddedURL)
 	{	
@@ -24,14 +24,14 @@ public class ESRIGriddedToRasterMapPS extends PassByReferenceOperator
 	{
 		esriGriddedDataset = GetURLContents.downloadText(esriGriddedURL).trim();
 		inputDatasetFileName = "esriGridded-"+ FileUtils.getRandomString() + ".txt";
-		inputDatasetFilePath = FileUtils.writeTextFile(esriGriddedDataset, FileUtils.getWorkspaceDir(), inputDatasetFileName);
+		inputDatasetFilePath = FileUtils.writeTextFile(esriGriddedDataset, FileUtils.getNCLWorkspace(), inputDatasetFileName);
 	}
 	
 	protected void setUpOutputs()
 	{
 		outputDatasetFileName = "rasterMapPS-" + FileUtils.getRandomString(); //no need to append .ps, ncl does that
-		outputDatasetFilePath = FileUtils.makeFullPath(FileUtils.getWorkspaceDir(),outputDatasetFileName);
-		outputDatasetURL = FileUtils.getURLPrefix() + outputDatasetFileName + ".ps";
+		outputDatasetFilePath = FileUtils.makeFullPath(FileUtils.getNCLWorkspace(),outputDatasetFileName);
+		outputDatasetURL = FileUtils.getNCLOutputURLPrefix() + outputDatasetFileName + ".ps";
 	}
 	
 	public String transform(

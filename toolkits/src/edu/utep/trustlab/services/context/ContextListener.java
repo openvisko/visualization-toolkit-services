@@ -25,8 +25,8 @@ public class ContextListener implements ServletContextListener {
 		ServletContext context = event.getServletContext();
 		String serverURL = context.getInitParameter("server-url");
 		
-		FileUtils.setDataOutputDir("output");
-		FileUtils.setScripts("scripts");
+		FileUtils.setDataOutputDir("output/");
+		FileUtils.setScripts("scripts/");
 		FileUtils.setServerURL(serverURL);
 	}
 }

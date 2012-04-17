@@ -1,11 +1,10 @@
 package edu.utep.trustlab.toolkitOperators.vtk;
 import edu.utep.trustlab.toolkitOperators.PassByReferenceOperator;
-import edu.utep.trustlab.toolkitOperators.vtk.util.FileUtils;
-import edu.utep.trustlab.toolkitOperators.vtk.util.GetURLContents;
+import edu.utep.trustlab.toolkitOperators.util.FileUtils;
+import edu.utep.trustlab.toolkitOperators.util.GetURLContents;
 import vtk.*;
 
-public class VTKContourFilter extends PassByReferenceOperator
-{
+public class VTKContourFilter extends PassByReferenceOperator{
 	String imageData3D;
 	String inputDatasetFileName;
 	String inputDatasetFilePath;
@@ -13,27 +12,23 @@ public class VTKContourFilter extends PassByReferenceOperator
 	String outputDatasetFilePath;
 	String outputDatasetURL;
 	
-	public VTKContourFilter(String velocityImageData3DURL)
-	{
+	public VTKContourFilter(String velocityImageData3DURL){
 		super(velocityImageData3DURL);
 	}
 
-	protected void downloadInputs(String velocityImageData3DURL)
-	{
+	protected void downloadInputs(String velocityImageData3DURL){
 		imageData3D = GetURLContents.downloadText(velocityImageData3DURL);
 		inputDatasetFileName = "imageData3D-"+ FileUtils.getRandomString() + ".xml";
-		inputDatasetFilePath = FileUtils.writeTextFile(imageData3D, FileUtils.getHolesVisWorkspaceDir(), inputDatasetFileName);
+		inputDatasetFilePath = FileUtils.writeTextFile(imageData3D, FileUtils.getVTKWorkspace(), inputDatasetFileName);
 	}
 
-	protected void setUpOutputs()
-	{
+	protected void setUpOutputs(){
 		outputDatasetFileName = "contoursPolyData-" + FileUtils.getRandomString() + ".xml";
-		outputDatasetFilePath = FileUtils.makeFullPath(FileUtils.getHolesVisWorkspaceDir(),outputDatasetFileName);
-		outputDatasetURL = FileUtils.getHolesVisURLPrefix() + outputDatasetFileName;
+		outputDatasetFilePath = FileUtils.makeFullPath(FileUtils.getVTKWorkspace(),outputDatasetFileName);
+		outputDatasetURL = FileUtils.getVTKOutputURLPrefix() + outputDatasetFileName;
 	}
 	
-	public String transform (String numContours, String scalarRange)
-	{  
+	public String transform (String numContours, String scalarRange){  
 		// Create the reader for the data
 		vtkXMLImageDataReader reader = new vtkXMLImageDataReader();
 		reader.SetFileName(inputDatasetFilePath);
