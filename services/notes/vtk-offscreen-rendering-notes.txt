@@ -1,0 +1,59 @@
+download and install cmake
+yum install "libosmesa" --> for offscreen rendering used by visko services
+download vtk src bundle
+download vtkdata bundle
+
+First things first : Please include [hidden email] in the list of
+recipients of your e-mails.
+
+Mangled Mesa is no longer supported by either Mesa or VTK.
+
+The first step is to get the latest version of mesa:
+
+    wget ftp://ftp.freedesktop.org/pub/mesa/7.6.1/MesaLib-7.6.1.tar.bz2
+
+Un-tar it :
+
+    tar -xjvf MesaLib-7.6.1.tar.bz2
+
+Build it :
+
+    cd Mesa-7.6.1/
+    make linux-x86-64
+
+Note: the mesa build depends on the depreciated X build tool imake which
+is often not installed by default.
+
+Get the latest version of VTK :
+
+    wget http://www.vtk.org/files/release/5.4/vtk-5.4.2.tar.gz
+
+Un-tar it :
+
+    tar -xzvf vtk-5.4.2.tar.gz
+
+Make a build directory for VTK :
+
+    mkdir VTK_Build
+
+Configure VTK in the build directory :
+
+    cd VTK_Build/
+    cmake \
+        -D
+OPENGL_INCLUDE_DIR:PATH=/home/kevin/OSMesaDemo/Mesa-7.6.1/include/ \
+        -D
+OPENGL_gl_LIBRARY:FILEPATH=/home/kevin/OSMesaDemo/Mesa-7.6.1/lib64/libGL.so
+\
+        -D
+OPENGL_glu_LIBRARY:FILEPATH=/home/kevin/OSMesaDemo/Mesa-7.6.1/lib64/libGLU.so
+\
+        -D VTK_OPENGL_HAS_OSMESA:BOOL=ON \
+        -D
+OSMESA_INCLUDE_DIR:PATH=/home/kevin/OSMesaDemo/Mesa-7.6.1/include/ \
+        -D
+OSMESA_LIBRARY:FILEPATH=/home/kevin/OSMesaDemo/Mesa-7.6.1/lib64/libOSMesa.so
+\
+        ../VTK
+
+Build VTK ( you can do this in parallel if you have a multi-core CPU )
