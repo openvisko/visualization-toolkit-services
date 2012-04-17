@@ -1,4 +1,4 @@
-package edu.utep.trustlab.toolkitOperators.gmt.util;
+package edu.utep.trustlab.toolkitOperators.util;
 
 import java.io.*;
 

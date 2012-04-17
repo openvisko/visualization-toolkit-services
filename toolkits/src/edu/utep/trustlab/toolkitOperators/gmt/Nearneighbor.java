@@ -1,8 +1,8 @@
 package edu.utep.trustlab.toolkitOperators.gmt;
 import edu.utep.trustlab.toolkitOperators.PassByReferenceOperator;
-import edu.utep.trustlab.toolkitOperators.gmt.util.CommandRunner;
-import edu.utep.trustlab.toolkitOperators.gmt.util.FileUtils;
-import edu.utep.trustlab.toolkitOperators.gmt.util.GetURLContents;
+import edu.utep.trustlab.toolkitOperators.util.CommandRunner;
+import edu.utep.trustlab.toolkitOperators.util.FileUtils;
+import edu.utep.trustlab.toolkitOperators.util.GetURLContents;
 import gravityMapScenario.gravityDataset.Dataset;
 
 public class Nearneighbor extends PassByReferenceOperator
@@ -29,7 +29,7 @@ public class Nearneighbor extends PassByReferenceOperator
 	protected void setUpOutputs(){
 		outputNetCDFFileName = "gridded-netcdf-" + FileUtils.getRandomString() + ".nc";
 		outputNetCDFPath = FileUtils.makeFullPath(FileUtils.getGMTWorkspace(),outputNetCDFFileName);
-		outputNetCDFURL = FileUtils.getGravityMapURLPrefix() + outputNetCDFFileName;
+		outputNetCDFURL = FileUtils.getGMTOutputURLPrefix() + outputNetCDFFileName;
 	}
 	
 	

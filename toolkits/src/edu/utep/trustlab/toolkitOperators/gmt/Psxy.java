@@ -1,8 +1,8 @@
 package edu.utep.trustlab.toolkitOperators.gmt;
 import edu.utep.trustlab.toolkitOperators.PassByReferenceOperator;
-import edu.utep.trustlab.toolkitOperators.gmt.util.CommandRunner;
-import edu.utep.trustlab.toolkitOperators.gmt.util.FileUtils;
-import edu.utep.trustlab.toolkitOperators.gmt.util.GetURLContents;
+import edu.utep.trustlab.toolkitOperators.util.CommandRunner;
+import edu.utep.trustlab.toolkitOperators.util.FileUtils;
+import edu.utep.trustlab.toolkitOperators.util.GetURLContents;
 import gravityMapScenario.gravityDataset.Dataset;
 
 public class Psxy extends PassByReferenceOperator{
@@ -31,7 +31,7 @@ public class Psxy extends PassByReferenceOperator{
 	protected void setUpOutputs(){
 		outputPSFileName = "gravity2DPlot-" + FileUtils.getRandomString() + ".ps";
 		outputPSPath = FileUtils.makeFullPath(FileUtils.getGMTWorkspace(),outputPSFileName);
-		outputPSURL = FileUtils.getGravityMapURLPrefix() + outputPSFileName;
+		outputPSURL = FileUtils.getGMTOutputURLPrefix() + outputPSFileName;
 	}
 	
 	public String transform(

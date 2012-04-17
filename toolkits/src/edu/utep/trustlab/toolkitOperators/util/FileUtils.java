@@ -1,33 +1,69 @@
-package edu.utep.trustlab.toolkitOperators.gmt.util;
+package edu.utep.trustlab.toolkitOperators.util;
 
 import java.io.*;
 import java.util.*;
 
 public class FileUtils{
 	
-	private static final String SERVER = "http://iw.cs.utep.edu:8080/";
-	private static final String APPLICATION = "GMT-services/";
-	private static final String DATAOUTPUT = "gmt-output/";
-		
+	private static String SERVER;
+	private static String OUTPUT;
+	private static String SCRIPTS;
+	private static final String WEBAPP = "toolkits/";
+	
+	public static void setScripts(String path){
+		SCRIPTS = path;
+	}
+	
+	public static void setServerURL(String url){
+		SERVER = url;
+	}
+	
+	public static void setDataOutputDir(String path){
+		OUTPUT = path;
+	}
+	
 	public static String getLoggingDir(){
-		return "/usr/local/tomcat/webapps/GMT-services/log/";
+		return "log/";
 	}
 	
 	public static String getGMTWorkspace(){
-		return "/usr/local/tomcat/webapps/GMT-services/" + DATAOUTPUT;
+		return OUTPUT + "gmt/";
+	}
+
+	public static String getVTKWorkspace(){
+		return OUTPUT + "vtk/";
+	}
+	
+	public static String getNCLWorkspace(){
+		return OUTPUT + "ncl/";
 	}
 	
 	public static String getGMTScripts(){
-		return "/usr/local/tomcat/webapps/GMT-services/scripts-gmt/";
+		return SCRIPTS + "scripts-gmt/";
+	}
+	
+	public static String getVTKScripts(){
+		return SCRIPTS + "scripts-vtk/";
+	}
+
+	public static String getNCLScripts(){
+		return SCRIPTS + "scripts-ncl/";
 	}
 	
 	public static String getGravityTrustTableFilePath(){
-		return "/usr/local/tomcat/webapps/GMT-services/trust-data/gravity_trust.txt";
+		return "trust-data/gravity_trust.txt";
 	}
 	
-	public static String getGravityMapURLPrefix()
-	{
-		return SERVER + APPLICATION + DATAOUTPUT;
+	public static String getGMTOutputURLPrefix(){
+		return SERVER + WEBAPP + OUTPUT + "gmt/";
+	}
+
+	public static String getNCLOutputURLPrefix(){
+		return SERVER + WEBAPP + OUTPUT + "ncl/";
+	}
+	
+	public static String getVTKOutputURLPrefix(){
+		return SERVER + WEBAPP + OUTPUT + "vtk/";
 	}
 	
 	public static String writeTextFile(String fileContents, String dirName, String fileName)

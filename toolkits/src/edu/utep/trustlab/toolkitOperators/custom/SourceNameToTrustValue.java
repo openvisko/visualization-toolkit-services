@@ -1,5 +1,5 @@
 package edu.utep.trustlab.toolkitOperators.custom;
-import edu.utep.trustlab.toolkitOperators.gmt.util.FileUtils;
+import edu.utep.trustlab.toolkitOperators.util.FileUtils;
 
 import java.io.*;
 

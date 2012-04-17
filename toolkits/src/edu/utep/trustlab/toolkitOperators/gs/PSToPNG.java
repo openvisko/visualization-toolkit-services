@@ -1,8 +1,8 @@
 package edu.utep.trustlab.toolkitOperators.gs;
 import edu.utep.trustlab.toolkitOperators.PassByReferenceOperator;
-import edu.utep.trustlab.toolkitOperators.gmt.util.CommandRunner;
-import edu.utep.trustlab.toolkitOperators.gmt.util.FileUtils;
-import edu.utep.trustlab.toolkitOperators.gmt.util.GetURLContents;
+import edu.utep.trustlab.toolkitOperators.util.CommandRunner;
+import edu.utep.trustlab.toolkitOperators.util.FileUtils;
+import edu.utep.trustlab.toolkitOperators.util.GetURLContents;
 
 public class PSToPNG extends PassByReferenceOperator
 {
@@ -31,7 +31,7 @@ public class PSToPNG extends PassByReferenceOperator
 	{
 		outputDatasetFileName = "pngImage-" + FileUtils.getRandomString() + ".png";
 		outputDatasetFilePath = FileUtils.makeFullPath(FileUtils.getGMTWorkspace(),outputDatasetFileName);
-		outputDatasetURL = FileUtils.getGravityMapURLPrefix() + outputDatasetFileName;
+		outputDatasetURL = FileUtils.getGMTOutputURLPrefix() + outputDatasetFileName;
 	}
 	
 	public String transform()

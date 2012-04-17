@@ -24,10 +24,14 @@
     <session-timeout>60</session-timeout>
   </session-config>
   <context-param>
+    <param-name>server-url</param-name>
+    <param-value>http://iw.cs.utep.edu:8080/</param-value>
+  </context-param>
+  <context-param>
     <param-name>contextConfigLocation</param-name>
     <param-value>WEB-INF/beans.xml</param-value>
   </context-param>
   <listener>
-    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    <listener-class>edu.utep.trustlab.services.context.ContextListener</listener-class>
   </listener>
 </web-app>

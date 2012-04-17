@@ -1,8 +1,8 @@
 package edu.utep.trustlab.toolkitOperators.gmt;
 import edu.utep.trustlab.toolkitOperators.PassByReferenceOperator;
-import edu.utep.trustlab.toolkitOperators.gmt.util.CommandRunner;
-import edu.utep.trustlab.toolkitOperators.gmt.util.FileUtils;
-import edu.utep.trustlab.toolkitOperators.gmt.util.GetURLContents;
+import edu.utep.trustlab.toolkitOperators.util.CommandRunner;
+import edu.utep.trustlab.toolkitOperators.util.FileUtils;
+import edu.utep.trustlab.toolkitOperators.util.GetURLContents;
 
 public class Grdcontour extends PassByReferenceOperator{
 	
@@ -33,7 +33,7 @@ public class Grdcontour extends PassByReferenceOperator{
 	protected void setUpOutputs(){
 		outputPSFileName = "contourMapPS-" + FileUtils.getRandomString() + ".ps";
 		outputPSPath = FileUtils.makeFullPath(FileUtils.getGMTWorkspace(),outputPSFileName);
-		outputPSURL = FileUtils.getGravityMapURLPrefix() + outputPSFileName;
+		outputPSURL = FileUtils.getGMTOutputURLPrefix() + outputPSFileName;
 	}
 	
 	public String transform(

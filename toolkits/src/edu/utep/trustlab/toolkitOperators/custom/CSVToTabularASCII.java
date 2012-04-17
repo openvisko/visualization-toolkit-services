@@ -2,8 +2,8 @@ package edu.utep.trustlab.toolkitOperators.custom;
 import java.io.StringWriter;
 
 import edu.utep.trustlab.toolkitOperators.PassByReferenceOperator;
-import edu.utep.trustlab.toolkitOperators.gmt.util.FileUtils;
-import edu.utep.trustlab.toolkitOperators.gmt.util.GetURLContents;
+import edu.utep.trustlab.toolkitOperators.util.FileUtils;
+import edu.utep.trustlab.toolkitOperators.util.GetURLContents;
 
 public class CSVToTabularASCII extends PassByReferenceOperator
 {
@@ -28,7 +28,7 @@ public class CSVToTabularASCII extends PassByReferenceOperator
 	protected void setUpOutputs()
 	{
 		outputDatasetFileName = "tabularASCII-" + FileUtils.getRandomString() + ".txt";
-		outputDatasetURL = FileUtils.getGravityMapURLPrefix() + outputDatasetFileName;
+		outputDatasetURL = FileUtils.getGMTOutputURLPrefix() + outputDatasetFileName;
 	}
 	
 	public String transform()
