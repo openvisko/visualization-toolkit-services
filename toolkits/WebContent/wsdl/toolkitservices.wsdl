@@ -1,0 +1,501 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="ToolkitServicesService" targetNamespace="http://services.trustlab.utep.edu/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://services.trustlab.utep.edu/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+    <schema xmlns="http://www.w3.org/2001/XMLSchema">
+<import namespace="http://services.trustlab.utep.edu/" schemaLocation="toolkitservices_schema1.xsd"/>
+</schema>
+  </wsdl:types>
+  <wsdl:message name="vtkContourFilterResponse">
+    <wsdl:part name="parameters" element="tns:vtkContourFilterResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="vtkContourFilter">
+    <wsdl:part name="parameters" element="tns:vtkContourFilter">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="vtkImageDataReaderResponse">
+    <wsdl:part name="parameters" element="tns:vtkImageDataReaderResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="vtkVolumeResponse">
+    <wsdl:part name="parameters" element="tns:vtkVolumeResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="esriGridRaster">
+    <wsdl:part name="parameters" element="tns:esriGridRaster">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="vtkPolyDataMapper">
+    <wsdl:part name="parameters" element="tns:vtkPolyDataMapper">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="vtkVolume">
+    <wsdl:part name="parameters" element="tns:vtkVolume">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="grdimage">
+    <wsdl:part name="parameters" element="tns:grdimage">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="netCDFTimeSeries">
+    <wsdl:part name="parameters" element="tns:netCDFTimeSeries">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="surfaceResponse">
+    <wsdl:part name="parameters" element="tns:surfaceResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="float2ShortThr">
+    <wsdl:part name="parameters" element="tns:float2ShortThr">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="grdimageResponse">
+    <wsdl:part name="parameters" element="tns:grdimageResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="netCDFGridRaster">
+    <wsdl:part name="parameters" element="tns:netCDFGridRaster">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="int2Short">
+    <wsdl:part name="parameters" element="tns:int2Short">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="vtkImageDataReaderFloatResponse">
+    <wsdl:part name="parameters" element="tns:vtkImageDataReaderFloatResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="vtkImageDataReaderFloat">
+    <wsdl:part name="parameters" element="tns:vtkImageDataReaderFloat">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="grdcontour">
+    <wsdl:part name="parameters" element="tns:grdcontour">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="pdf2png">
+    <wsdl:part name="parameters" element="tns:pdf2png">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="vtkImageDataReader">
+    <wsdl:part name="parameters" element="tns:vtkImageDataReader">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="esriGridRasterResponse">
+    <wsdl:part name="parameters" element="tns:esriGridRasterResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="float2ShortThrResponse">
+    <wsdl:part name="parameters" element="tns:float2ShortThrResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="netCDFGridContour">
+    <wsdl:part name="parameters" element="tns:netCDFGridContour">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ps2png">
+    <wsdl:part name="parameters" element="tns:ps2png">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="netCDFTimeSeriesResponse">
+    <wsdl:part name="parameters" element="tns:netCDFTimeSeriesResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="psxy">
+    <wsdl:part name="parameters" element="tns:psxy">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="netCDFGridRasterResponse">
+    <wsdl:part name="parameters" element="tns:netCDFGridRasterResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ps2pngResponse">
+    <wsdl:part name="parameters" element="tns:ps2pngResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="pdf2pngResponse">
+    <wsdl:part name="parameters" element="tns:pdf2pngResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ps2pdfResponse">
+    <wsdl:part name="parameters" element="tns:ps2pdfResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="nearneighbor">
+    <wsdl:part name="parameters" element="tns:nearneighbor">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="nearneighborResponse">
+    <wsdl:part name="parameters" element="tns:nearneighborResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="netCDFGridContourResponse">
+    <wsdl:part name="parameters" element="tns:netCDFGridContourResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="vtkPolyDataMapperResponse">
+    <wsdl:part name="parameters" element="tns:vtkPolyDataMapperResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="int2ShortResponse">
+    <wsdl:part name="parameters" element="tns:int2ShortResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="grdcontourResponse">
+    <wsdl:part name="parameters" element="tns:grdcontourResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ps2pdf">
+    <wsdl:part name="parameters" element="tns:ps2pdf">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="surface">
+    <wsdl:part name="parameters" element="tns:surface">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="csv2tabularResponse">
+    <wsdl:part name="parameters" element="tns:csv2tabularResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="psxyResponse">
+    <wsdl:part name="parameters" element="tns:psxyResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="csv2tabular">
+    <wsdl:part name="parameters" element="tns:csv2tabular">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="esriGridContour">
+    <wsdl:part name="parameters" element="tns:esriGridContour">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="esriGridContourResponse">
+    <wsdl:part name="parameters" element="tns:esriGridContourResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="ToolkitServices">
+    <wsdl:operation name="csv2tabular">
+      <wsdl:input name="csv2tabular" message="tns:csv2tabular">
+    </wsdl:input>
+      <wsdl:output name="csv2tabularResponse" message="tns:csv2tabularResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="vtkVolume">
+      <wsdl:input name="vtkVolume" message="tns:vtkVolume">
+    </wsdl:input>
+      <wsdl:output name="vtkVolumeResponse" message="tns:vtkVolumeResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ps2png">
+      <wsdl:input name="ps2png" message="tns:ps2png">
+    </wsdl:input>
+      <wsdl:output name="ps2pngResponse" message="tns:ps2pngResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="int2Short">
+      <wsdl:input name="int2Short" message="tns:int2Short">
+    </wsdl:input>
+      <wsdl:output name="int2ShortResponse" message="tns:int2ShortResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="float2ShortThr">
+      <wsdl:input name="float2ShortThr" message="tns:float2ShortThr">
+    </wsdl:input>
+      <wsdl:output name="float2ShortThrResponse" message="tns:float2ShortThrResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="esriGridRaster">
+      <wsdl:input name="esriGridRaster" message="tns:esriGridRaster">
+    </wsdl:input>
+      <wsdl:output name="esriGridRasterResponse" message="tns:esriGridRasterResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="grdcontour">
+      <wsdl:input name="grdcontour" message="tns:grdcontour">
+    </wsdl:input>
+      <wsdl:output name="grdcontourResponse" message="tns:grdcontourResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="vtkImageDataReaderFloat">
+      <wsdl:input name="vtkImageDataReaderFloat" message="tns:vtkImageDataReaderFloat">
+    </wsdl:input>
+      <wsdl:output name="vtkImageDataReaderFloatResponse" message="tns:vtkImageDataReaderFloatResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="netCDFGridContour">
+      <wsdl:input name="netCDFGridContour" message="tns:netCDFGridContour">
+    </wsdl:input>
+      <wsdl:output name="netCDFGridContourResponse" message="tns:netCDFGridContourResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="pdf2png">
+      <wsdl:input name="pdf2png" message="tns:pdf2png">
+    </wsdl:input>
+      <wsdl:output name="pdf2pngResponse" message="tns:pdf2pngResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="surface">
+      <wsdl:input name="surface" message="tns:surface">
+    </wsdl:input>
+      <wsdl:output name="surfaceResponse" message="tns:surfaceResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="vtkContourFilter">
+      <wsdl:input name="vtkContourFilter" message="tns:vtkContourFilter">
+    </wsdl:input>
+      <wsdl:output name="vtkContourFilterResponse" message="tns:vtkContourFilterResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="psxy">
+      <wsdl:input name="psxy" message="tns:psxy">
+    </wsdl:input>
+      <wsdl:output name="psxyResponse" message="tns:psxyResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="netCDFTimeSeries">
+      <wsdl:input name="netCDFTimeSeries" message="tns:netCDFTimeSeries">
+    </wsdl:input>
+      <wsdl:output name="netCDFTimeSeriesResponse" message="tns:netCDFTimeSeriesResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="grdimage">
+      <wsdl:input name="grdimage" message="tns:grdimage">
+    </wsdl:input>
+      <wsdl:output name="grdimageResponse" message="tns:grdimageResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="netCDFGridRaster">
+      <wsdl:input name="netCDFGridRaster" message="tns:netCDFGridRaster">
+    </wsdl:input>
+      <wsdl:output name="netCDFGridRasterResponse" message="tns:netCDFGridRasterResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ps2pdf">
+      <wsdl:input name="ps2pdf" message="tns:ps2pdf">
+    </wsdl:input>
+      <wsdl:output name="ps2pdfResponse" message="tns:ps2pdfResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="nearneighbor">
+      <wsdl:input name="nearneighbor" message="tns:nearneighbor">
+    </wsdl:input>
+      <wsdl:output name="nearneighborResponse" message="tns:nearneighborResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="vtkPolyDataMapper">
+      <wsdl:input name="vtkPolyDataMapper" message="tns:vtkPolyDataMapper">
+    </wsdl:input>
+      <wsdl:output name="vtkPolyDataMapperResponse" message="tns:vtkPolyDataMapperResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="vtkImageDataReader">
+      <wsdl:input name="vtkImageDataReader" message="tns:vtkImageDataReader">
+    </wsdl:input>
+      <wsdl:output name="vtkImageDataReaderResponse" message="tns:vtkImageDataReaderResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="esriGridContour">
+      <wsdl:input name="esriGridContour" message="tns:esriGridContour">
+    </wsdl:input>
+      <wsdl:output name="esriGridContourResponse" message="tns:esriGridContourResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ToolkitServicesServiceSoapBinding" type="tns:ToolkitServices">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="csv2tabular">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="csv2tabular">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="csv2tabularResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ps2png">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="ps2png">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="ps2pngResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="vtkVolume">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="vtkVolume">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="vtkVolumeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="int2Short">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="int2Short">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="int2ShortResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="float2ShortThr">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="float2ShortThr">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="float2ShortThrResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="esriGridRaster">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="esriGridRaster">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="esriGridRasterResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="grdcontour">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="grdcontour">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="grdcontourResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="netCDFGridContour">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="netCDFGridContour">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="netCDFGridContourResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="vtkImageDataReaderFloat">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="vtkImageDataReaderFloat">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="vtkImageDataReaderFloatResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="pdf2png">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="pdf2png">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="pdf2pngResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="surface">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="surface">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="surfaceResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="vtkContourFilter">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="vtkContourFilter">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="vtkContourFilterResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="netCDFTimeSeries">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="netCDFTimeSeries">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="netCDFTimeSeriesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="psxy">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="psxy">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="psxyResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="grdimage">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="grdimage">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="grdimageResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="netCDFGridRaster">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="netCDFGridRaster">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="netCDFGridRasterResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ps2pdf">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="ps2pdf">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="ps2pdfResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="nearneighbor">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="nearneighbor">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="nearneighborResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="vtkImageDataReader">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="vtkImageDataReader">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="vtkImageDataReaderResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="vtkPolyDataMapper">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="vtkPolyDataMapper">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="vtkPolyDataMapperResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="esriGridContour">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="esriGridContour">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="esriGridContourResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ToolkitServicesService">
+    <wsdl:port name="ToolkitServicesPort" binding="tns:ToolkitServicesServiceSoapBinding">
+      <soap:address location="http://localhost:8080/toolkits/services/ToolkitServicesPort"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

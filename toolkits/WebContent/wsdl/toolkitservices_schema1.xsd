@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="utf-8"?><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://services.trustlab.utep.edu/" elementFormDefault="unqualified" targetNamespace="http://services.trustlab.utep.edu/" version="1.0">
+<xs:element name="csv2tabular" type="tns:csv2tabular"/>
+<xs:element name="csv2tabularResponse" type="tns:csv2tabularResponse"/>
+<xs:element name="esriGridContour" type="tns:esriGridContour"/>
+<xs:element name="esriGridContourResponse" type="tns:esriGridContourResponse"/>
+<xs:element name="esriGridRaster" type="tns:esriGridRaster"/>
+<xs:element name="esriGridRasterResponse" type="tns:esriGridRasterResponse"/>
+<xs:element name="float2ShortThr" type="tns:float2ShortThr"/>
+<xs:element name="float2ShortThrResponse" type="tns:float2ShortThrResponse"/>
+<xs:element name="grdcontour" type="tns:grdcontour"/>
+<xs:element name="grdcontourResponse" type="tns:grdcontourResponse"/>
+<xs:element name="grdimage" type="tns:grdimage"/>
+<xs:element name="grdimageResponse" type="tns:grdimageResponse"/>
+<xs:element name="int2Short" type="tns:int2Short"/>
+<xs:element name="int2ShortResponse" type="tns:int2ShortResponse"/>
+<xs:element name="nearneighbor" type="tns:nearneighbor"/>
+<xs:element name="nearneighborResponse" type="tns:nearneighborResponse"/>
+<xs:element name="netCDFGridContour" type="tns:netCDFGridContour"/>
+<xs:element name="netCDFGridContourResponse" type="tns:netCDFGridContourResponse"/>
+<xs:element name="netCDFGridRaster" type="tns:netCDFGridRaster"/>
+<xs:element name="netCDFGridRasterResponse" type="tns:netCDFGridRasterResponse"/>
+<xs:element name="netCDFTimeSeries" type="tns:netCDFTimeSeries"/>
+<xs:element name="netCDFTimeSeriesResponse" type="tns:netCDFTimeSeriesResponse"/>
+<xs:element name="pdf2png" type="tns:pdf2png"/>
+<xs:element name="pdf2pngResponse" type="tns:pdf2pngResponse"/>
+<xs:element name="ps2pdf" type="tns:ps2pdf"/>
+<xs:element name="ps2pdfResponse" type="tns:ps2pdfResponse"/>
+<xs:element name="ps2png" type="tns:ps2png"/>
+<xs:element name="ps2pngResponse" type="tns:ps2pngResponse"/>
+<xs:element name="psxy" type="tns:psxy"/>
+<xs:element name="psxyResponse" type="tns:psxyResponse"/>
+<xs:element name="surface" type="tns:surface"/>
+<xs:element name="surfaceResponse" type="tns:surfaceResponse"/>
+<xs:element name="vtkContourFilter" type="tns:vtkContourFilter"/>
+<xs:element name="vtkContourFilterResponse" type="tns:vtkContourFilterResponse"/>
+<xs:element name="vtkImageDataReader" type="tns:vtkImageDataReader"/>
+<xs:element name="vtkImageDataReaderFloat" type="tns:vtkImageDataReaderFloat"/>
+<xs:element name="vtkImageDataReaderFloatResponse" type="tns:vtkImageDataReaderFloatResponse"/>
+<xs:element name="vtkImageDataReaderResponse" type="tns:vtkImageDataReaderResponse"/>
+<xs:element name="vtkPolyDataMapper" type="tns:vtkPolyDataMapper"/>
+<xs:element name="vtkPolyDataMapperResponse" type="tns:vtkPolyDataMapperResponse"/>
+<xs:element name="vtkVolume" type="tns:vtkVolume"/>
+<xs:element name="vtkVolumeResponse" type="tns:vtkVolumeResponse"/>
+<xs:complexType name="csv2tabular">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="url" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="csv2tabularResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="vtkVolume">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="url" type="xs:string"/>
+      <xs:element minOccurs="0" name="xRotation" type="xs:string"/>
+      <xs:element minOccurs="0" name="yRotation" type="xs:string"/>
+      <xs:element minOccurs="0" name="zRotation" type="xs:string"/>
+      <xs:element minOccurs="0" name="size" type="xs:string"/>
+      <xs:element minOccurs="0" name="backgroundColor" type="xs:string"/>
+      <xs:element minOccurs="0" name="magnification" type="xs:string"/>
+      <xs:element minOccurs="0" name="opacityFunction" type="xs:string"/>
+      <xs:element minOccurs="0" name="colorFunction" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="vtkVolumeResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="ps2png">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="url" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="ps2pngResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="int2Short">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="url" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="int2ShortResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="float2ShortThr">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="url" type="xs:string"/>
+      <xs:element minOccurs="0" name="scalingFactor" type="xs:string"/>
+      <xs:element minOccurs="0" name="offset" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="float2ShortThrResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="esriGridRaster">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="url" type="xs:string"/>
+      <xs:element minOccurs="0" name="font" type="xs:string"/>
+      <xs:element minOccurs="0" name="lbOrientation" type="xs:string"/>
+      <xs:element minOccurs="0" name="colorTable" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="esriGridRasterResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="grdcontour">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="url" type="xs:string"/>
+      <xs:element minOccurs="0" name="C" type="xs:string"/>
+      <xs:element minOccurs="0" name="A" type="xs:string"/>
+      <xs:element minOccurs="0" name="J" type="xs:string"/>
+      <xs:element minOccurs="0" name="S" type="xs:string"/>
+      <xs:element minOccurs="0" name="B" type="xs:string"/>
+      <xs:element minOccurs="0" name="Wa" type="xs:string"/>
+      <xs:element minOccurs="0" name="Wc" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="grdcontourResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="vtkImageDataReaderFloat">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="url" type="xs:string"/>
+      <xs:element minOccurs="0" name="littleEndian" type="xs:string"/>
+      <xs:element minOccurs="0" name="dim" type="xs:string"/>
+      <xs:element minOccurs="0" name="dataOrigin" type="xs:string"/>
+      <xs:element minOccurs="0" name="dataSpacing" type="xs:string"/>
+      <xs:element minOccurs="0" name="dataExtent" type="xs:string"/>
+      <xs:element minOccurs="0" name="numScalarComponents" type="xs:string"/>
+      <xs:element minOccurs="0" name="readLowerLeft" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="vtkImageDataReaderFloatResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="netCDFGridContour">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="url" type="xs:string"/>
+      <xs:element minOccurs="0" name="plotVariable" type="xs:string"/>
+      <xs:element minOccurs="0" name="font" type="xs:string"/>
+      <xs:element minOccurs="0" name="lbOrientation" type="xs:string"/>
+      <xs:element minOccurs="0" name="cnLevelSpacingF" type="xs:string"/>
+      <xs:element minOccurs="0" name="colorTable" type="xs:string"/>
+      <xs:element minOccurs="0" name="cnLinesOn" type="xs:string"/>
+      <xs:element minOccurs="0" name="cnFillOn" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="netCDFGridContourResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="pdf2png">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="url" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="pdf2pngResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="surface">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="url" type="xs:string"/>
+      <xs:element minOccurs="0" name="I" type="xs:string"/>
+      <xs:element minOccurs="0" name="T" type="xs:string"/>
+      <xs:element minOccurs="0" name="C" type="xs:string"/>
+      <xs:element minOccurs="0" name="R" type="xs:string"/>
+      <xs:element minOccurs="0" name="indexOfX" type="xs:string"/>
+      <xs:element minOccurs="0" name="indexOfY" type="xs:string"/>
+      <xs:element minOccurs="0" name="indexOfZ" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="surfaceResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="vtkContourFilter">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="url" type="xs:string"/>
+      <xs:element minOccurs="0" name="numContours" type="xs:string"/>
+      <xs:element minOccurs="0" name="scalarRange" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="vtkContourFilterResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="psxy">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="url" type="xs:string"/>
+      <xs:element minOccurs="0" name="S" type="xs:string"/>
+      <xs:element minOccurs="0" name="J" type="xs:string"/>
+      <xs:element minOccurs="0" name="G" type="xs:string"/>
+      <xs:element minOccurs="0" name="B" type="xs:string"/>
+      <xs:element minOccurs="0" name="R" type="xs:string"/>
+      <xs:element minOccurs="0" name="indexOfX" type="xs:string"/>
+      <xs:element minOccurs="0" name="indexOfY" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="psxyResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="netCDFTimeSeries">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="url" type="xs:string"/>
+      <xs:element minOccurs="0" name="lPlotVariablesList" type="xs:string"/>
+      <xs:element minOccurs="0" name="rPlotVariablesList" type="xs:string"/>
+      <xs:element minOccurs="0" name="xDimName" type="xs:string"/>
+      <xs:element minOccurs="0" name="xDimSize" type="xs:string"/>
+      <xs:element minOccurs="0" name="title" type="xs:string"/>
+      <xs:element minOccurs="0" name="yLAxisLabel" type="xs:string"/>
+      <xs:element minOccurs="0" name="yRAxisLabel" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="netCDFTimeSeriesResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="grdimage">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="url" type="xs:string"/>
+      <xs:element minOccurs="0" name="C" type="xs:string"/>
+      <xs:element minOccurs="0" name="J" type="xs:string"/>
+      <xs:element minOccurs="0" name="B" type="xs:string"/>
+      <xs:element minOccurs="0" name="T" type="xs:string"/>
+      <xs:element minOccurs="0" name="R" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="grdimageResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="netCDFGridRaster">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="url" type="xs:string"/>
+      <xs:element minOccurs="0" name="plotVariable" type="xs:string"/>
+      <xs:element minOccurs="0" name="font" type="xs:string"/>
+      <xs:element minOccurs="0" name="lbOrientation" type="xs:string"/>
+      <xs:element minOccurs="0" name="colorTable" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="netCDFGridRasterResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="ps2pdf">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="url" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="ps2pdfResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="nearneighbor">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="url" type="xs:string"/>
+      <xs:element minOccurs="0" name="I" type="xs:string"/>
+      <xs:element minOccurs="0" name="S" type="xs:string"/>
+      <xs:element minOccurs="0" name="R" type="xs:string"/>
+      <xs:element minOccurs="0" name="indexOfX" type="xs:string"/>
+      <xs:element minOccurs="0" name="indexOfY" type="xs:string"/>
+      <xs:element minOccurs="0" name="indexOfZ" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="nearneighborResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="vtkPolyDataMapper">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="url" type="xs:string"/>
+      <xs:element minOccurs="0" name="scalarRange" type="xs:string"/>
+      <xs:element minOccurs="0" name="xRotation" type="xs:string"/>
+      <xs:element minOccurs="0" name="yRotation" type="xs:string"/>
+      <xs:element minOccurs="0" name="zRotation" type="xs:string"/>
+      <xs:element minOccurs="0" name="size" type="xs:string"/>
+      <xs:element minOccurs="0" name="backgroundColor" type="xs:string"/>
+      <xs:element minOccurs="0" name="magnification" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="vtkPolyDataMapperResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="vtkImageDataReader">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="url" type="xs:string"/>
+      <xs:element minOccurs="0" name="littleEndian" type="xs:string"/>
+      <xs:element minOccurs="0" name="dim" type="xs:string"/>
+      <xs:element minOccurs="0" name="dataOrigin" type="xs:string"/>
+      <xs:element minOccurs="0" name="dataSpacing" type="xs:string"/>
+      <xs:element minOccurs="0" name="dataExtent" type="xs:string"/>
+      <xs:element minOccurs="0" name="numScalarComponents" type="xs:string"/>
+      <xs:element minOccurs="0" name="readLowerLeft" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="vtkImageDataReaderResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="esriGridContour">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="url" type="xs:string"/>
+      <xs:element minOccurs="0" name="font" type="xs:string"/>
+      <xs:element minOccurs="0" name="lbOrientation" type="xs:string"/>
+      <xs:element minOccurs="0" name="cnLevelSpacingF" type="xs:string"/>
+      <xs:element minOccurs="0" name="colorTable" type="xs:string"/>
+      <xs:element minOccurs="0" name="cnLinesOn" type="xs:string"/>
+      <xs:element minOccurs="0" name="cnFillOn" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="esriGridContourResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
