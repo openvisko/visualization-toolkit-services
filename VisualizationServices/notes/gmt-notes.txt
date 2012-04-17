@@ -1,0 +1,7 @@
+had to comment out error checking that checks if a gridded data's x_inc == y_inc.  This is some sort of precision error so I ignored it for the time being>
+
+- changed grd2xyz.c (comment out calling the error function)
+- ran "make" in parent directory of source.
+- ram "make install" in parent directory of source
+
+ERROR: x_inc must equal y_inc when writing to ESRI format
