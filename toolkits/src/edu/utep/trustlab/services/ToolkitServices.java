@@ -25,7 +25,7 @@ import edu.utep.trustlab.toolkitOperators.vtk.VTKImageDataReaderFloats;
 import edu.utep.trustlab.toolkitOperators.vtk.VTKPolyDataMapper;
 import edu.utep.trustlab.toolkitOperators.vtk.VTKVolume;
 
-@WebService(targetNamespace = "http://services.trustlab.utep.edu", portName = "ToolkitOperatorsPort", serviceName = "ToolkitOperators")
+@WebService(targetNamespace = "http://services.trustlab.utep.edu", portName = "ToolkitServicesPort", serviceName = "ToolkitServices")
 public class ToolkitServices {
 	
 	//GMT Services
