@@ -5,24 +5,24 @@
 <import namespace="http://services.trustlab.utep.edu/" schemaLocation="toolkitservices_schema1.xsd"/>
 </schema>
   </wsdl:types>
-  <wsdl:message name="vtkContourFilterResponse">
-    <wsdl:part name="parameters" element="tns:vtkContourFilterResponse">
+  <wsdl:message name="vtkImageDataReaderResponse">
+    <wsdl:part name="parameters" element="tns:vtkImageDataReaderResponse">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="vtkContourFilter">
     <wsdl:part name="parameters" element="tns:vtkContourFilter">
     </wsdl:part>
   </wsdl:message>
-  <wsdl:message name="vtkImageDataReaderResponse">
-    <wsdl:part name="parameters" element="tns:vtkImageDataReaderResponse">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="vtkVolumeResponse">
-    <wsdl:part name="parameters" element="tns:vtkVolumeResponse">
+  <wsdl:message name="vtkContourFilterResponse">
+    <wsdl:part name="parameters" element="tns:vtkContourFilterResponse">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="esriGridRaster">
     <wsdl:part name="parameters" element="tns:esriGridRaster">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="vtkVolumeResponse">
+    <wsdl:part name="parameters" element="tns:vtkVolumeResponse">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="vtkPolyDataMapper">
@@ -49,12 +49,12 @@
     <wsdl:part name="parameters" element="tns:float2ShortThr">
     </wsdl:part>
   </wsdl:message>
-  <wsdl:message name="grdimageResponse">
-    <wsdl:part name="parameters" element="tns:grdimageResponse">
-    </wsdl:part>
-  </wsdl:message>
   <wsdl:message name="netCDFGridRaster">
     <wsdl:part name="parameters" element="tns:netCDFGridRaster">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="grdimageResponse">
+    <wsdl:part name="parameters" element="tns:grdimageResponse">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="int2Short">
@@ -113,20 +113,20 @@
     <wsdl:part name="parameters" element="tns:ps2pngResponse">
     </wsdl:part>
   </wsdl:message>
-  <wsdl:message name="pdf2pngResponse">
-    <wsdl:part name="parameters" element="tns:pdf2pngResponse">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="ps2pdfResponse">
-    <wsdl:part name="parameters" element="tns:ps2pdfResponse">
+  <wsdl:message name="nearneighborResponse">
+    <wsdl:part name="parameters" element="tns:nearneighborResponse">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="nearneighbor">
     <wsdl:part name="parameters" element="tns:nearneighbor">
     </wsdl:part>
   </wsdl:message>
-  <wsdl:message name="nearneighborResponse">
-    <wsdl:part name="parameters" element="tns:nearneighborResponse">
+  <wsdl:message name="ps2pdfResponse">
+    <wsdl:part name="parameters" element="tns:ps2pdfResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="pdf2pngResponse">
+    <wsdl:part name="parameters" element="tns:pdf2pngResponse">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="netCDFGridContourResponse">

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://services.trustlab.utep.edu/" elementFormDefault="unqualified" targetNamespace="http://services.trustlab.utep.edu/" version="1.0">
+<?xml version="1.0" encoding="utf-8"?><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://services.trustlab.utep.edu/" elementFormDefault="qualified" targetNamespace="http://services.trustlab.utep.edu/" version="1.0">
 <xs:element name="csv2tabular" type="tns:csv2tabular"/>
 <xs:element name="csv2tabularResponse" type="tns:csv2tabularResponse"/>
 <xs:element name="esriGridContour" type="tns:esriGridContour"/>
