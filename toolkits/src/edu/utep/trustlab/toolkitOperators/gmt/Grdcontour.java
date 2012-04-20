@@ -18,7 +18,7 @@ public class Grdcontour extends PassByReferenceOperator{
 	private String outputPSPath;
 	private String outputPSURL;
 
-	private static final String SCRIPT_CONTOUR = FileUtils.getGMTScripts() + "using-parameters/" +  "wrapper-grdcontour.sh";
+	private static final String SCRIPT_CONTOUR = FileUtils.getGMTScripts() + "wrapper-grdcontour.sh";
 
 	public Grdcontour(String netCDFDataURL){	
 		super(netCDFDataURL);
