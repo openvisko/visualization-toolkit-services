@@ -17,7 +17,7 @@ public class Psxy extends PassByReferenceOperator{
 	String outputPSPath;
 	String outputPSURL;
 	
-	private static final String PLOTTER_2D = FileUtils.getGMTScripts() + "plotter-using-parameters.sh";
+	private static final String PLOTTER_2D = FileUtils.getGMTScripts() + "wrapper-psxy.sh";
 
 	public Psxy(String asciiDataURL){	
 		super(asciiDataURL);
