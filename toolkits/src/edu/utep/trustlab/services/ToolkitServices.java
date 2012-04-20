@@ -1,7 +1,6 @@
 package edu.utep.trustlab.services;
 
 import javax.jws.WebParam;
-import javax.jws.WebService;
 
 import edu.utep.trustlab.toolkitOperators.custom.CSVToTabularASCII;
 import edu.utep.trustlab.toolkitOperators.gmt.Grdcontour;
@@ -25,7 +24,6 @@ import edu.utep.trustlab.toolkitOperators.vtk.VTKImageDataReaderFloats;
 import edu.utep.trustlab.toolkitOperators.vtk.VTKPolyDataMapper;
 import edu.utep.trustlab.toolkitOperators.vtk.VTKVolume;
 
-@WebService(targetNamespace = "http://services.trustlab.utep.edu", portName = "ToolkitOperatorsPort", serviceName = "ToolkitOperators")
 public class ToolkitServices {
 	
 	//GMT Services
