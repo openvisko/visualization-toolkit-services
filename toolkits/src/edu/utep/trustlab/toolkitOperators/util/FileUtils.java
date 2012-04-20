@@ -11,7 +11,7 @@ public class FileUtils{
 
 	private static final String WEBAPP = "toolkits/";
 	private static final String OUTPUT_DIR_NAME = "output/";
-
+	private static final String SCRIPTS_DIR_NAME = "scripts/";
 	
 	public static void setDeploymentPath(String serverBasePath){
 		String basePath;
@@ -22,7 +22,7 @@ public class FileUtils{
 			basePath = serverBasePath + "/";
 		
 		OUTPUT = basePath + "webapps/" + WEBAPP + OUTPUT_DIR_NAME;
-		SCRIPTS = basePath + "webapps/" + WEBAPP + "scripts";
+		SCRIPTS = basePath + "webapps/" + WEBAPP + SCRIPTS_DIR_NAME;
 	}
 		
 	public static void setServerURL(String url){
