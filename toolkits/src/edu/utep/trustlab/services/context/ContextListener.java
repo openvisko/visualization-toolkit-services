@@ -7,7 +7,6 @@ import javax.servlet.ServletContextListener;
 import edu.utep.trustlab.toolkitOperators.util.*;
 public class ContextListener implements ServletContextListener {
 
-	
 	@Override
 	public void contextDestroyed(ServletContextEvent event) {
 	}
@@ -16,19 +15,12 @@ public class ContextListener implements ServletContextListener {
 	public void contextInitialized(ServletContextEvent event) {
 		ServletContext context = event.getServletContext();
 		setServerURL(context);
+		setServerBasePath(context);
+	}
 	
+	private static void setServerBasePath(ServletContext context){
 		String serverBasePath = context.getInitParameter("server-base-path");
-		setDataOutputDir(serverBasePath);
-		setScriptsDir(serverBasePath);
-	}
-	
-	private static void setDataOutputDir(String basePath){
-		FileUtils.setDataOutputDir(basePath + "output/");
-	}
-	
-	private static void setScriptsDir(String basePath){
-		FileUtils.setScripts(basePath + "scripts/");
-	
+		FileUtils.setDeploymentPath(serverBasePath);
 	}
 	
 	private static void setServerURL(ServletContext context){

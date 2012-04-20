@@ -8,22 +8,32 @@ public class FileUtils{
 	private static String SERVER;
 	private static String OUTPUT;
 	private static String SCRIPTS;
+
 	private static final String WEBAPP = "toolkits/";
+	private static final String OUTPUT_DIR_NAME = "output";
+
 	
-	public static void setScripts(String path){
-		SCRIPTS = path;
+	public static void setDeploymentPath(String serverBasePath){
+		String basePath;
+		
+		if(serverBasePath.endsWith("/"))
+			basePath = serverBasePath;
+		else
+			basePath = serverBasePath + "/";
+		
+		OUTPUT = basePath + "webapps/" + WEBAPP + OUTPUT_DIR_NAME;
+		SCRIPTS = basePath + "webapps/" + WEBAPP + "scripts";
 	}
-	
+		
 	public static void setServerURL(String url){
-		SERVER = url;
-	}
-	
-	public static void setDataOutputDir(String path){
-		OUTPUT = path;
+		if(url.endsWith("/"))
+			SERVER = url;
+		else
+			SERVER = url + "/";
 	}
 	
 	public static String getLoggingDir(){
-		return "log/";
+		return OUTPUT + "log/";
 	}
 	
 	public static String getGMTWorkspace(){
@@ -55,15 +65,15 @@ public class FileUtils{
 	}
 	
 	public static String getGMTOutputURLPrefix(){
-		return SERVER + WEBAPP + OUTPUT + "gmt/";
+		return SERVER + WEBAPP + OUTPUT_DIR_NAME + "gmt/";
 	}
 
 	public static String getNCLOutputURLPrefix(){
-		return SERVER + WEBAPP + OUTPUT + "ncl/";
+		return SERVER + WEBAPP + OUTPUT_DIR_NAME + "ncl/";
 	}
 	
 	public static String getVTKOutputURLPrefix(){
-		return SERVER + WEBAPP + OUTPUT + "vtk/";
+		return SERVER + WEBAPP + OUTPUT_DIR_NAME + "vtk/";
 	}
 	
 	public static String writeTextFile(String fileContents, String dirName, String fileName)
