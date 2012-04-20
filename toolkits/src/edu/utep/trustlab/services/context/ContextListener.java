@@ -15,10 +15,24 @@ public class ContextListener implements ServletContextListener {
 	@Override
 	public void contextInitialized(ServletContextEvent event) {
 		ServletContext context = event.getServletContext();
+		setServerURL(context);
+	
+		String serverBasePath = context.getInitParameter("server-base-path");
+		setDataOutputDir(serverBasePath);
+		setScriptsDir(serverBasePath);
+	}
+	
+	private static void setDataOutputDir(String basePath){
+		FileUtils.setDataOutputDir(basePath + "output/");
+	}
+	
+	private static void setScriptsDir(String basePath){
+		FileUtils.setScripts(basePath + "scripts/");
+	
+	}
+	
+	private static void setServerURL(ServletContext context){
 		String serverURL = context.getInitParameter("server-url");
-		
-		FileUtils.setDataOutputDir("output/");
-		FileUtils.setScripts("scripts/");
-		FileUtils.setServerURL(serverURL);
+		FileUtils.setServerURL(serverURL);		
 	}
 }
