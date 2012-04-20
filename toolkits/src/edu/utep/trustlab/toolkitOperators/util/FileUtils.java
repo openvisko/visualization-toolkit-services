@@ -10,7 +10,7 @@ public class FileUtils{
 	private static String SCRIPTS;
 
 	private static final String WEBAPP = "toolkits/";
-	private static final String OUTPUT_DIR_NAME = "output";
+	private static final String OUTPUT_DIR_NAME = "output/";
 
 	
 	public static void setDeploymentPath(String serverBasePath){
