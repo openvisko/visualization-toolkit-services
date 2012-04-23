@@ -1,9 +1,10 @@
 package edu.utep.trustlab.toolkitOperators.vtk;
-import edu.utep.trustlab.toolkitOperators.PassByReferenceOperator;
+
+import edu.utep.trustlab.toolkitOperators.VTKOperator;
 import edu.utep.trustlab.toolkitOperators.util.*;
 import vtk.*;
 
-public class VTKImageDataReaderFloats extends PassByReferenceOperator{
+public class VTKImageDataReaderFloats extends VTKOperator{
 	byte[] shortIntGrid;
 	String inputDatasetFileName;
 	String inputDatasetFilePath;

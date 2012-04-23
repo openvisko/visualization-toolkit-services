@@ -5,8 +5,7 @@ import edu.utep.trustlab.toolkitOperators.util.CommandRunner;
 import edu.utep.trustlab.toolkitOperators.util.FileUtils;
 import edu.utep.trustlab.toolkitOperators.util.GetURLContents;
 
-public class NetCDFToContourMapPS extends PassByReferenceOperator
-{
+public class NetCDFToContourMapPS extends PassByReferenceOperator{
 	byte[] netCDFDataset;
 	String inputDatasetFilePath;
 	String inputDatasetFileName;
@@ -16,20 +15,17 @@ public class NetCDFToContourMapPS extends PassByReferenceOperator
 
 	private static final String SCRIPT_CONTOUR = FileUtils.getNCLScripts() +  "netCDFGridContour.sh ";
 	
-	public NetCDFToContourMapPS(String netCDFURL)
-	{	
+	public NetCDFToContourMapPS(String netCDFURL){	
 		super(netCDFURL);
 	}
 	
-	protected void downloadInputs(String netCDFURL)
-	{
+	protected void downloadInputs(String netCDFURL){
 		netCDFDataset = GetURLContents.downloadFile(netCDFURL);
 		inputDatasetFileName = "netCDF-"+ FileUtils.getRandomString() + ".nc";
 		inputDatasetFilePath = FileUtils.writeBinaryFile(netCDFDataset, FileUtils.getNCLWorkspace(), inputDatasetFileName);
 	}
 	
-	protected void setUpOutputs()
-	{
+	protected void setUpOutputs(){
 		outputDatasetFileName = "contourMapPS-" + FileUtils.getRandomString(); //no need to append .ps, ncl does that
 		outputDatasetFilePath = FileUtils.makeFullPath(FileUtils.getNCLWorkspace(),outputDatasetFileName);
 		outputDatasetURL = FileUtils.getNCLOutputURLPrefix() + outputDatasetFileName + ".ps";
@@ -42,8 +38,8 @@ public class NetCDFToContourMapPS extends PassByReferenceOperator
 			String cnLevelSpacingF,
 			String colorTable,
 			String cnLinesOn,
-			String cnFillOn)
-	{
+			String cnFillOn){
+		
 		String cmd = SCRIPT_CONTOUR + 
 		inputDatasetFilePath + 
 		" " + outputDatasetFilePath +

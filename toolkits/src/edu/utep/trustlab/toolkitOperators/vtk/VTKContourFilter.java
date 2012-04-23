@@ -1,10 +1,10 @@
 package edu.utep.trustlab.toolkitOperators.vtk;
-import edu.utep.trustlab.toolkitOperators.PassByReferenceOperator;
+import edu.utep.trustlab.toolkitOperators.VTKOperator;
 import edu.utep.trustlab.toolkitOperators.util.FileUtils;
 import edu.utep.trustlab.toolkitOperators.util.GetURLContents;
 import vtk.*;
 
-public class VTKContourFilter extends PassByReferenceOperator{
+public class VTKContourFilter extends VTKOperator{
 	String imageData3D;
 	String inputDatasetFileName;
 	String inputDatasetFilePath;

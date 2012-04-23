@@ -1,11 +1,12 @@
 package edu.utep.trustlab.toolkitOperators.vtk;
 
-import edu.utep.trustlab.toolkitOperators.PassByReferenceOperator;
+
+import edu.utep.trustlab.toolkitOperators.VTKOperator;
 import edu.utep.trustlab.toolkitOperators.util.FileUtils;
 import edu.utep.trustlab.toolkitOperators.util.GetURLContents;
 import vtk.*;
 
-public class VTKPolyDataMapper extends PassByReferenceOperator{
+public class VTKPolyDataMapper extends VTKOperator{
 	String contoursPolyData;
 	String inputDatasetFileName;
 	String inputDatasetFilePath;
