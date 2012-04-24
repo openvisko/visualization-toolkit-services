@@ -11,8 +11,6 @@ import edu.utep.trustlab.toolkitOperators.gmt.Surface;
 import edu.utep.trustlab.toolkitOperators.gs.PDFToPNG;
 import edu.utep.trustlab.toolkitOperators.gs.PSToPDF;
 import edu.utep.trustlab.toolkitOperators.gs.PSToPNG;
-import edu.utep.trustlab.toolkitOperators.ncl.ESRIGriddedToContourMapPS;
-import edu.utep.trustlab.toolkitOperators.ncl.ESRIGriddedToRasterMapPS;
 import edu.utep.trustlab.toolkitOperators.ncl.NetCDFToContourMapPS;
 import edu.utep.trustlab.toolkitOperators.ncl.NetCDFToRasterMapPS;
 import edu.utep.trustlab.toolkitOperators.ncl.NetCDFToTimeSeriesPlotPS;
@@ -208,31 +206,7 @@ public class ToolkitServices {
 		return transformer.transform(littleEndian, dim, dataOrigin, dataSpacing, dataExtent, numScalarComponents, readLowerLeft);
 	}
 	
-	//NCL Services
-	public String esriGridContour(
-			@WebParam(name="url") String url,
-			@WebParam(name="font") String font,
-			@WebParam(name="lbOrientation") String lbOrientation,
-			@WebParam(name="cnLevelSpacingF") String cnLevelSpacingF,
-			@WebParam(name="colorTable") String colorTable,
-			@WebParam(name="cnLinesOn") String cnLinesOn,
-			@WebParam(name="cnFillOn") String cnFillOn
-	)
-	{
-		ESRIGriddedToContourMapPS service = new ESRIGriddedToContourMapPS(url);
-		return service.transform(font, lbOrientation, cnLevelSpacingF, colorTable, cnLinesOn, cnFillOn);
-	}
-	
-	public String esriGridRaster(
-			@WebParam(name="url") String url,
-			@WebParam(name="font") String font,
-			@WebParam(name="lbOrientation") String lbOrientation,
-			@WebParam(name="colorTable") String colorTable)
-	{
-		ESRIGriddedToRasterMapPS service = new ESRIGriddedToRasterMapPS(url);
-		return service.transform(font, lbOrientation, colorTable);
-	}
-	
+	//NCL Services	
 	public String netCDFGridContour(
 			@WebParam(name="url") String url,
 			@WebParam(name="plotVariable") String plotVariable,

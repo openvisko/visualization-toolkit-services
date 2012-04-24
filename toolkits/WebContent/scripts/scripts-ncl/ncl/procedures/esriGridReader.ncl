@@ -1,20 +1,19 @@
 ; ***********************************************************************
-; Name: readAGR
 ; Description: Read an ESRI grid formated file
 ; For a data format description, see http://en.wikipedia.org/wiki/ESRI_grid
 ;
 ; NOTE: The function silently assumes a regular latitude/longitude grid and 
 ; sets the metadata accordingly. It is the user's responsibility to transform
 ; the grid or data if necessary.
+;*************************************************************************
 
-undef("readAGR")
+undef("esriGridReader")
 
-function readAGR(filename)
-local raw, data, ncols, nrows, xllcorner, yllcorner, cellsize, NODATA_value, lon, lat 
+function esriGridReader(filename)
 begin
 
-  	; read in all numbers
-	raw =  asciiread(filename, -1, "float")
+ 	; read in all numbers
+ 	raw =  asciiread(filename, -1, "float")
 	  
 	; first 6 numbers are header
 	ncols = floattoint(raw(0)) ; number of columns
@@ -49,4 +48,4 @@ begin
 	data@xllcorner = xllcorner
 	data@yllcorner = yllcorner
 	return(data)
-end ; of function readAGR
+end
