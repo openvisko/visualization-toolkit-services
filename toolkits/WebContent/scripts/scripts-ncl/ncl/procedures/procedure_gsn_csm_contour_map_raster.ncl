@@ -40,7 +40,7 @@ begin
 	;*******************************************************************
 	res						= True
 	res@tiMainString		= model
-	res@txFont              = font 							; font is input
+	res@txFont              = font 						; font is input
 
 	;*********************************************************************
 	; label configurations
