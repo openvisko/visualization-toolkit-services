@@ -19,12 +19,13 @@
 	<property name="lib" value="WebContent/WEB-INF/lib/"/>
 	<property name="build" value="build"/>
 	<property name="src" value="src"/>
+	<property name="servlet-lib" value="tomcat/servlet-api.jar"/>
 	
 	<target name="build" depends="build-web-configuration" description="Creates the VisKo Webapp WAR file">
 	
 		<war destfile="${toolkits-war}" webxml="${config-file}">
 			<lib dir="${lib}"/>
-			<fileset dir="${web-content}"/>			
+			<fileset dir="${web-content}"/>
 			<classes dir="${build}/"/>
 		</war>
 	</target>	
@@ -51,6 +52,7 @@
 				<fileset dir="${lib}">
 					<include name="*.jar"/>
 				</fileset>
+				<pathelement location="${servlet-lib}"/>
 			</classpath>			
 		</javac> 
 	</target>
