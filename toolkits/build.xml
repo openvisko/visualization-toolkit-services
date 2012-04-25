@@ -5,7 +5,6 @@
 	<property name="server-path" value="/usr/local/tomcat/"/>
 	<property name="server-url" value="http://iw.cs.utep.edu:8080/"/>	
 	
-	
 	<!-- DO NOT CHANGE SETTINGS BELOW -->
 	
 	<!-- web.xml paths -->
