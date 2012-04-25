@@ -1,9 +1,9 @@
 ;********************************************************************
-; Name: netCDFContourer.ncl
+; Name: procedure_gsn_csm_contour_map.ncl
 ; Description: generates contour map of gridded netCDF data
-;*********************************************************************
-undef("netCDFContourer")
+;********************************************************************
 
+undef("procedure_gsn_csm_contour_map")
 procedure netCDFContourer(netCDFFilePath, outputFilePath, plotVariable, font, lbOrientation, cnLevelSpacingF, colorTable, cnLinesOn, cnFillOn, coordinateToIgnore, latVariable, lonVariable)
 begin
 
@@ -69,8 +69,6 @@ begin
 	;**********************************************************************
 	; map configurations
 	;***********************************************************************
-	spacing						=  stringtofloat(cnLevelSpacingF) ; cnLevelSpacingF is input
-
 	if(cnFillOn .eq. "True") then
 		fillOn = True
 	else
@@ -83,7 +81,7 @@ begin
 		linesOn = False
 	end if
 
-	res@cnLevelSpacingF			= spacing  	   		; contour interval
+	res@cnLevelSpacingF			= cnLevelSpacingF	; contour interval
 	res@gsnSpreadColors     	= True    	       	; use full color map
 	res@gsnAddCyclic			= False
 	res@cnFillOn        		= fillOn

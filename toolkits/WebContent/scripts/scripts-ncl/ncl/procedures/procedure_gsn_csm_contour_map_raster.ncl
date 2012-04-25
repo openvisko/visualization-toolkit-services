@@ -1,10 +1,10 @@
 ;********************************************************************
-; Name: netCDFContourer.ncl
+; Name: procedure_gsn_csm_contour_map_raster.ncl
 ; Description: generates contour map of gridded netCDF data
 ;*********************************************************************
-undef("netCDFGridRaster")
+undef("procedure_gsn_csm_contour_map_raster")
 
-procedure netCDFGridRaster(netCDFFilePath, outputFilePath, plotVariable, font, lbOrientation, colorTable, coordinateToIgnore, latVariable, lonVariable)
+procedure procedure_gsn_csm_contour_map_raster(netCDFFilePath, outputFilePath, plotVariable, font, lbOrientation, colorTable, coordinateToIgnore, latVariable, lonVariable)
 begin
 
 	;***********************************************
