@@ -15,10 +15,9 @@ xDimSize=$6
 title=$7
 yLAxisLabel=$8
 yRAxisLabel=$9
+scriptsPath=${10}
 
-localNCLFile=timeSeries.ncl
-remoteNCLFile=/usr/local/tomcat/webapps/NCL-services/ncl-scripts/timeSeries.ncl
-useNCLFile=$remoteNCLFile
+useNCLFile=$scriptsPath/gsn_csm_contour_map.ncl
 
 ncl netCDFFilePath=\"$netCDFFilePath\" outputFilePath=\"$outputFilePath\" lPlotVariablesList=\"$lPlotVariablesList\" rPlotVariablesList=\"$rPlotVariablesList\" xDimName=\"$xDimName\" xDimSize=\"$xDimSize\" title=\"$title\" yLAxisLabel=\"$yLAxisLabel\" yRAxisLabel=\"$yRAxisLabel\" $useNCLFile <<$end
 $blank

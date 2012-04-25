@@ -1,6 +1,6 @@
 load "$NCARG_ROOT/lib/ncarg/nclscripts/csm/gsn_code.ncl"   
 load "$NCARG_ROOT/lib/ncarg/nclscripts/csm/gsn_csm.ncl"
-load "$NCARG_ROOT/lib/ncarg/nclscripts/contrib/procedure_gsn_csm_contour_map.ncl"
+load "$NCARG_ROOT/lib/ncarg/nclscripts/contrib/procedure_gsn_csm_contour_map_raster.ncl"
 
 begin
 
