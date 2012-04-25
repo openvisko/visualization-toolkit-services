@@ -60,6 +60,10 @@ public class FileUtils{
 		return SCRIPTS + "scripts-ncl/";
 	}
 	
+	public static String getNCLOperatorScripts(){
+		return getNCLScripts() + "ncl/";
+	}
+	
 	public static String getGravityTrustTableFilePath(){
 		return "trust-data/gravity_trust.txt";
 	}

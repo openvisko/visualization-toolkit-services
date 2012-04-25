@@ -5,7 +5,7 @@ import edu.utep.trustlab.toolkitOperators.util.CommandRunner;
 import edu.utep.trustlab.toolkitOperators.util.FileUtils;
 import edu.utep.trustlab.toolkitOperators.util.GetURLContents;
 
-public class NetCDFToContourMapPS extends PassByReferenceOperator{
+public class Gsn_csm_contour_map extends PassByReferenceOperator{
 	byte[] netCDFDataset;
 	String inputDatasetFilePath;
 	String inputDatasetFileName;
@@ -13,9 +13,9 @@ public class NetCDFToContourMapPS extends PassByReferenceOperator{
 	String outputDatasetFilePath;
 	String outputDatasetURL;
 
-	private static final String SCRIPT_CONTOUR = FileUtils.getNCLScripts() +  "netCDFGridContour.sh ";
+	private static final String SCRIPT_CONTOUR = FileUtils.getNCLScripts() +  "gsn_csm_contour_map.sh ";
 	
-	public NetCDFToContourMapPS(String netCDFURL){	
+	public Gsn_csm_contour_map(String netCDFURL){	
 		super(netCDFURL);
 	}
 	
@@ -38,7 +38,10 @@ public class NetCDFToContourMapPS extends PassByReferenceOperator{
 			String cnLevelSpacingF,
 			String colorTable,
 			String cnLinesOn,
-			String cnFillOn){
+			String cnFillOn,
+			String coordinateToIgnore,
+			String latVariable,
+			String lonVariable){
 		
 		String cmd = SCRIPT_CONTOUR + 
 		inputDatasetFilePath + 
@@ -49,9 +52,13 @@ public class NetCDFToContourMapPS extends PassByReferenceOperator{
 		" " + cnLevelSpacingF +
 		" " + colorTable +
 		" " + cnLinesOn +
-		" " + cnFillOn;
+		" " + cnFillOn +
+		" " + coordinateToIgnore +
+		" " + latVariable +
+		" " + lonVariable +
+		" " + FileUtils.getNCLOperatorScripts();
 		
 	    CommandRunner.run(cmd);   
 		return outputDatasetURL;
 	}
-}//end class 
+}

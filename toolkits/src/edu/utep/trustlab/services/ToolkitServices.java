@@ -11,9 +11,9 @@ import edu.utep.trustlab.toolkitOperators.gmt.Surface;
 import edu.utep.trustlab.toolkitOperators.gs.PDFToPNG;
 import edu.utep.trustlab.toolkitOperators.gs.PSToPDF;
 import edu.utep.trustlab.toolkitOperators.gs.PSToPNG;
-import edu.utep.trustlab.toolkitOperators.ncl.NetCDFToContourMapPS;
-import edu.utep.trustlab.toolkitOperators.ncl.NetCDFToRasterMapPS;
-import edu.utep.trustlab.toolkitOperators.ncl.NetCDFToTimeSeriesPlotPS;
+import edu.utep.trustlab.toolkitOperators.ncl.Gsn_csm_contour_map;
+import edu.utep.trustlab.toolkitOperators.ncl.Gsn_csm_contour_map_raster;
+import edu.utep.trustlab.toolkitOperators.ncl.Gsn_csm_xy2_time_series;
 import edu.utep.trustlab.toolkitOperators.vtk.Float2ShortThr;
 import edu.utep.trustlab.toolkitOperators.vtk.Int2Short;
 import edu.utep.trustlab.toolkitOperators.vtk.VTKContourFilter;
@@ -207,7 +207,7 @@ public class ToolkitServices {
 	}
 	
 	//NCL Services	
-	public String netCDFGridContour(
+	public String gsn_csm_contour_map(
 			@WebParam(name="url") String url,
 			@WebParam(name="plotVariable") String plotVariable,
 			@WebParam(name="font") String font,
@@ -215,26 +215,32 @@ public class ToolkitServices {
 			@WebParam(name="cnLevelSpacingF") String cnLevelSpacingF,
 			@WebParam(name="colorTable") String colorTable,
 			@WebParam(name="cnLinesOn") String cnLinesOn,
-			@WebParam(name="cnFillOn") String cnFillOn
+			@WebParam(name="cnFillOn") String cnFillOn,
+			@WebParam(name="coordinateToIgnore") String coordinateToIgnore,
+			@WebParam(name="latVariable") String latVariable,
+			@WebParam(name="lonVariable") String lonVariable
 	)
 	{
-		NetCDFToContourMapPS service = new NetCDFToContourMapPS(url);
-		return service.transform(plotVariable, font, lbOrientation, cnLevelSpacingF, colorTable, cnLinesOn, cnFillOn);
+		Gsn_csm_contour_map service = new Gsn_csm_contour_map(url);
+		return service.transform(plotVariable, font, lbOrientation, cnLevelSpacingF, colorTable, cnLinesOn, cnFillOn, coordinateToIgnore, latVariable, lonVariable);
 	}
 	
-	public String netCDFGridRaster(
+	public String gsn_csm_contour_map_raster(
 			@WebParam(name="url") String url,
 			@WebParam(name="plotVariable") String plotVariable,
 			@WebParam(name="font") String font,
 			@WebParam(name="lbOrientation") String lbOrientation, 
-			@WebParam(name="colorTable") String colorTable
+			@WebParam(name="colorTable") String colorTable,
+			@WebParam(name="coordinateToIgnore") String coordinateToIgnore,
+			@WebParam(name="latVariable") String latVariable,
+			@WebParam(name="lonVariable") String lonVariable
 	)
 	{
-		NetCDFToRasterMapPS service = new NetCDFToRasterMapPS(url);
-		return service.transform(plotVariable, font, lbOrientation, colorTable);
+		Gsn_csm_contour_map_raster service = new Gsn_csm_contour_map_raster(url);
+		return service.transform(plotVariable, font, lbOrientation, colorTable, coordinateToIgnore, latVariable, lonVariable);
 	}
 	
-	public String netCDFTimeSeries(
+	public String gsn_csm_xy2_time_series(
 			@WebParam(name="url") String url,
 			@WebParam(name="lPlotVariablesList") String lPlotVariablesList,
 			@WebParam(name="rPlotVariablesList") String rPlotVariablesList,
@@ -244,7 +250,7 @@ public class ToolkitServices {
 			@WebParam(name="yLAxisLabel") String yLAxisLabel,
 			@WebParam(name="yRAxisLabel") String yRAxisLabel)
 	{
-		NetCDFToTimeSeriesPlotPS service = new NetCDFToTimeSeriesPlotPS(url);
+		Gsn_csm_xy2_time_series service = new Gsn_csm_xy2_time_series(url);
 		return service.transform(lPlotVariablesList, rPlotVariablesList, xDimName, xDimSize, title, yLAxisLabel, yRAxisLabel);
 	}
 }

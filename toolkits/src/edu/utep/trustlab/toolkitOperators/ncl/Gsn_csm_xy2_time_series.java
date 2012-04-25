@@ -4,7 +4,7 @@ import edu.utep.trustlab.toolkitOperators.util.CommandRunner;
 import edu.utep.trustlab.toolkitOperators.util.FileUtils;
 import edu.utep.trustlab.toolkitOperators.util.GetURLContents;
 
-public class NetCDFToTimeSeriesPlotPS extends PassByReferenceOperator
+public class Gsn_csm_xy2_time_series extends PassByReferenceOperator
 {
 	byte[] netCDFDataset;
 	String inputDatasetFilePath;
@@ -13,22 +13,19 @@ public class NetCDFToTimeSeriesPlotPS extends PassByReferenceOperator
 	String outputDatasetFilePath;
 	String outputDatasetURL;
 
-	private static final String SCRIPT_TIMESERIES = FileUtils.getNCLScripts() +  "netCDFTimeSeries.sh ";
+	private static final String SCRIPT_TIMESERIES = FileUtils.getNCLScripts() +  "gsn_csm_xy2_time_series.sh ";
 	
-	public NetCDFToTimeSeriesPlotPS(String netCDFURL)
-	{	
+	public Gsn_csm_xy2_time_series(String netCDFURL){	
 		super(netCDFURL);
 	}
 	
-	protected void downloadInputs(String netCDFURL)
-	{
+	protected void downloadInputs(String netCDFURL){
 		netCDFDataset = GetURLContents.downloadFile(netCDFURL);
 		inputDatasetFileName = "netCDF-"+ FileUtils.getRandomString() + ".nc";
 		inputDatasetFilePath = FileUtils.writeBinaryFile(netCDFDataset, FileUtils.getNCLWorkspace(), inputDatasetFileName);
 	}
 	
-	protected void setUpOutputs()
-	{
+	protected void setUpOutputs(){
 		outputDatasetFileName = "timeSeriesPS-" + FileUtils.getRandomString(); //no need to append .ps, ncl does that
 		outputDatasetFilePath = FileUtils.makeFullPath(FileUtils.getNCLWorkspace(),outputDatasetFileName);
 		outputDatasetURL = FileUtils.getNCLOutputURLPrefix() + outputDatasetFileName + ".ps";
@@ -41,8 +38,8 @@ public class NetCDFToTimeSeriesPlotPS extends PassByReferenceOperator
 			String xDimSize,
 			String title,
 			String yLAxisLabel,
-			String yRAxisLabel)
-	{
+			String yRAxisLabel){
+		
 		String cmd = SCRIPT_TIMESERIES + 
 		inputDatasetFilePath + 
 		" " + outputDatasetFilePath +
@@ -52,9 +49,10 @@ public class NetCDFToTimeSeriesPlotPS extends PassByReferenceOperator
 		" " + xDimSize +
 		" " + title +
 		" " + yLAxisLabel +
-		" " + yRAxisLabel;
+		" " + yRAxisLabel +
+		" " + FileUtils.getNCLOperatorScripts();
 		
 	    CommandRunner.run(cmd);   
 		return outputDatasetURL;
 	}
-}//end class 
+}
