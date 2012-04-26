@@ -52,10 +52,6 @@ public class FileUtils{
 		return SCRIPTS + "scripts-gmt/";
 	}
 	
-	public static String getVTKScripts(){
-		return SCRIPTS + "scripts-vtk/";
-	}
-
 	public static String getNCLScripts(){
 		return SCRIPTS + "scripts-ncl/";
 	}
