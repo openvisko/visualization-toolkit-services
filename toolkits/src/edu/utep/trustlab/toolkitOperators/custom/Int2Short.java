@@ -48,10 +48,11 @@ public class Int2Short extends PassByReferenceOperator{
 		try{
 			FileOutputStream fileOutput = new FileOutputStream(new File(outputDatasetFilePath));
 			DataOutputStream dataOut = new DataOutputStream(fileOutput);
+			dataOut.writeChar(datasetOfInts.length);
 			
 			for(char anUnsignedShort : unsignedShortArrary)
 				dataOut.writeChar(anUnsignedShort);
-			dataOut.writeChar(-1);
+			
 			dataOut.close();	
 		}catch(IOException e){
 			System.out.println("something wrong with path probably: " + outputDatasetFilePath);
