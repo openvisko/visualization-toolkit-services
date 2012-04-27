@@ -27,7 +27,7 @@ public class Float2ShortThr extends PassByReferenceOperator{
 	}
 	
 	protected void setUpOutputs(){
-		outputDatasetFileName = "datasetOfInts-" + FileUtils.getRandomString() + ".u";
+		outputDatasetFileName = "unsignedShortsFromFloats-" + FileUtils.getRandomString() + ".u";
 		outputDatasetFilePath = FileUtils.makeFullPath(FileUtils.getVTKWorkspace(), outputDatasetFileName);
 		outputDatasetURL = FileUtils.getVTKOutputURLPrefix() + outputDatasetFileName;
 	}
@@ -56,7 +56,8 @@ public class Float2ShortThr extends PassByReferenceOperator{
 			
 			dataOut.close();
 		}catch(IOException e){
-				e.printStackTrace();
+			System.out.println("something wrong with path probably: " + outputDatasetFilePath);
+			e.printStackTrace();
 		}
 		return outputDatasetURL;
 	}
