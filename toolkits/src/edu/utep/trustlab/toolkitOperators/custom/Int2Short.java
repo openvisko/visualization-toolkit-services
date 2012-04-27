@@ -1,10 +1,12 @@
-package edu.utep.trustlab.toolkitOperators.vtk;
+package edu.utep.trustlab.toolkitOperators.custom;
 
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.ByteBuffer;
+import java.nio.IntBuffer;
+import java.util.ArrayList;
 
 import edu.utep.trustlab.toolkitOperators.PassByReferenceOperator;
 import edu.utep.trustlab.toolkitOperators.util.FileUtils;
@@ -32,11 +34,12 @@ public class Int2Short extends PassByReferenceOperator{
 	
 	public String transform(){
 		ByteBuffer byteBuffer = ByteBuffer.wrap(datasetOfInts);
-		int[] intArray = byteBuffer.asIntBuffer().array();
+		IntBuffer intBuffer = byteBuffer.asIntBuffer();
 		
-		short[] shortArray = new short[intArray.length];
-		for(int i = 0; i < intArray.length; i ++){
-			shortArray[i] = (short)intArray[i];
+		ArrayList<Short> shortArray = new ArrayList<Short>();
+		while(intBuffer.hasRemaining()){
+			short aShortValue = (short)intBuffer.get();
+			shortArray.add(new Short(aShortValue));
 		}
 		
 		try{
@@ -49,7 +52,6 @@ public class Int2Short extends PassByReferenceOperator{
 			}catch(IOException e){
 				e.printStackTrace();
 		}
-		
 		return outputDatasetURL;
 	}
 }

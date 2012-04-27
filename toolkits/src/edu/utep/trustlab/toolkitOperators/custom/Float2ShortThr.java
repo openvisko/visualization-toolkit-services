@@ -1,10 +1,12 @@
-package edu.utep.trustlab.toolkitOperators.vtk;
+package edu.utep.trustlab.toolkitOperators.custom;
 
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.ByteBuffer;
+import java.nio.FloatBuffer;
+import java.util.ArrayList;
 
 import edu.utep.trustlab.toolkitOperators.PassByReferenceOperator;
 import edu.utep.trustlab.toolkitOperators.util.FileUtils;
@@ -36,11 +38,12 @@ public class Float2ShortThr extends PassByReferenceOperator{
 		float bias = Float.valueOf(offset);
 		
 		ByteBuffer byteBuffer = ByteBuffer.wrap(datasetOfFloats);
-		float[] floatArray = byteBuffer.asFloatBuffer().array();
+		FloatBuffer floatBuffer = byteBuffer.asFloatBuffer();
 		
-		short[] shortArray = new short[floatArray.length];
-		for(int i = 0; i < floatArray.length; i ++){
-			shortArray[i] = (short)((floatArray[i] * factor) + bias);
+		ArrayList<Short> shortArray = new ArrayList<Short>();
+		while(floatBuffer.hasRemaining()){
+			short aShortValue = (short)((floatBuffer.get() * factor) + bias);
+			shortArray.add(new Short(aShortValue));
 		}
 		
 		try{
@@ -53,7 +56,6 @@ public class Float2ShortThr extends PassByReferenceOperator{
 			}catch(IOException e){
 				e.printStackTrace();
 		}
-		
 		return outputDatasetURL;
 	}
 }

@@ -3,6 +3,8 @@ package edu.utep.trustlab.services;
 import javax.jws.WebParam;
 
 import edu.utep.trustlab.toolkitOperators.custom.CSVToTabularASCII;
+import edu.utep.trustlab.toolkitOperators.custom.Float2ShortThr;
+import edu.utep.trustlab.toolkitOperators.custom.Int2Short;
 import edu.utep.trustlab.toolkitOperators.gmt.Grdcontour;
 import edu.utep.trustlab.toolkitOperators.gmt.Grdimage;
 import edu.utep.trustlab.toolkitOperators.gmt.Nearneighbor;
@@ -14,8 +16,6 @@ import edu.utep.trustlab.toolkitOperators.gs.PSToPNG;
 import edu.utep.trustlab.toolkitOperators.ncl.Gsn_csm_contour_map;
 import edu.utep.trustlab.toolkitOperators.ncl.Gsn_csm_contour_map_raster;
 import edu.utep.trustlab.toolkitOperators.ncl.Gsn_csm_xy2_time_series;
-import edu.utep.trustlab.toolkitOperators.vtk.Float2ShortThr;
-import edu.utep.trustlab.toolkitOperators.vtk.Int2Short;
 import edu.utep.trustlab.toolkitOperators.vtk.VTKContourFilter;
 import edu.utep.trustlab.toolkitOperators.vtk.VTKImageDataReader;
 import edu.utep.trustlab.toolkitOperators.vtk.VTKImageDataReaderFloats;
