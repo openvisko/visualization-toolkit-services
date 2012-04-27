@@ -47,6 +47,7 @@ public class Float2ShortThr extends PassByReferenceOperator{
 			unsignedShortArrary.add(new Character(anUnsignedShort));
 		}
 		
+		byteBuffer.clear();
 		try{
 			FileOutputStream fileOutput = new FileOutputStream(new File(outputDatasetFilePath));
 			DataOutputStream dataOut = new DataOutputStream(fileOutput);

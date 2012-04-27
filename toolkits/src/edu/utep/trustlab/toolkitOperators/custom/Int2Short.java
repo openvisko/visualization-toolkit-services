@@ -42,6 +42,8 @@ public class Int2Short extends PassByReferenceOperator{
 			char anUnsignedShort = (char)anIntValue;
 			unsignedShortArrary.add(new Character(anUnsignedShort));
 		}
+	
+		byteBuffer.clear();
 		
 		try{
 			FileOutputStream fileOutput = new FileOutputStream(new File(outputDatasetFilePath));
