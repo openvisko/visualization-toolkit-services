@@ -53,6 +53,8 @@ public class Float2ShortThr extends PassByReferenceOperator{
 		for(char shortValue : shortArray)
 			finalByteBuffer.putChar(shortValue);
 		
+		byteBuffer.clear();
+		finalByteBuffer.clear();
 		try{
 			FileOutputStream fileOutput = new FileOutputStream(new File(outputDatasetFilePath));
 			DataOutputStream dataOut = new DataOutputStream(fileOutput);
