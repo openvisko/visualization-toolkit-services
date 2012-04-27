@@ -5,7 +5,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.ByteBuffer;
-import java.nio.FloatBuffer;
+import java.nio.ByteOrder;
 import java.util.ArrayList;
 
 import edu.utep.trustlab.toolkitOperators.PassByReferenceOperator;
@@ -38,22 +38,24 @@ public class Float2ShortThr extends PassByReferenceOperator{
 		float bias = Float.valueOf(offset);
 		
 		ByteBuffer byteBuffer = ByteBuffer.wrap(datasetOfFloats);
-		FloatBuffer floatBuffer = byteBuffer.asFloatBuffer();
+		byteBuffer.order(ByteOrder.LITTLE_ENDIAN);
+		ArrayList<Character> unsignedShortArrary = new ArrayList<Character>();
 		
-		ArrayList<Short> shortArray = new ArrayList<Short>();
-		while(floatBuffer.hasRemaining()){
-			short aShortValue = (short)((floatBuffer.get() * factor) + bias);
-			shortArray.add(new Short(aShortValue));
+		while(byteBuffer.hasRemaining()){
+			float aFloatValue = (byteBuffer.getFloat() * factor) + bias;
+			char anUnsignedShort = (char)aFloatValue;
+			unsignedShortArrary.add(new Character(anUnsignedShort));
 		}
 		
 		try{
 			FileOutputStream fileOutput = new FileOutputStream(new File(outputDatasetFilePath));
 			DataOutputStream dataOut = new DataOutputStream(fileOutput);
 			
-			for(short aShort : shortArray)
-				dataOut.write(aShort);
+			for(char anUnsignedShort : unsignedShortArrary)
+				dataOut.writeChar(anUnsignedShort);
+			
 			dataOut.close();
-			}catch(IOException e){
+		}catch(IOException e){
 				e.printStackTrace();
 		}
 		return outputDatasetURL;
