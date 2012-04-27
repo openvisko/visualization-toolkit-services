@@ -1,8 +1,8 @@
 #!/bin/sh
 
 # Check arguments
-if [ $# -ne 9 ] ; then
-	echo 1>&2 "Usage: inFileName outFileName plotVariable font lbOrientation cnLevelSpacingF colorTable cnLinesOn cnFillOn"
+if [ $# -ne 13 ] ; then
+	echo 1>&2 "Usage: inFileName outFileName plotVariable font lbOrientation cnLevelSpacingF colorTable cnLinesOn cnFillOn coordinateToIgnore latVariable lonVariable scriptsPath"
 	exit 127
 fi
 

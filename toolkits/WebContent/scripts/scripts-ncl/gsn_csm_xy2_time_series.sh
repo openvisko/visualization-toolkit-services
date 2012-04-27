@@ -1,8 +1,8 @@
 #!/bin/sh
 
 # Check arguments
-if [ $# -ne 9 ] ; then
-	echo 1>&2 "Usage: netCDFFilePath, outputFilePath, lPlotVariablesList, rPlotVariablesList, xDimName, xDimSize, title, yLAxisLabel, yRAxisLabel"
+if [ $# -ne 10 ] ; then
+	echo 1>&2 "Usage: netCDFFilePath, outputFilePath, lPlotVariablesList, rPlotVariablesList, xDimName, xDimSize, title, yLAxisLabel, yRAxisLabel scriptsPath"
 	exit 127
 fi
 
