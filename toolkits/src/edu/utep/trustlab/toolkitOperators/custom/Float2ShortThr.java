@@ -38,7 +38,7 @@ public class Float2ShortThr extends PassByReferenceOperator{
 		float bias = Float.valueOf(offset);
 		
 		ByteBuffer byteBuffer = ByteBuffer.wrap(datasetOfFloats);
-		byteBuffer.order(ByteOrder.LITTLE_ENDIAN);
+		//byteBuffer.order(ByteOrder.LITTLE_ENDIAN);
 		ArrayList<Character> unsignedShortArrary = new ArrayList<Character>();
 		
 		while(byteBuffer.hasRemaining()){
@@ -51,7 +51,6 @@ public class Float2ShortThr extends PassByReferenceOperator{
 		try{
 			FileOutputStream fileOutput = new FileOutputStream(new File(outputDatasetFilePath));
 			DataOutputStream dataOut = new DataOutputStream(fileOutput);
-			dataOut.writeChar(datasetOfFloats.length);
 			
 			for(char anUnsignedShort : unsignedShortArrary)
 				dataOut.writeChar(anUnsignedShort);

@@ -34,7 +34,7 @@ public class Int2Short extends PassByReferenceOperator{
 	
 	public String transform(){
 		ByteBuffer byteBuffer = ByteBuffer.wrap(datasetOfInts);
-		byteBuffer.order(ByteOrder.LITTLE_ENDIAN);
+		//byteBuffer.order(ByteOrder.LITTLE_ENDIAN);
 		ArrayList<Character> unsignedShortArrary = new ArrayList<Character>();
 		
 		while(byteBuffer.hasRemaining()){
@@ -48,7 +48,6 @@ public class Int2Short extends PassByReferenceOperator{
 		try{
 			FileOutputStream fileOutput = new FileOutputStream(new File(outputDatasetFilePath));
 			DataOutputStream dataOut = new DataOutputStream(fileOutput);
-			dataOut.writeChar(datasetOfInts.length);
 			
 			for(char anUnsignedShort : unsignedShortArrary)
 				dataOut.writeChar(anUnsignedShort);
