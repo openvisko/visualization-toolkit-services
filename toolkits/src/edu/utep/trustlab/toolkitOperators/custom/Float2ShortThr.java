@@ -6,7 +6,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
-import java.util.ArrayList;
 
 import edu.utep.trustlab.toolkitOperators.PassByReferenceOperator;
 import edu.utep.trustlab.toolkitOperators.util.FileUtils;
@@ -38,28 +37,31 @@ public class Float2ShortThr extends PassByReferenceOperator{
 		float bias = Float.valueOf(offset);
 		
 		ByteBuffer byteBuffer = ByteBuffer.wrap(datasetOfFloats);
-		//byteBuffer.order(ByteOrder.LITTLE_ENDIAN);
-		ArrayList<Character> unsignedShortArrary = new ArrayList<Character>();
+		byteBuffer.order(ByteOrder.LITTLE_ENDIAN);
 		
+		char[] shortArray = new char[datasetOfFloats.length/4];
+
+		int counter = 0;
 		while(byteBuffer.hasRemaining()){
 			float aFloatValue = (byteBuffer.getFloat() * factor) + bias;
-			char anUnsignedShort = (char)aFloatValue;
-			unsignedShortArrary.add(new Character(anUnsignedShort));
+			char aShortValue = (char)aFloatValue;
+			shortArray[counter++] = aShortValue;
 		}
 		
-		byteBuffer.clear();
+		ByteBuffer finalByteBuffer = ByteBuffer.allocate(datasetOfFloats.length/2);
+		finalByteBuffer.order(ByteOrder.LITTLE_ENDIAN);
+		for(char shortValue : shortArray)
+			finalByteBuffer.putChar(shortValue);
+		
 		try{
 			FileOutputStream fileOutput = new FileOutputStream(new File(outputDatasetFilePath));
 			DataOutputStream dataOut = new DataOutputStream(fileOutput);
-			
-			for(char anUnsignedShort : unsignedShortArrary)
-				dataOut.writeChar(anUnsignedShort);
-
+			dataOut.write(finalByteBuffer.array(), 0, datasetOfFloats.length/2);
 			dataOut.close();
 		}catch(IOException e){
-			System.out.println("something wrong with path probably: " + outputDatasetFilePath);
-			e.printStackTrace();
+				e.printStackTrace();
 		}
+
 		return outputDatasetURL;
 	}
 }
