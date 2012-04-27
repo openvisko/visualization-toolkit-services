@@ -34,7 +34,7 @@ end
 ;********************************************************************
 
 undef("procedure_gsn_csm_contour_map")
-procedure netCDFContourer(netCDFFilePath, outputFilePath, plotVariable, font, lbOrientation, cnLevelSpacingF, colorTable, cnLinesOn, cnFillOn, coordinateToIgnore, latVariable, lonVariable)
+procedure procedure_gsn_csm_contour_map(netCDFFilePath, outputFilePath, plotVariable, font, lbOrientation, cnLevelSpacingF, colorTable, cnLinesOn, cnFillOn, coordinateToIgnore, latVariable, lonVariable)
 begin
 
 	;***********************************************
