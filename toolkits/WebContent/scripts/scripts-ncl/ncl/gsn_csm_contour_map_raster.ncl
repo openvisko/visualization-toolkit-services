@@ -20,7 +20,7 @@ begin
 	;**************************************************
 	; check inputs
 	;**************************************************
-	if(isvar("netCDFFilePath") .and. isvar("outputFilePath") .and. isvar("plotVariable") .and. isvar("font") .and. isvar("lbOrientation") .and. isvar("colorTable") .and. isvar("coordinateToIgnore) .and. isvar("latVariable") .and. isvar("lonVariable") then
+	if(isvar("netCDFFilePath") .and. isvar("outputFilePath") .and. isvar("plotVariable") .and. isvar("font") .and. isvar("lbOrientation") .and. isvar("colorTable") .and. isvar("coordinateToIgnore") .and. isvar("latVariable") .and. isvar("lonVariable")) then
 		coordinateToIgnoreInteger = stringtointeger(coordinateToIgnore)
 	
 		;***********************************************
@@ -104,7 +104,7 @@ begin
 		;********************************************************************
 		wks  = gsn_open_wks(wtype, outputFilePath)			; open workspace
 		gsn_define_colormap(wks, colorTable)				; get colormap
-		plot = gsn_csm_contour_map(wks, x, res)				; contour the variable
+		plot = gsn_csm_contour_map(wks, cleanedVar, res)				; contour the variable
 	
 	else
 		print("Need to Specify All Input Variables")
