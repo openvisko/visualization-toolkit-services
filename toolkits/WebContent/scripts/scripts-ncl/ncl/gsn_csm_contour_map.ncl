@@ -17,14 +17,16 @@ begin
 	print(colorTable)
 	print(cnLinesOn)
 	print(cnFillOn)
-	print(coordinateToIgnore)
 	print(latVariable)
 	print(lonVariable)
+	print(indexOfX)
+	print(indexOfY)
+	print(indexOfZ)
 
 	;**************************************************
 	; check inputs
 	;**************************************************
-	if(isvar("netCDFFilePath") .and. isvar("outputFilePath") .and. isvar("plotVariable") .and. isvar("font") .and. isvar("lbOrientation") .and. isvar("cnLevelSpacingF") .and. isvar("colorTable") .and. isvar("cnLinesOn") .and. isvar("cnFillOn").and. isvar("coordinateToIgnore").and. isvar("latVariable").and. isvar("lonVariable")) then
+	if(isvar("netCDFFilePath") .and. isvar("outputFilePath") .and. isvar("plotVariable") .and. isvar("font") .and. isvar("lbOrientation") .and. isvar("cnLevelSpacingF") .and. isvar("colorTable") .and. isvar("cnLinesOn") .and. isvar("cnFillOn").and. isvar("latVariable").and. isvar("lonVariable") stringtointeger(indexOfX)) then
 		cnLevelSpacingFFloat =  stringtofloat(cnLevelSpacingF)
 		coordinateToIgnoreInteger = stringtointeger(coordinateToIgnore)
 	

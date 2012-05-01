@@ -13,15 +13,21 @@ begin
 	print(font)
 	print(lbOrientation)
 	print(colorTable)
-	print(coordinateToIgnore)
 	print(latVariable)
 	print(lonVariable)
+	print(indexOfX)
+	print(indexOfY)
+	print(indexOfZ)
 
 	;**************************************************
 	; check inputs
 	;**************************************************
-	if(isvar("netCDFFilePath") .and. isvar("outputFilePath") .and. isvar("plotVariable") .and. isvar("font") .and. isvar("lbOrientation") .and. isvar("colorTable") .and. isvar("coordinateToIgnore") .and. isvar("latVariable") .and. isvar("lonVariable")) then
+	if(isvar("netCDFFilePath") .and. isvar("outputFilePath") .and. isvar("plotVariable") .and. isvar("font") .and. isvar("lbOrientation") .and. isvar("colorTable") .and. isvar("latVariable") .and. isvar("lonVariable") .and. isvar("indexOfX") .and. isvar("indexOfY") .and. isvar("indexOfZ")) then
+		
 		coordinateToIgnoreInteger = stringtointeger(coordinateToIgnore)
+		indexOfX = stringtointeger(indexOfX)
+		indexOfY = stringtointeger(indexOfY)
+		indexOfZ = stringtointeger(indexOfZ)
 	
 		;***********************************************
 		; Configure Workspace
@@ -36,15 +42,16 @@ begin
 		varToPlot = gridData->$plotVariable$
 		dims = dimsizes(varToPlot)
 		numDims = dimsizes(dims)
-
+    
 		if(numDims .eq. 2) then
-    		cleanedVar = varToPlot
-		else if((numDims .eq. 3) .and. (coordinateToIgnore .eq. 0)) then
-			cleanedVar = varToPlot(0,:,:)  
-		else if((numDims .eq. 3) .and. (coordinateToIgnore .eq. 1)) then
-			cleanedVar = varToPlot(:,0,:)
+			cleanedVar = varToPlot($dims(indexOfY)$ | :, $dims(indexOfX)$ | :)
+			printVarSummary(cleanedVar)
+		else if((numDims .eq. 3) .and. (indexOfZ .eq. 0)) then
+			cleanedVar = varToPlot($dims(indexofZ)$ | 0,$dims(indexOfY)$ | :,$dims(indexOfX)$ | :)
+		else if((numDims .eq. 3) .and. (indexOfZ .eq. 1)) then
+			cleanedVar = varToPlot($dims(indexOfY)$ | :,$dims(indexOfZ)$ | 0,$dims(indexOfX)$ | :)
 		else
-			cleanedVar = varToPlot(:,:,0)
+			cleanedVar = varToPlot($dims(indexOfY)$ | :,$dims(indexOfX)$ | :,$dims(indexOfZ)$ | 0)
 		end if
 		end if
 		end if

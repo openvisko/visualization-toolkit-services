@@ -35,9 +35,12 @@ public class Gsn_csm_contour_map_raster extends PassByReferenceOperator{
 			String font,
 			String lbOrientation,
 			String colorTable,
-			String coordinateToIgnore,
 			String latVariable,
-			String lonVariable){
+			String lonVariable,
+			String indexOfX,
+			String indexOfY,
+			String indexOfZ
+		){
 		
 		String cmd = SCRIPT_CONTOUR + 
 		inputDatasetFilePath + 
@@ -46,9 +49,11 @@ public class Gsn_csm_contour_map_raster extends PassByReferenceOperator{
 		" " + font +
 		" " + lbOrientation +
 		" " + colorTable +
-		" " + coordinateToIgnore +
 		" " + latVariable +
 		" " + lonVariable +
+		" " + indexOfX +
+		" " + indexOfY +
+		" " + indexOfZ +
 		" " + FileUtils.getNCLOperatorScripts();
 		
 	    CommandRunner.run(cmd);   

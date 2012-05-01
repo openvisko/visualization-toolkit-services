@@ -216,13 +216,16 @@ public class ToolkitServices {
 			@WebParam(name="colorTable") String colorTable,
 			@WebParam(name="cnLinesOn") String cnLinesOn,
 			@WebParam(name="cnFillOn") String cnFillOn,
-			@WebParam(name="coordinateToIgnore") String coordinateToIgnore,
 			@WebParam(name="latVariable") String latVariable,
-			@WebParam(name="lonVariable") String lonVariable
-	)
+			@WebParam(name="lonVariable") String lonVariable,
+			@WebParam(name="indexOfX") String indexOfX,
+			@WebParam(name="indexOfY") String indexOfY,
+			@WebParam(name="indexOfZ") String indexOfZ
+
+		)
 	{
 		Gsn_csm_contour_map service = new Gsn_csm_contour_map(url);
-		return service.transform(plotVariable, font, lbOrientation, cnLevelSpacingF, colorTable, cnLinesOn, cnFillOn, coordinateToIgnore, latVariable, lonVariable);
+		return service.transform(plotVariable, font, lbOrientation, cnLevelSpacingF, colorTable, cnLinesOn, cnFillOn, latVariable, lonVariable, indexOfX, indexOfY, indexOfZ);
 	}
 	
 	public String gsn_csm_contour_map_raster(
@@ -231,13 +234,15 @@ public class ToolkitServices {
 			@WebParam(name="font") String font,
 			@WebParam(name="lbOrientation") String lbOrientation, 
 			@WebParam(name="colorTable") String colorTable,
-			@WebParam(name="coordinateToIgnore") String coordinateToIgnore,
 			@WebParam(name="latVariable") String latVariable,
-			@WebParam(name="lonVariable") String lonVariable
+			@WebParam(name="lonVariable") String lonVariable,
+			@WebParam(name="indexOfX") String indexOfX,
+			@WebParam(name="indexOfY") String indexOfY,
+			@WebParam(name="indexOfZ") String indexOfZ
 	)
 	{
 		Gsn_csm_contour_map_raster service = new Gsn_csm_contour_map_raster(url);
-		return service.transform(plotVariable, font, lbOrientation, colorTable, coordinateToIgnore, latVariable, lonVariable);
+		return service.transform(plotVariable, font, lbOrientation, colorTable, latVariable, lonVariable, indexOfX, indexOfY, indexOfZ);
 	}
 	
 	public String gsn_csm_xy2_time_series(

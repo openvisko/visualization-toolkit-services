@@ -1,8 +1,8 @@
 #!/bin/sh
 
 # Check arguments
-if [ $# -ne 13 ] ; then
-	echo 1>&2 "Usage: inFileName outFileName plotVariable font lbOrientation cnLevelSpacingF colorTable cnLinesOn cnFillOn coordinateToIgnore latVariable lonVariable scriptsPath"
+if [ $# -ne 15 ] ; then
+	echo 1>&2 "Usage: inFileName outFileName plotVariable font lbOrientation cnLevelSpacingF colorTable cnLinesOn cnFillOn latVariable lonVariable indexOfX indexOfY indexOfZ scriptsPath"
 	exit 127
 fi
 
@@ -15,14 +15,16 @@ cnLevelSpacingF=$6
 colorTable=$7
 cnLinesOn=$8
 cnFillOn=$9
-coordinateToIgnore=${10}
-latVariable=${11}
-lonVariable=${12}
-scriptsPath=${13}
+latVariable=${10}
+lonVariable=${11}
+indexOfX=${12}
+indexOfY=${13}
+indexOfZ=${14}
+scriptsPath=${15}
 
 useNCLFile=$scriptsPath/gsn_csm_contour_map.ncl
 
-ncl netCDFFilePath=\"$netCDFFilePath\" outputFilePath=\"$outputFilePath\" plotVariable=\"$plotVariable\" font=\"$font\" lbOrientation=\"$lbOrientation\" cnLevelSpacingF=\"$cnLevelSpacingF\" colorTable=\"$colorTable\" cnLinesOn=\"$cnLinesOn\" cnFillOn=\"$cnFillOn\" coordinateToIgnore=\"$coordinateToIgnore\" latVariable=\"$latVariable\" lonVariable=\"$lonVariable\" $useNCLFile <<$end
+ncl netCDFFilePath=\"$netCDFFilePath\" outputFilePath=\"$outputFilePath\" plotVariable=\"$plotVariable\" font=\"$font\" lbOrientation=\"$lbOrientation\" cnLevelSpacingF=\"$cnLevelSpacingF\" colorTable=\"$colorTable\" cnLinesOn=\"$cnLinesOn\" cnFillOn=\"$cnFillOn\" latVariable=\"$latVariable\" lonVariable=\"$lonVariable\" indexOfX=\"$indexOfX\" indexOfY=\"$indexOfY\" indexOfZ=\"$indexOfZ\" $useNCLFile <<$end
 $blank
 $blank
 $blank
