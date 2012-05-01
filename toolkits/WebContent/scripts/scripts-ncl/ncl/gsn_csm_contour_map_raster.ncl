@@ -24,7 +24,6 @@ begin
 	;**************************************************
 	if(isvar("netCDFFilePath") .and. isvar("outputFilePath") .and. isvar("plotVariable") .and. isvar("font") .and. isvar("lbOrientation") .and. isvar("colorTable") .and. isvar("latVariable") .and. isvar("lonVariable") .and. isvar("indexOfX") .and. isvar("indexOfY") .and. isvar("indexOfZ")) then
 		
-		coordinateToIgnoreInteger = stringtointeger(coordinateToIgnore)
 		indexOfX = stringtointeger(indexOfX)
 		indexOfY = stringtointeger(indexOfY)
 		indexOfZ = stringtointeger(indexOfZ)
@@ -40,22 +39,22 @@ begin
 		gridData = addfile(netCDFFilePath, "r")				; netCDFFilePath is input
 	
 		varToPlot = gridData->$plotVariable$
-		dims = dimsizes(varToPlot)
+		dims = getfilevardims(gridData, plotVariable)
 		numDims = dimsizes(dims)
     
 		if(numDims .eq. 2) then
-			cleanedVar = varToPlot($dims(indexOfY)$ | :, $dims(indexOfX)$ | :)
+			cleanedVar = varToPlot($dims(indexOfYInt)$ | :, $dims(indexOfXInt)$ | :)
 			printVarSummary(cleanedVar)
-		else if((numDims .eq. 3) .and. (indexOfZ .eq. 0)) then
-			cleanedVar = varToPlot($dims(indexofZ)$ | 0,$dims(indexOfY)$ | :,$dims(indexOfX)$ | :)
-		else if((numDims .eq. 3) .and. (indexOfZ .eq. 1)) then
-			cleanedVar = varToPlot($dims(indexOfY)$ | :,$dims(indexOfZ)$ | 0,$dims(indexOfX)$ | :)
+		else if((numDims .eq. 3) .and. (indexOfZInt .eq. 0)) then
+			cleanedVar = varToPlot($dims(indexOfZInt)$ | 0,$dims(indexOfYInt)$ | :,$dims(indexOfXInt)$ | :)
+		else if((numDims .eq. 3) .and. (indexOfZInt .eq. 1)) then
+			cleanedVar = varToPlot($dims(indexOfYInt)$ | :,$dims(indexOfZInt)$ | 0,$dims(indexOfXInt)$ | :)
 		else
-			cleanedVar = varToPlot($dims(indexOfY)$ | :,$dims(indexOfX)$ | :,$dims(indexOfZ)$ | 0)
+			cleanedVar = varToPlot($dims(indexOfYInt)$ | :,$dims(indexOfXInt)$ | :,$dims(indexOfZInt)$ | 0)
 		end if
 		end if
 		end if
-
+		
 		lat = gridData->$latVariable$
 		lon = gridData->$lonVariable$
 	
