@@ -51,7 +51,7 @@ begin
 			cleanedVar = varToPlot($dims(indexOfYInt)$ | :, $dims(indexOfXInt)$ | :)
 			printVarSummary(cleanedVar)
 		else if((numDims .eq. 3) .and. (indexOfZInt .eq. 0)) then
-			cleanedVar = varToPlot($dims(indexofZInt)$ | 0,$dims(indexOfYInt)$ | :,$dims(indexOfXInt)$ | :)
+			cleanedVar = varToPlot($dims(indexOfZInt)$ | 0,$dims(indexOfYInt)$ | :,$dims(indexOfXInt)$ | :)
 		else if((numDims .eq. 3) .and. (indexOfZInt .eq. 1)) then
 			cleanedVar = varToPlot($dims(indexOfYInt)$ | :,$dims(indexOfZInt)$ | 0,$dims(indexOfXInt)$ | :)
 		else
