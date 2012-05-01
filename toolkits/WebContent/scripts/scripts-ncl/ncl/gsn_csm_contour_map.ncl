@@ -26,9 +26,13 @@ begin
 	;**************************************************
 	; check inputs
 	;**************************************************
-	if(isvar("netCDFFilePath") .and. isvar("outputFilePath") .and. isvar("plotVariable") .and. isvar("font") .and. isvar("lbOrientation") .and. isvar("cnLevelSpacingF") .and. isvar("colorTable") .and. isvar("cnLinesOn") .and. isvar("cnFillOn").and. isvar("latVariable").and. isvar("lonVariable") stringtointeger(indexOfX)) then
+	if(isvar("netCDFFilePath") .and. isvar("outputFilePath") .and. isvar("plotVariable") .and. isvar("font") .and. isvar("lbOrientation") .and. isvar("cnLevelSpacingF") .and. isvar("colorTable") .and. isvar("cnLinesOn") .and. isvar("cnFillOn").and. isvar("latVariable") .and. isvar("lonVariable") .and. isvar("indexOfX") .and. isvar("indexOfY") .and. isvar("indexOfZ")) then
 		cnLevelSpacingFFloat =  stringtofloat(cnLevelSpacingF)
 		coordinateToIgnoreInteger = stringtointeger(coordinateToIgnore)
+	
+		indexOfX = stringtointeger(indexOfX)
+		indexOfY = stringtointeger(indexOfY)
+		indexOfZ = stringtointeger(indexOfZ)
 	
 		;***********************************************
 		; Configure Workspace
