@@ -39,8 +39,8 @@ public class Int2Short extends PassByReferenceOperator{
 
 		int counter = 0;
 		while(byteBuffer.hasRemaining()){
-			float aFloatValue = byteBuffer.getFloat();
-			char aShortValue = (char)aFloatValue;
+			int anIntValue = byteBuffer.getInt();
+			char aShortValue = (char)anIntValue;
 			shortArray[counter++] = aShortValue;
 		}
 		
