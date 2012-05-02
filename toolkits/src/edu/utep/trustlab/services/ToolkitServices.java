@@ -20,6 +20,7 @@ import edu.utep.trustlab.toolkitOperators.vtk.VTKContourFilter;
 import edu.utep.trustlab.toolkitOperators.vtk.VTKImageDataReader;
 import edu.utep.trustlab.toolkitOperators.vtk.VTKImageDataReaderFloats;
 import edu.utep.trustlab.toolkitOperators.vtk.VTKPolyDataMapper;
+import edu.utep.trustlab.toolkitOperators.vtk.VTKTIFFReader;
 import edu.utep.trustlab.toolkitOperators.vtk.VTKVolume;
 
 public class ToolkitServices {
@@ -176,6 +177,13 @@ public class ToolkitServices {
 	{
 		Int2Short transformer = new Int2Short(url);
 		return transformer.transform();
+	}
+
+	public String vtkTIFFReader(
+			@WebParam(name="url") String url,
+			@WebParam(name="littleEndian") String littleEndian){
+		VTKTIFFReader transformer = new VTKTIFFReader(url);
+		return transformer.transform(littleEndian);
 	}
 	
 	public String vtkImageDataReader(
