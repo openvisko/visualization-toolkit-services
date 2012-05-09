@@ -20,6 +20,7 @@ import edu.utep.trustlab.toolkitOperators.vtk.VTKContourFilter;
 import edu.utep.trustlab.toolkitOperators.vtk.VTKDataSetMapper;
 import edu.utep.trustlab.toolkitOperators.vtk.VTKImageDataReader;
 import edu.utep.trustlab.toolkitOperators.vtk.VTKImageDataReaderFloats;
+import edu.utep.trustlab.toolkitOperators.vtk.VTKImageDataReaderUnsignedInts;
 import edu.utep.trustlab.toolkitOperators.vtk.VTKPolyDataMapper;
 import edu.utep.trustlab.toolkitOperators.vtk.VTKTIFFReader;
 import edu.utep.trustlab.toolkitOperators.vtk.VTKVolume;
@@ -204,6 +205,20 @@ public class ToolkitServices {
 			@WebParam(name="littleEndian") String littleEndian){
 		VTKTIFFReader transformer = new VTKTIFFReader(url);
 		return transformer.transform(littleEndian);
+	}
+
+	public String vtkImageDataReaderUnsignedInts(
+			@WebParam(name="url") String url,
+			@WebParam(name="littleEndian") String littleEndian,
+			@WebParam(name="dim") String dim,
+			@WebParam(name="dataOrigin") String dataOrigin,
+			@WebParam(name="dataSpacing") String dataSpacing,
+			@WebParam(name="dataExtent") String dataExtent,
+			@WebParam(name="numScalarComponents") String numScalarComponents,
+			@WebParam(name="readLowerLeft") String readLowerLeft)
+	{
+		VTKImageDataReaderUnsignedInts transformer = new VTKImageDataReaderUnsignedInts(url);
+		return transformer.transform(littleEndian, dim, dataOrigin, dataSpacing, dataExtent, numScalarComponents, readLowerLeft);
 	}
 	
 	public String vtkImageDataReader(
