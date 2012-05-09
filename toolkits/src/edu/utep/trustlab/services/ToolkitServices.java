@@ -135,7 +135,7 @@ public class ToolkitServices {
 				colorFunction);
 	}
 
-	public String vtkDatasetMapper(
+	public String vtkDataSetMapper(
 			@WebParam(name="url") String url,
 			@WebParam(name="xRotation") String xRotation,
 			@WebParam(name="yRotation") String yRotation,
