@@ -32,7 +32,7 @@ public class VTKImageDataReaderUnsignedInts extends VTKOperator{
 		// Create the reader for the data
 		vtkImageReader reader = new vtkImageReader();
 		reader.SetFileName(inputDatasetFilePath);
-		reader.SetDataScalarTypeToUnsignedShort();
+		reader.SetDataScalarTypeToUnsignedInt();
 		
 		//set byte endian
 		if(littleEndian.equalsIgnoreCase("true"))

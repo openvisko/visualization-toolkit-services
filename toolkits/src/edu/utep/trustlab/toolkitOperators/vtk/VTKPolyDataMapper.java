@@ -20,13 +20,13 @@ public class VTKPolyDataMapper extends VTKOperator{
 
 	protected void downloadInputs(String velocityImageData3DURL) {
 		contoursPolyData = GetURLContents.downloadText(velocityImageData3DURL);
-		inputDatasetFileName = "contoursPolyData-"+ FileUtils.getRandomString() + ".xml";
+		inputDatasetFileName = "polyData-"+ FileUtils.getRandomString() + ".xml";
 		inputDatasetFilePath = FileUtils.writeTextFile(contoursPolyData,
 				FileUtils.getVTKWorkspace(), inputDatasetFileName);
 	}
 
 	protected void setUpOutputs() {
-		outputDatasetFileName = "contoursJPEG-"
+		outputDatasetFileName = "image-"
 			+ FileUtils.getRandomString() + ".jpg";
 		outputDatasetFilePath = FileUtils.makeFullPath(FileUtils
 				.getVTKWorkspace(), outputDatasetFileName);
