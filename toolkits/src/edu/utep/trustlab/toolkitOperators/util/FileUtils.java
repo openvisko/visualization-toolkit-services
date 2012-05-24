@@ -35,6 +35,10 @@ public class FileUtils{
 	public static String getLoggingDir(){
 		return OUTPUT + "log/";
 	}
+
+	public static String getCustomWorkspace(){
+		return OUTPUT + "custom/";
+	}
 	
 	public static String getGMTWorkspace(){
 		return OUTPUT + "gmt/";
@@ -62,6 +66,10 @@ public class FileUtils{
 	
 	public static String getGravityTrustTableFilePath(){
 		return "trust-data/gravity_trust.txt";
+	}
+
+	public static String getCustomOutputURLPrefix(){
+		return SERVER + WEBAPP + OUTPUT_DIR_NAME + "custom/";
 	}
 	
 	public static String getGMTOutputURLPrefix(){
