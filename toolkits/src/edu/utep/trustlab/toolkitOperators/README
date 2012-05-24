@@ -1,0 +1,7 @@
+This packages contained within all contains java classes that wrap visualization toolkit functionality.
+We break down visualization toolkits into two classes:
+
+-	executable: we need to use Java to call an executable through the shell. You can find an example of this kind of service in
+ 	example/TargetIsExecutable.java contained within.
+ 	
+- 	Java: we can interface directly with the toolkit's java classes and methods.
