@@ -1,7 +1,7 @@
 Contained within the packages ncl, gmt, and vtk are Java code exposing functionality of some visualization toolkit.
 To expose your own toolkit functionality, you need to complete the following steps:
 
-1.	Wrap a toolkit operator in Java using the template found here (edu.utep.trustlab.toolkitOperators.example.WrappedExectuable.java)
+1.	If your toolkit operator is an exectuable, you can wrap it in Java using the template found here (edu.utep.trustlab.toolkitOperators.example.WrappedExectuable.java)
 	You will customize a new template for every operator you want to expose. Thus if you have 3 toolkit operators you want to expose,
 	you will have three Java classes based on the template.
 
