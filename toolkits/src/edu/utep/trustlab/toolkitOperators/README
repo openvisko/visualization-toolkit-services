@@ -8,4 +8,4 @@ To expose your own toolkit functionality, you need to complete the following ste
 2. 	Annotate the Java code using JAX-WS annotations. You can find an example of the required annotations at
 	(edu.utep.trustlab.toolkitOperators.example.ExposedServices.java).
 
-3. Use your favorite Wizard (e.g, Eclipse AXIS2) to build and deploy the resulting web service.
+3. 	Use your favorite Wizard (e.g, Eclipse AXIS2) to build and deploy the resulting web service.
