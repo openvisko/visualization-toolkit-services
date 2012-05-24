@@ -1,7 +1,11 @@
-This packages contained within all contains java classes that wrap visualization toolkit functionality.
-We break down visualization toolkits into two classes:
+Contained within the packages ncl, gmt, and vtk are Java code exposing functionality of some visualization toolkit.
+To expose your own toolkit functionality, you need to complete the following steps:
 
--	executable: we need to use Java to call an executable through the shell. You can find an example of this kind of service in
- 	example/TargetIsExecutable.java contained within.
- 	
-- 	Java: we can interface directly with the toolkit's java classes and methods.
+1.	Wrap a toolkit operator in Java using the template found here (edu.utep.trustlab.toolkitOperators.example.WrappedExectuable.java)
+	You will customize a new template for every operator you want to expose. Thus if you have 3 toolkit operators you want to expose,
+	you will have three Java classes based on the template.
+
+2. 	Annotate the Java code using JAX-WS annotations. You can find an example of the required annotations at
+	(edu.utep.trustlab.toolkitOperators.example.ExposedServices.java).
+
+3. Use your favorite Wizard (e.g, Eclipse AXIS2) to build and deploy the resulting web service.

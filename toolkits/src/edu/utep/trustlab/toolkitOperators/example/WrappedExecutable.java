@@ -4,7 +4,7 @@ import edu.utep.trustlab.toolkitOperators.util.CommandRunner;
 import edu.utep.trustlab.toolkitOperators.util.FileUtils;
 import edu.utep.trustlab.toolkitOperators.util.GetURLContents;
 
-public class TargetIsExecutable extends PassByReferenceOperator
+public class WrappedExecutable extends PassByReferenceOperator
 {
 	String stringData;
 	byte[] binaryData;
@@ -19,7 +19,7 @@ public class TargetIsExecutable extends PassByReferenceOperator
 	/*
 	 * Leave alone
 	 */
-	public TargetIsExecutable(String dataURL){	
+	public WrappedExecutable(String dataURL){	
 		super(dataURL);
 	}
 	
