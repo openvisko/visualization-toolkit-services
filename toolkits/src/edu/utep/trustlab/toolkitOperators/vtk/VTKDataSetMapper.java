@@ -1,32 +1,12 @@
 package edu.utep.trustlab.toolkitOperators.vtk;
 
 import edu.utep.trustlab.toolkitOperators.VTKOperator;
-import edu.utep.trustlab.toolkitOperators.util.*;
 import vtk.*;
 
 public class VTKDataSetMapper extends VTKOperator{
-	byte[] tiffData;
-	String inputDatasetFileName;
-	String inputDatasetFilePath;
-	String outputDatasetFileName;
-	String outputDatasetFilePath;
-	String outputDatasetURL;
 	
 	public VTKDataSetMapper(String tiffDataURL){
-		super(tiffDataURL);
-	}
-
-
-	protected void downloadInputs(String coverageModelShortIntURL){
-		tiffData = GetURLContents.downloadFile(coverageModelShortIntURL);
-		inputDatasetFileName = "tiffData-"+ FileUtils.getRandomString() + ".tif";
-		inputDatasetFilePath = FileUtils.writeBinaryFile(tiffData, FileUtils.getVTKWorkspace(), inputDatasetFileName);
-	}
-	
-	protected void setUpOutputs(){
-		outputDatasetFileName = "imageData3D-" + FileUtils.getRandomString() + ".xml";
-		outputDatasetFilePath = FileUtils.makeFullPath(FileUtils.getVTKWorkspace(),outputDatasetFileName);
-		outputDatasetURL = FileUtils.getVTKOutputURLPrefix() + outputDatasetFileName;
+		super(tiffDataURL, false, false, "imageData3D.xml");
 	}
 	
 	public String transform(
@@ -40,7 +20,7 @@ public class VTKDataSetMapper extends VTKOperator{
 		
 		// Create the reader for the data
 		vtkXMLImageDataReader reader = new vtkXMLImageDataReader();
-		reader.SetFileName(inputDatasetFilePath);
+		reader.SetFileName(inputPath);
 		reader.Update();
 
         vtkDataSetMapper dataMapper = new vtkDataSetMapper();
@@ -109,7 +89,7 @@ public class VTKDataSetMapper extends VTKOperator{
 
 		vtkJPEGWriter image = new vtkJPEGWriter();
 		image.SetInputConnection(renderLarge.GetOutputPort());
-		image.SetFileName(outputDatasetFilePath);
+		image.SetFileName(outputPath);
 		image.SetQuality(100);
 		image.Write();
 
@@ -124,6 +104,6 @@ public class VTKDataSetMapper extends VTKOperator{
 		image.Delete();
 		renderLarge.Delete();
 
-        return outputDatasetURL;
+        return outputURL;
 	}
 }

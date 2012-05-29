@@ -1,10 +1,9 @@
 package edu.utep.trustlab.toolkitOperators.gmt;
-import edu.utep.trustlab.toolkitOperators.PassByReferenceOperator;
+import edu.utep.trustlab.toolkitOperators.ToolkitOperator;
 import edu.utep.trustlab.toolkitOperators.util.CommandRunner;
 import edu.utep.trustlab.toolkitOperators.util.FileUtils;
-import edu.utep.trustlab.toolkitOperators.util.GetURLContents;
 
-public class Grdcontour extends PassByReferenceOperator{
+public class Grdcontour extends ToolkitOperator{
 	
 	/*
 	 * ASUMPTION: the input netCDF Dataset is 2D grid with the following variable set:
@@ -12,28 +11,10 @@ public class Grdcontour extends PassByReferenceOperator{
 	 * - variable 'y' represents latitude
 	 * - variable 'z' represents data value
 	 */
-	private byte[] netCDFData;
-	private String netCDFDataPath;
-	private String outputPSFileName;
-	private String outputPSPath;
-	private String outputPSURL;
-
 	private static final String SCRIPT_CONTOUR = FileUtils.getGMTScripts() + "wrapper-grdcontour.sh";
 
 	public Grdcontour(String netCDFDataURL){	
-		super(netCDFDataURL);
-	}
-	
-	protected void downloadInputs(String netCDFDataURL){
-		String fileName = "gridded-netcdf-" + FileUtils.getRandomString() + ".nc";
-		netCDFData = GetURLContents.downloadFile(netCDFDataURL);
-		netCDFDataPath = FileUtils.writeBinaryFile(netCDFData, FileUtils.getGMTWorkspace(), fileName);
-	}
-	
-	protected void setUpOutputs(){
-		outputPSFileName = "contourMapPS-" + FileUtils.getRandomString() + ".ps";
-		outputPSPath = FileUtils.makeFullPath(FileUtils.getGMTWorkspace(),outputPSFileName);
-		outputPSURL = FileUtils.getGMTOutputURLPrefix() + outputPSFileName;
+		super(netCDFDataURL, false, false, "contour-map.ps");
 	}
 	
 	public String transform(
@@ -46,8 +27,8 @@ public class Grdcontour extends PassByReferenceOperator{
 			String contourPen)
 	{
 		String cmd = SCRIPT_CONTOUR + " "
-		+ netCDFDataPath + " "
-		+ outputPSPath + " "
+		+ inputPath + " "
+		+ outputPath + " "
 		+ contourInterval + " "
 		+ annotationInterval + " "
 		+ projection + " "
@@ -58,6 +39,6 @@ public class Grdcontour extends PassByReferenceOperator{
 		
 	    CommandRunner.run(cmd);
 	    
-		return outputPSURL;
+		return outputURL;
 	}
 }//end class 

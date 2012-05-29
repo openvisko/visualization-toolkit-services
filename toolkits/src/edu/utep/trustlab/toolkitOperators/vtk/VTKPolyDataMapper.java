@@ -1,37 +1,13 @@
 package edu.utep.trustlab.toolkitOperators.vtk;
 
-
 import edu.utep.trustlab.toolkitOperators.VTKOperator;
-import edu.utep.trustlab.toolkitOperators.util.FileUtils;
-import edu.utep.trustlab.toolkitOperators.util.GetURLContents;
+
 import vtk.*;
 
 public class VTKPolyDataMapper extends VTKOperator{
-	String contoursPolyData;
-	String inputDatasetFileName;
-	String inputDatasetFilePath;
-	String outputDatasetFileName;
-	String outputDatasetFilePath;
-	String outputDatasetURL;
 
 	public VTKPolyDataMapper(String velocityContoursPolyDataURL) {
-		super(velocityContoursPolyDataURL);
-	}
-
-	protected void downloadInputs(String velocityImageData3DURL) {
-		contoursPolyData = GetURLContents.downloadText(velocityImageData3DURL);
-		inputDatasetFileName = "polyData-"+ FileUtils.getRandomString() + ".xml";
-		inputDatasetFilePath = FileUtils.writeTextFile(contoursPolyData,
-				FileUtils.getVTKWorkspace(), inputDatasetFileName);
-	}
-
-	protected void setUpOutputs() {
-		outputDatasetFileName = "image-"
-			+ FileUtils.getRandomString() + ".jpg";
-		outputDatasetFilePath = FileUtils.makeFullPath(FileUtils
-				.getVTKWorkspace(), outputDatasetFileName);
-		outputDatasetURL = FileUtils.getVTKOutputURLPrefix()
-		+ outputDatasetFileName;
+		super(velocityContoursPolyDataURL, true, false, "image.jpg");
 	}
 
 	public String transform(
@@ -44,7 +20,7 @@ public class VTKPolyDataMapper extends VTKOperator{
 			String magnification)
 	{
 		vtkXMLPolyDataReader dr = new vtkXMLPolyDataReader();
-		dr.SetFileName(inputDatasetFilePath);
+		dr.SetFileName(inputPath);
 		dr.Update();
 
 		vtkPolyDataMapper contMapper = new vtkPolyDataMapper();
@@ -119,7 +95,7 @@ public class VTKPolyDataMapper extends VTKOperator{
 
 		vtkJPEGWriter image = new vtkJPEGWriter();
 		image.SetInputConnection(renderLarge.GetOutputPort());
-		image.SetFileName(outputDatasetFilePath);
+		image.SetFileName(outputPath);
 		image.SetQuality(100);
 		image.Write();
 
@@ -134,6 +110,6 @@ public class VTKPolyDataMapper extends VTKOperator{
 		image.Delete();
 		renderLarge.Delete();
 
-		return outputDatasetURL;
+		return outputURL;
 	}
 }

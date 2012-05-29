@@ -1,37 +1,16 @@
 package edu.utep.trustlab.toolkitOperators.vtk;
 import edu.utep.trustlab.toolkitOperators.VTKOperator;
-import edu.utep.trustlab.toolkitOperators.util.*;
 import vtk.*;
 
 public class VTKImageDataReaderUnsignedInts extends VTKOperator{
-	byte[] unsignedIntGrid;
-	String inputDatasetFileName;
-	String inputDatasetFilePath;
-	String outputDatasetFileName;
-	String outputDatasetFilePath;
-	String outputDatasetURL;
-	
 	public VTKImageDataReaderUnsignedInts(String unsignedIntArrayURL){
-		super(unsignedIntArrayURL);
-	}
-
-
-	protected void downloadInputs(String coverageModelShortIntURL){
-		unsignedIntGrid = GetURLContents.downloadFile(coverageModelShortIntURL);
-		inputDatasetFileName = "shortIntGrid-"+ FileUtils.getRandomString() + ".3d";
-		inputDatasetFilePath = FileUtils.writeBinaryFile(unsignedIntGrid, FileUtils.getVTKWorkspace(), inputDatasetFileName);
-	}
-	
-	protected void setUpOutputs(){
-		outputDatasetFileName = "imageData3D-" + FileUtils.getRandomString() + ".xml";
-		outputDatasetFilePath = FileUtils.makeFullPath(FileUtils.getVTKWorkspace(),outputDatasetFileName);
-		outputDatasetURL = FileUtils.getVTKOutputURLPrefix() + outputDatasetFileName;
+		super(unsignedIntArrayURL, false, false, "imageData.xml");
 	}
 	
 	public String transform(String littleEndian, String dim, String dataOrigin, String dataSpacing, String dataExtent, String numScalarComponents, String readLowerLeft){	
 		// Create the reader for the data
 		vtkImageReader reader = new vtkImageReader();
-		reader.SetFileName(inputDatasetFilePath);
+		reader.SetFileName(inputPath);
 		reader.SetDataScalarTypeToUnsignedInt();
 		
 		//set byte endian
@@ -82,7 +61,7 @@ public class VTKImageDataReaderUnsignedInts extends VTKOperator{
 		// reader SetDataMask 0x7fff
 		
 		vtkXMLImageDataWriter gridWriter = new vtkXMLImageDataWriter();
-		gridWriter.SetFileName(outputDatasetFilePath);
+		gridWriter.SetFileName(outputPath);
 		gridWriter.SetDataModeToAscii();
 		gridWriter.SetInputConnection(reader.GetOutputPort());
 		gridWriter.Update();
@@ -91,6 +70,6 @@ public class VTKImageDataReaderUnsignedInts extends VTKOperator{
 		reader.Delete();
 		gridWriter.Delete();
 
-		return outputDatasetURL;
+		return outputURL;
 	}
 }

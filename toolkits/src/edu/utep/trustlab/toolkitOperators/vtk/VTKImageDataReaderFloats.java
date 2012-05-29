@@ -1,38 +1,17 @@
 package edu.utep.trustlab.toolkitOperators.vtk;
 
 import edu.utep.trustlab.toolkitOperators.VTKOperator;
-import edu.utep.trustlab.toolkitOperators.util.*;
 import vtk.*;
 
 public class VTKImageDataReaderFloats extends VTKOperator{
-	byte[] shortIntGrid;
-	String inputDatasetFileName;
-	String inputDatasetFilePath;
-	String outputDatasetFileName;
-	String outputDatasetFilePath;
-	String outputDatasetURL;
-	
 	public VTKImageDataReaderFloats(String coverageModelShortIntURL){
-		super(coverageModelShortIntURL);
+		super(coverageModelShortIntURL, false, false, "imageData3d.xml");
 	}
 
-
-	protected void downloadInputs(String coverageModelShortIntURL){
-		shortIntGrid = GetURLContents.downloadFile(coverageModelShortIntURL);
-		inputDatasetFileName = "shortIntGrid-"+ FileUtils.getRandomString() + ".3d";
-		inputDatasetFilePath = FileUtils.writeBinaryFile(shortIntGrid, FileUtils.getVTKWorkspace(), inputDatasetFileName);
-	}
-	
-	protected void setUpOutputs(){
-		outputDatasetFileName = "imageData3D-" + FileUtils.getRandomString() + ".xml";
-		outputDatasetFilePath = FileUtils.makeFullPath(FileUtils.getVTKWorkspace(),outputDatasetFileName);
-		outputDatasetURL = FileUtils.getVTKOutputURLPrefix() + outputDatasetFileName;
-	}
-	
 	public String transform(String littleEndian, String dim, String dataOrigin, String dataSpacing, String dataExtent, String numScalarComponents, String readLowerLeft){	
 		// Create the reader for the data
 		vtkImageReader reader = new vtkImageReader();
-		reader.SetFileName(inputDatasetFilePath);
+		reader.SetFileName(inputPath);
 		reader.SetDataScalarTypeToFloat();
 		
 		//set byte endian
@@ -83,7 +62,7 @@ public class VTKImageDataReaderFloats extends VTKOperator{
 		// reader SetDataMask 0x7fff
 		
 		vtkXMLImageDataWriter gridWriter = new vtkXMLImageDataWriter();
-		gridWriter.SetFileName(outputDatasetFilePath);
+		gridWriter.SetFileName(outputPath);
 		gridWriter.SetDataModeToAscii();
 		gridWriter.SetInputConnection(reader.GetOutputPort());
 		gridWriter.Update();
@@ -92,6 +71,6 @@ public class VTKImageDataReaderFloats extends VTKOperator{
 		reader.Delete();
 		gridWriter.Delete();
 
-		return outputDatasetURL;
+		return outputURL;
 	}
 }

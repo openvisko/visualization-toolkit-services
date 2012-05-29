@@ -1,11 +1,11 @@
 package edu.utep.trustlab.toolkitOperators;
 
 
-public abstract class VTKOperator extends PassByReferenceOperator
+public abstract class VTKOperator extends ToolkitOperator
 {
-	public VTKOperator(String inputDataURL)
+	public VTKOperator(String inputDataURL, boolean isTextualInput, boolean shouldBePersistedInMemory, String outputFileName)
 	{
-		super(inputDataURL);
+		super(inputDataURL, isTextualInput, shouldBePersistedInMemory, outputFileName);
 		loadVTKNativeLibs();
 	}
 	

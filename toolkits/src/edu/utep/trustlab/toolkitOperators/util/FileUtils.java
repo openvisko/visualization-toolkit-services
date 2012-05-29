@@ -36,22 +36,10 @@ public class FileUtils{
 		return OUTPUT + "log/";
 	}
 
-	public static String getCustomWorkspace(){
-		return OUTPUT + "custom/";
+	public static String getWorkspace(){
+		return OUTPUT;
 	}
-	
-	public static String getGMTWorkspace(){
-		return OUTPUT + "gmt/";
-	}
-
-	public static String getVTKWorkspace(){
-		return OUTPUT + "vtk/";
-	}
-	
-	public static String getNCLWorkspace(){
-		return OUTPUT + "ncl/";
-	}
-	
+		
 	public static String getGMTScripts(){
 		return SCRIPTS + "scripts-gmt/";
 	}
@@ -68,22 +56,24 @@ public class FileUtils{
 		return "trust-data/gravity_trust.txt";
 	}
 
-	public static String getCustomOutputURLPrefix(){
-		return SERVER + WEBAPP + OUTPUT_DIR_NAME + "custom/";
+	public static String getOutputURLPrefix(){
+		return SERVER + WEBAPP + OUTPUT_DIR_NAME;
 	}
 	
-	public static String getGMTOutputURLPrefix(){
-		return SERVER + WEBAPP + OUTPUT_DIR_NAME + "gmt/";
-	}
-
-	public static String getNCLOutputURLPrefix(){
-		return SERVER + WEBAPP + OUTPUT_DIR_NAME + "ncl/";
+	public static boolean existsOnLocalFileSystem(String datasetURL){
+		return datasetURL.contains(getOutputURLPrefix());
 	}
 	
-	public static String getVTKOutputURLPrefix(){
-		return SERVER + WEBAPP + OUTPUT_DIR_NAME + "vtk/";
+	public static String createRandomFileNameFromExistingName(String fileName){
+		if(fileName.contains(".")){
+			String[] parts = fileName.split(".");
+			return parts[parts.length - 2] + "_" + getRandomString() + parts[parts.length - 1]; 
+		}
+		else{
+			return fileName + "_" + getRandomString();
+		}
 	}
-	
+		
 	public static String writeTextFile(String fileContents, String dirName, String fileName)
 	{
 		File dirFile = new File(dirName);

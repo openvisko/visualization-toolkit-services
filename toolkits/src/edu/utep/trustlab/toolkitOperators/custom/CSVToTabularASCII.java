@@ -1,42 +1,22 @@
 package edu.utep.trustlab.toolkitOperators.custom;
 import java.io.StringWriter;
 
-import edu.utep.trustlab.toolkitOperators.PassByReferenceOperator;
+import edu.utep.trustlab.toolkitOperators.ToolkitOperator;
 import edu.utep.trustlab.toolkitOperators.util.FileUtils;
-import edu.utep.trustlab.toolkitOperators.util.GetURLContents;
 
-public class CSVToTabularASCII extends PassByReferenceOperator
+public class CSVToTabularASCII extends ToolkitOperator
 {
-	String csvDataset;
-	String inputDatasetFilePath;
-	String inputDatasetFileName;
-	String outputDatasetFileName;
-	String outputDatasetFilePath;
-	String outputDatasetURL;
-	
 
-	public CSVToTabularASCII(String esriGriddedURL)
-	{	
-		super(esriGriddedURL);
+	public CSVToTabularASCII(String esriGriddedURL){	
+		super(esriGriddedURL, true, true, "tabularASCII.txt");
 	}
-	
-	protected void downloadInputs(String csvDataURL)
-	{
-		csvDataset = GetURLContents.downloadText(csvDataURL).trim();
-	}
-	
-	protected void setUpOutputs()
-	{
-		outputDatasetFileName = "tabularASCII-" + FileUtils.getRandomString() + ".txt";
-		outputDatasetURL = FileUtils.getGMTOutputURLPrefix() + outputDatasetFileName;
-	}
-	
+		
 	public String transform()
 	{
 		StringWriter tabularASCII = new StringWriter();
 		
-		csvDataset = csvDataset.replace("\"", "");
-		String[] rows = csvDataset.split("/n");
+		stringData = stringData.replace("\"", "");
+		String[] rows = stringData.split("/n");
 		for(String row : rows)
 		{
 			String[] elements = row.split(",");
@@ -51,7 +31,7 @@ public class CSVToTabularASCII extends PassByReferenceOperator
 			tabularASCII.append(cleanedRow + "\n");
 		}
 		
-		FileUtils.writeTextFile(tabularASCII.toString(), FileUtils.getGMTWorkspace(), outputDatasetFileName);
-		return outputDatasetURL;
+		FileUtils.writeTextFile(tabularASCII.toString(), FileUtils.getWorkspace(), outputFileName);
+		return outputURL;
 	}
 }//end class 

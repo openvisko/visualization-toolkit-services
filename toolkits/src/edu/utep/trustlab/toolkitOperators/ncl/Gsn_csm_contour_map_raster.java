@@ -1,35 +1,17 @@
 package edu.utep.trustlab.toolkitOperators.ncl;
-import edu.utep.trustlab.toolkitOperators.PassByReferenceOperator;
+
+import edu.utep.trustlab.toolkitOperators.ToolkitOperator;
 import edu.utep.trustlab.toolkitOperators.util.CommandRunner;
 import edu.utep.trustlab.toolkitOperators.util.FileUtils;
-import edu.utep.trustlab.toolkitOperators.util.GetURLContents;
 
-public class Gsn_csm_contour_map_raster extends PassByReferenceOperator{
-	byte[] netCDFDataset;
-	String inputDatasetFilePath;
-	String inputDatasetFileName;
-	String outputDatasetFileName;
-	String outputDatasetFilePath;
-	String outputDatasetURL;
+public class Gsn_csm_contour_map_raster extends ToolkitOperator{
 
 	private static final String SCRIPT_CONTOUR = FileUtils.getNCLScripts() +  "gsn_csm_contour_map_raster.sh ";
 	
 	public Gsn_csm_contour_map_raster(String netCDFURL){	
-		super(netCDFURL);
+		super(netCDFURL, false, false, "rasterMap.ps");
 	}
 	
-	protected void downloadInputs(String netCDFURL){
-		netCDFDataset = GetURLContents.downloadFile(netCDFURL);
-		inputDatasetFileName = "netCDF-"+ FileUtils.getRandomString() + ".nc";
-		inputDatasetFilePath = FileUtils.writeBinaryFile(netCDFDataset, FileUtils.getNCLWorkspace(), inputDatasetFileName);
-	}
-	
-	protected void setUpOutputs(){
-		outputDatasetFileName = "rasterMapPS-" + FileUtils.getRandomString(); //no need to append .ps, ncl does that
-		outputDatasetFilePath = FileUtils.makeFullPath(FileUtils.getNCLWorkspace(),outputDatasetFileName);
-		outputDatasetURL = FileUtils.getNCLOutputURLPrefix() + outputDatasetFileName + ".ps";
-	}
-
 	public String transform(
 			String plotVariable,
 			String font,
@@ -43,8 +25,8 @@ public class Gsn_csm_contour_map_raster extends PassByReferenceOperator{
 		){
 		
 		String cmd = SCRIPT_CONTOUR + 
-		inputDatasetFilePath + 
-		" " + outputDatasetFilePath +
+		inputPath + 
+		" " + outputPath +
 		" " + plotVariable +
 		" " + font +
 		" " + lbOrientation +
@@ -57,6 +39,6 @@ public class Gsn_csm_contour_map_raster extends PassByReferenceOperator{
 		" " + FileUtils.getNCLOperatorScripts();
 		
 	    CommandRunner.run(cmd);   
-		return outputDatasetURL;
+		return outputURL;
 	}
 }

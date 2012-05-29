@@ -1,11 +1,11 @@
 package edu.utep.trustlab.toolkitOperators.gmt;
-import edu.utep.trustlab.toolkitOperators.PassByReferenceOperator;
+import edu.utep.trustlab.toolkitOperators.ToolkitOperator;
 import edu.utep.trustlab.toolkitOperators.util.CommandRunner;
 import edu.utep.trustlab.toolkitOperators.util.FileUtils;
-import edu.utep.trustlab.toolkitOperators.util.GetURLContents;
+
 import gravityMapScenario.gravityDataset.Dataset;
 
-public class Psxy extends PassByReferenceOperator{
+public class Psxy extends ToolkitOperator{
 	
 	/* ASUMPTION: the input dataset is in tabular space delimited ASCII file */
 	
@@ -20,18 +20,7 @@ public class Psxy extends PassByReferenceOperator{
 	private static final String PLOTTER_2D = FileUtils.getGMTScripts() + "wrapper-psxy.sh";
 
 	public Psxy(String asciiDataURL){	
-		super(asciiDataURL);
-	}
-	
-	protected void downloadInputs(String asciiDataURL){
-		asciiData = GetURLContents.downloadText(asciiDataURL).trim();
-		asciiDataFileName = "filtered-ascii-tabular-"+ FileUtils.getRandomString() + ".txt";
-	}
-	
-	protected void setUpOutputs(){
-		outputPSFileName = "gravity2DPlot-" + FileUtils.getRandomString() + ".ps";
-		outputPSPath = FileUtils.makeFullPath(FileUtils.getGMTWorkspace(),outputPSFileName);
-		outputPSURL = FileUtils.getGMTOutputURLPrefix() + outputPSFileName;
+		super(asciiDataURL, true, true, "2DPlot.ps");
 	}
 	
 	public String transform(
@@ -47,7 +36,7 @@ public class Psxy extends PassByReferenceOperator{
 		int[] fieldsOfInterest = new int[] {Integer.valueOf(indexOfX), Integer.valueOf(indexOfY)};
 		ds.disableHeader();
 		String asciiTrimmed = ds.backToAscii(fieldsOfInterest);
-		asciiDataPath = FileUtils.writeTextFile(asciiTrimmed, FileUtils.getGMTWorkspace(), asciiDataFileName);
+		asciiDataPath = FileUtils.writeTextFile(asciiTrimmed, FileUtils.getWorkspace(), asciiDataFileName);
 		
 		String command = 
 			PLOTTER_2D + " "

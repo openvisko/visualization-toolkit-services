@@ -1,34 +1,15 @@
 package edu.utep.trustlab.toolkitOperators.ncl;
-import edu.utep.trustlab.toolkitOperators.PassByReferenceOperator;
+import edu.utep.trustlab.toolkitOperators.ToolkitOperator;
 import edu.utep.trustlab.toolkitOperators.util.CommandRunner;
 import edu.utep.trustlab.toolkitOperators.util.FileUtils;
-import edu.utep.trustlab.toolkitOperators.util.GetURLContents;
 
-public class Gsn_csm_xy2_time_series extends PassByReferenceOperator
+public class Gsn_csm_xy2_time_series extends ToolkitOperator
 {
-	byte[] netCDFDataset;
-	String inputDatasetFilePath;
-	String inputDatasetFileName;
-	String outputDatasetFileName;
-	String outputDatasetFilePath;
-	String outputDatasetURL;
 
 	private static final String SCRIPT_TIMESERIES = FileUtils.getNCLScripts() +  "gsn_csm_xy2_time_series.sh ";
 	
 	public Gsn_csm_xy2_time_series(String netCDFURL){	
-		super(netCDFURL);
-	}
-	
-	protected void downloadInputs(String netCDFURL){
-		netCDFDataset = GetURLContents.downloadFile(netCDFURL);
-		inputDatasetFileName = "netCDF-"+ FileUtils.getRandomString() + ".nc";
-		inputDatasetFilePath = FileUtils.writeBinaryFile(netCDFDataset, FileUtils.getNCLWorkspace(), inputDatasetFileName);
-	}
-	
-	protected void setUpOutputs(){
-		outputDatasetFileName = "timeSeriesPS-" + FileUtils.getRandomString(); //no need to append .ps, ncl does that
-		outputDatasetFilePath = FileUtils.makeFullPath(FileUtils.getNCLWorkspace(),outputDatasetFileName);
-		outputDatasetURL = FileUtils.getNCLOutputURLPrefix() + outputDatasetFileName + ".ps";
+		super(netCDFURL, false, false, "timeSeries.ps");
 	}
 	
 	public String transform(
@@ -41,8 +22,8 @@ public class Gsn_csm_xy2_time_series extends PassByReferenceOperator
 			String yRAxisLabel){
 		
 		String cmd = SCRIPT_TIMESERIES + 
-		inputDatasetFilePath + 
-		" " + outputDatasetFilePath +
+		inputPath + 
+		" " + outputPath +
 		" " + lPlotVariablesList +
 		" " + rPlotVariablesList +
 		" " + xDimName +
@@ -53,6 +34,6 @@ public class Gsn_csm_xy2_time_series extends PassByReferenceOperator
 		" " + FileUtils.getNCLOperatorScripts();
 		
 	    CommandRunner.run(cmd);   
-		return outputDatasetURL;
+		return outputURL;
 	}
 }

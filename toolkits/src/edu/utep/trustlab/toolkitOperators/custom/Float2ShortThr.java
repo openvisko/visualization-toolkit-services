@@ -7,28 +7,11 @@ import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 
-import edu.utep.trustlab.toolkitOperators.PassByReferenceOperator;
-import edu.utep.trustlab.toolkitOperators.util.FileUtils;
-import edu.utep.trustlab.toolkitOperators.util.GetURLContents;
-public class Float2ShortThr extends PassByReferenceOperator{
-	
-	private byte[] datasetOfFloats;
-	private String outputDatasetFileName;
-	private String outputDatasetFilePath;
-	private String outputDatasetURL;
-	
+import edu.utep.trustlab.toolkitOperators.ToolkitOperator;
+public class Float2ShortThr extends ToolkitOperator{
+		
 	public Float2ShortThr(String datasetOfFloatsURL){
-		super(datasetOfFloatsURL);
-	}
-
-	protected void downloadInputs(String datasetOfFloatsURL){
-		datasetOfFloats = GetURLContents.downloadFile(datasetOfFloatsURL);
-	}
-	
-	protected void setUpOutputs(){
-		outputDatasetFileName = "unsignedShortsFromFloats-" + FileUtils.getRandomString() + ".u";
-		outputDatasetFilePath = FileUtils.makeFullPath(FileUtils.getVTKWorkspace(), outputDatasetFileName);
-		outputDatasetURL = FileUtils.getVTKOutputURLPrefix() + outputDatasetFileName;
+		super(datasetOfFloatsURL, false, true, "unsignedShortsFromFloats.dat");
 	}
 	
 	public String transform(String scalingFactor, String offset){
@@ -36,10 +19,10 @@ public class Float2ShortThr extends PassByReferenceOperator{
 		float factor = Float.valueOf(scalingFactor);
 		float bias = Float.valueOf(offset);
 		
-		ByteBuffer byteBuffer = ByteBuffer.wrap(datasetOfFloats);
+		ByteBuffer byteBuffer = ByteBuffer.wrap(binaryData);
 		byteBuffer.order(ByteOrder.LITTLE_ENDIAN);
 		
-		char[] shortArray = new char[datasetOfFloats.length/4];
+		char[] shortArray = new char[binaryData.length/4];
 
 		int counter = 0;
 		while(byteBuffer.hasRemaining()){
@@ -48,7 +31,7 @@ public class Float2ShortThr extends PassByReferenceOperator{
 			shortArray[counter++] = aShortValue;
 		}
 		
-		ByteBuffer finalByteBuffer = ByteBuffer.allocate(datasetOfFloats.length/2);
+		ByteBuffer finalByteBuffer = ByteBuffer.allocate(binaryData.length/2);
 		finalByteBuffer.order(ByteOrder.LITTLE_ENDIAN);
 		for(char shortValue : shortArray)
 			finalByteBuffer.putChar(shortValue);
@@ -56,14 +39,14 @@ public class Float2ShortThr extends PassByReferenceOperator{
 		byteBuffer.clear();
 		finalByteBuffer.clear();
 		try{
-			FileOutputStream fileOutput = new FileOutputStream(new File(outputDatasetFilePath));
+			FileOutputStream fileOutput = new FileOutputStream(new File(outputPath));
 			DataOutputStream dataOut = new DataOutputStream(fileOutput);
-			dataOut.write(finalByteBuffer.array(), 0, datasetOfFloats.length/2);
+			dataOut.write(finalByteBuffer.array(), 0, binaryData.length/2);
 			dataOut.close();
 		}catch(IOException e){
 				e.printStackTrace();
 		}
 
-		return outputDatasetURL;
+		return outputURL;
 	}
 }

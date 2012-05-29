@@ -1,34 +1,13 @@
 package edu.utep.trustlab.toolkitOperators.vtk;
 
 import edu.utep.trustlab.toolkitOperators.VTKOperator;
-import edu.utep.trustlab.toolkitOperators.util.FileUtils;
-import edu.utep.trustlab.toolkitOperators.util.GetURLContents;
+
 import vtk.*;
 
 public class VTKVolume extends VTKOperator{
-	String imageData3D;
-	String inputDatasetFileName;
-	String inputDatasetFilePath;
-	String outputDatasetFileName;
-	String outputDatasetFilePath;
-	String outputDatasetURL;
-	
 	public VTKVolume(String velocityImageData3DURL){
-		super(velocityImageData3DURL);
+		super(velocityImageData3DURL, true, false, "volumeImage.jpg");
 	}
-
-	protected void downloadInputs(String velocityImageData3DURL){
-		imageData3D = GetURLContents.downloadText(velocityImageData3DURL);
-		inputDatasetFileName = "imageData3D-"+ FileUtils.getRandomString() + ".xml";
-		inputDatasetFilePath = FileUtils.writeTextFile(imageData3D, FileUtils.getVTKWorkspace(), inputDatasetFileName);
-	}
-
-	protected void setUpOutputs(){
-		outputDatasetFileName = "volumeImage-" + FileUtils.getRandomString() + ".jpg";
-		outputDatasetFilePath = FileUtils.makeFullPath(FileUtils.getVTKWorkspace(),outputDatasetFileName);
-		outputDatasetURL = FileUtils.getVTKOutputURLPrefix() + outputDatasetFileName;
-	}
-	
 	public String transform(
 			String xRotation,
 			String yRotation,
@@ -40,7 +19,7 @@ public class VTKVolume extends VTKOperator{
 			String colorFunction){  
 		// Create the reader for the data
 		vtkXMLImageDataReader reader = new vtkXMLImageDataReader();
-		reader.SetFileName(inputDatasetFilePath);
+		reader.SetFileName(inputPath);
 		reader.Update();
 		
 		// Create transfer mapping scalar value to opacity
@@ -165,7 +144,7 @@ public class VTKVolume extends VTKOperator{
 
 		vtkJPEGWriter image = new vtkJPEGWriter();
 		image.SetInputConnection(renderLarge.GetOutputPort());
-		image.SetFileName(outputDatasetFilePath);
+		image.SetFileName(outputPath);
 		image.SetQuality(100);
 
 		System.out.println("about to write");
@@ -186,6 +165,6 @@ public class VTKVolume extends VTKOperator{
 		image.Delete();
 		renderLarge.Delete();
 		
-		return outputDatasetURL;
+		return outputURL;
   }
 }
