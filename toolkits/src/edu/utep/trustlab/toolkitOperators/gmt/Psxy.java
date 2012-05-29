@@ -8,15 +8,7 @@ import gravityMapScenario.gravityDataset.Dataset;
 public class Psxy extends ToolkitOperator{
 	
 	/* ASUMPTION: the input dataset is in tabular space delimited ASCII file */
-	
-	String asciiData;
-	String asciiDataPath;
-	String asciiDataFileName;
-	
-	String outputPSFileName;
-	String outputPSPath;
-	String outputPSURL;
-	
+		
 	private static final String PLOTTER_2D = FileUtils.getGMTScripts() + "wrapper-psxy.sh";
 
 	public Psxy(String asciiDataURL){	
@@ -32,16 +24,16 @@ public class Psxy extends ToolkitOperator{
 			String indexOfX,
 			String indexOfY)
 	{
-		Dataset ds = new Dataset(asciiData, true);
+		Dataset ds = new Dataset(stringData, true);
 		int[] fieldsOfInterest = new int[] {Integer.valueOf(indexOfX), Integer.valueOf(indexOfY)};
 		ds.disableHeader();
 		String asciiTrimmed = ds.backToAscii(fieldsOfInterest);
-		asciiDataPath = FileUtils.writeTextFile(asciiTrimmed, FileUtils.getWorkspace(), asciiDataFileName);
+		String asciiDataPath = FileUtils.writeTextFile(asciiTrimmed, FileUtils.getWorkspace(), inputFileName);
 		
 		String command = 
 			PLOTTER_2D + " "
 			+ asciiDataPath + " "
-			+ outputPSPath + " "
+			+ outputPath + " "
 			+ R + " "
 			+ S + " "
 			+ J + " "
@@ -50,6 +42,6 @@ public class Psxy extends ToolkitOperator{
 		
 		CommandRunner.run(command);
 		
-		return outputPSURL;
+		return outputURL;
 	}
 }
