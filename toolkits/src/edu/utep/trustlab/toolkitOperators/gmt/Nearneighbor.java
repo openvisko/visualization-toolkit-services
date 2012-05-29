@@ -22,6 +22,9 @@ public class Nearneighbor extends ToolkitOperator
 			String indexOfZ)
 	{
 		
+		if(stringData == null)
+			System.out.println("crappy null--------------------------------------");
+		
 		Dataset ds = new Dataset(stringData, true);
 		int[] fieldsOfInterest = new int[] {Integer.valueOf(indexOfX), Integer.valueOf(indexOfY), Integer.valueOf(indexOfZ)};
 		ds.disableHeader();
