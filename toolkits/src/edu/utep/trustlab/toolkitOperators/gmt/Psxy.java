@@ -24,7 +24,7 @@ public class Psxy extends ToolkitOperator{
 			String indexOfX,
 			String indexOfY)
 	{
-		Dataset ds = new Dataset(stringData, true);
+		Dataset ds = new Dataset(stringData.trim(), true);
 		int[] fieldsOfInterest = new int[] {Integer.valueOf(indexOfX), Integer.valueOf(indexOfY)};
 		ds.disableHeader();
 		String asciiTrimmed = ds.backToAscii(fieldsOfInterest);

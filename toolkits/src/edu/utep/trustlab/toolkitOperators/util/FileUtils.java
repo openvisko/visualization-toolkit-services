@@ -67,7 +67,7 @@ public class FileUtils{
 	public static String createRandomFileNameFromExistingName(String fileName){
 		if(fileName.contains(".")){
 			String[] parts = fileName.split("\\.");
-			return parts[parts.length - 2] + "_" + getRandomString() + parts[parts.length - 1]; 
+			return parts[parts.length - 2] + "_" + getRandomString() + "." + parts[parts.length - 1]; 
 		}
 		else{
 			return fileName + "_" + getRandomString();

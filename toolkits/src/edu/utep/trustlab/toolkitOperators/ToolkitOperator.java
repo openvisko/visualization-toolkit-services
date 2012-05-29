@@ -22,8 +22,8 @@ public abstract class ToolkitOperator {
 	
 	protected void setUpInputs(String datasetURL, boolean textualData, boolean persistInputDataInMemory){
 		
+		inputFileName = datasetURL.substring(datasetURL.lastIndexOf("/") + 1);
 		if(FileUtils.existsOnLocalFileSystem(datasetURL)){
-			inputFileName = datasetURL.substring(datasetURL.lastIndexOf("/") + 1);
 			inputPath = FileUtils.getWorkspace() + inputFileName;
 			
 			if(persistInputDataInMemory && textualData)
@@ -33,18 +33,20 @@ public abstract class ToolkitOperator {
 			
 		}
 		else{
-			inputFileName = FileUtils.createRandomFileNameFromExistingName(datasetURL.substring(datasetURL.lastIndexOf("/") + 1));
+			
+			inputFileName = FileUtils.createRandomFileNameFromExistingName(inputFileName);
 			inputPath = FileUtils.getWorkspace() + inputFileName;
 			
-			if(textualData)
+			if(textualData){
 				stringData = GetURLContents.downloadText(datasetURL);
-			else
-				binaryData = GetURLContents.downloadFile(datasetURL);
-			
-			if(!persistInputDataInMemory){
-				if(textualData)
+				
+				if(!persistInputDataInMemory)
 					FileUtils.writeTextFile(stringData, FileUtils.getWorkspace(), inputFileName);
-				else
+			}
+			else {
+				binaryData = GetURLContents.downloadFile(datasetURL);
+				
+				if(!persistInputDataInMemory)
 					FileUtils.writeBinaryFile(binaryData, FileUtils.getWorkspace(), inputFileName);
 			}
 		}

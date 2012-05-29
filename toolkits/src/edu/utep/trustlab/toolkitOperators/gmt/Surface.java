@@ -24,7 +24,7 @@ public class Surface extends ToolkitOperator
 			String indexOfZ)
 	{
 		
-		Dataset ds = new Dataset(stringData, true);
+		Dataset ds = new Dataset(stringData.trim(), true);
 		int[] fieldsOfInterest = new int[] {Integer.valueOf(indexOfX), Integer.valueOf(indexOfY), Integer.valueOf(indexOfZ)};
 		ds.disableHeader();
 		String asciiTrimmed = ds.backToAscii(fieldsOfInterest);

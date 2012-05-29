@@ -23,7 +23,7 @@ public class Nearneighbor extends ToolkitOperator
 	{
 		
 		
-		Dataset ds = new Dataset(stringData, true);
+		Dataset ds = new Dataset(stringData.trim(), true);
 		int[] fieldsOfInterest = new int[] {Integer.valueOf(indexOfX), Integer.valueOf(indexOfY), Integer.valueOf(indexOfZ)};
 		ds.disableHeader();
 		String asciiTrimmed = ds.backToAscii(fieldsOfInterest);
