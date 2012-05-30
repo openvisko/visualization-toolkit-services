@@ -23,6 +23,7 @@ public abstract class ToolkitOperator {
 	protected void setUpInputs(String datasetURL, boolean textualData, boolean persistInputDataInMemory){
 		
 		inputFileName = datasetURL.substring(datasetURL.lastIndexOf("/") + 1);
+		System.out.println(inputFileName);
 		if(FileUtils.existsOnLocalFileSystem(datasetURL)){
 			inputPath = FileUtils.getWorkspace() + inputFileName;
 			

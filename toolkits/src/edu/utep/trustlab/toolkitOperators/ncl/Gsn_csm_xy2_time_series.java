@@ -1,15 +1,15 @@
 package edu.utep.trustlab.toolkitOperators.ncl;
-import edu.utep.trustlab.toolkitOperators.ToolkitOperator;
+import edu.utep.trustlab.toolkitOperators.NCLOperator;
 import edu.utep.trustlab.toolkitOperators.util.CommandRunner;
 import edu.utep.trustlab.toolkitOperators.util.FileUtils;
 
-public class Gsn_csm_xy2_time_series extends ToolkitOperator
+public class Gsn_csm_xy2_time_series extends NCLOperator
 {
 
 	private static final String SCRIPT_TIMESERIES = FileUtils.getNCLScripts() +  "gsn_csm_xy2_time_series.sh ";
 	
 	public Gsn_csm_xy2_time_series(String netCDFURL){	
-		super(netCDFURL, false, false, "timeSeries.ps");
+		super(netCDFURL, false, false, "timeSeries");
 	}
 	
 	public String transform(
