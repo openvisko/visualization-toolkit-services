@@ -55,8 +55,19 @@ public abstract class ToolkitOperator {
 	}
 	
 	protected void setUpOutputs(String outputFileName){		
-		outputFileName = FileUtils.createRandomFileNameFromExistingName(outputFileName);
+		this.outputFileName = FileUtils.createRandomFileNameFromExistingName(outputFileName);
 		outputPath = FileUtils.makeFullPath(FileUtils.getWorkspace(), outputFileName);
 		outputURL = FileUtils.getOutputURLPrefix() + outputFileName;
+	}
+	
+	protected void setUpMultipleOutputs(String[] outputFileNames){
+		String xmlOutput = "<outputFiles>\n";
+		String url;
+		for(String fileName : outputFileNames){
+			url = FileUtils.getOutputURLPrefix() + fileName;
+			xmlOutput += "<outputFile name=\"" + fileName + "\" url=\"" + url + "\" />";
+		}
+		xmlOutput += "</outputFiles>";
+		FileUtils.writeTextFile(xmlOutput, FileUtils.getWorkspace(), outputFileName);
 	}
 }
