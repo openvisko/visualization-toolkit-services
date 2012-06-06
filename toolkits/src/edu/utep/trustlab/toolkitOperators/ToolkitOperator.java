@@ -21,34 +21,35 @@ public abstract class ToolkitOperator {
 	}
 	
 	protected void setUpInputs(String datasetURL, boolean textualData, boolean persistInputDataInMemory){
-		
-		inputFileName = datasetURL.substring(datasetURL.lastIndexOf("/") + 1);
-		System.out.println(inputFileName);
-		if(FileUtils.existsOnLocalFileSystem(datasetURL)){
-			inputPath = FileUtils.getWorkspace() + inputFileName;
+		if(datasetURL != null){
+			inputFileName = datasetURL.substring(datasetURL.lastIndexOf("/") + 1);
+			System.out.println(inputFileName);
+			if(FileUtils.existsOnLocalFileSystem(datasetURL)){
+				inputPath = FileUtils.getWorkspace() + inputFileName;
 			
-			if(persistInputDataInMemory && textualData)
-				stringData = FileUtils.readTextFile(inputPath);
-			else if(persistInputDataInMemory && !textualData)
-				binaryData = FileUtils.readBinaryFile(inputPath);
+				if(persistInputDataInMemory && textualData)
+					stringData = FileUtils.readTextFile(inputPath);
+				else if(persistInputDataInMemory && !textualData)
+					binaryData = FileUtils.readBinaryFile(inputPath);
 			
-		}
-		else{
-			
-			inputFileName = FileUtils.createRandomFileNameFromExistingName(inputFileName);
-			inputPath = FileUtils.getWorkspace() + inputFileName;
-			
-			if(textualData){
-				stringData = GetURLContents.downloadText(datasetURL);
-				
-				if(!persistInputDataInMemory)
-					FileUtils.writeTextFile(stringData, FileUtils.getWorkspace(), inputFileName);
 			}
-			else {
-				binaryData = GetURLContents.downloadFile(datasetURL);
+			else{
+			
+				inputFileName = FileUtils.createRandomFileNameFromExistingName(inputFileName);
+				inputPath = FileUtils.getWorkspace() + inputFileName;
+			
+				if(textualData){
+					stringData = GetURLContents.downloadText(datasetURL);
 				
-				if(!persistInputDataInMemory)
-					FileUtils.writeBinaryFile(binaryData, FileUtils.getWorkspace(), inputFileName);
+					if(!persistInputDataInMemory)
+						FileUtils.writeTextFile(stringData, FileUtils.getWorkspace(), inputFileName);
+				}
+				else {
+					binaryData = GetURLContents.downloadFile(datasetURL);
+				
+					if(!persistInputDataInMemory)
+						FileUtils.writeBinaryFile(binaryData, FileUtils.getWorkspace(), inputFileName);
+				}
 			}
 		}
 	}
