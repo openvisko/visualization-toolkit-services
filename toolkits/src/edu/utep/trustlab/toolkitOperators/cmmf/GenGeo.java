@@ -40,7 +40,7 @@ public class GenGeo extends ToolkitOperator
 		//The command string that will be passed to the shell
 		// sh GenGeo jobname #grains scale
 		String cmd =
-			"sh GenGeo " +
+			"sh /share/apps/cmmf/GenGeo/Gen_Poly/python_scripts/GenGeo " +
 			jobname + " " +
 			ngrains + " " +
 			scale + " ";

@@ -40,7 +40,7 @@ public class PolyMesh_py extends ToolkitOperator
 		//The command string that will be passed to the shell
 		// python PolyMesh.py CFGfile –cel CEL –mid_edge MID –edge_factor EDGE
 		String cmd = 
-			"python PolyMesh.py " +
+			"python /share/apps/cmmf/Gen_Poly/PolyMesh/PolyMesh.py " +
 			 inputPath + " " + 
 			 " -cel " + cel + " " +
 			 " -mid_edge " + mid + " " +
