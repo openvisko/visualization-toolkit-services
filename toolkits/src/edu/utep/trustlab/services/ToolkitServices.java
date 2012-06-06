@@ -2,6 +2,7 @@ package edu.utep.trustlab.services;
 
 import javax.jws.WebParam;
 
+import edu.utep.trustlab.toolkitOperators.cmmf.GenGeo;
 import edu.utep.trustlab.toolkitOperators.custom.CSVToTabularASCII;
 import edu.utep.trustlab.toolkitOperators.custom.Float2ShortThr;
 import edu.utep.trustlab.toolkitOperators.custom.Int2Short;
@@ -26,6 +27,17 @@ import edu.utep.trustlab.toolkitOperators.vtk.VTKTIFFReader;
 import edu.utep.trustlab.toolkitOperators.vtk.VTKVolume;
 
 public class ToolkitServices {
+	
+	//cmmf services
+	public String GenGeo(
+			@WebParam(name="jobname") String jobname,
+			@WebParam(name="ngrains") String ngrains,
+			@WebParam(name="scale") String scale){
+		
+		GenGeo service = new GenGeo(null);
+		return service.transform(jobname, ngrains, scale);
+		
+	}
 	
 	
 	//GMT Services

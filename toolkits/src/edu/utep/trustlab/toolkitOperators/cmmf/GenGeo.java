@@ -1,6 +1,7 @@
 package edu.utep.trustlab.toolkitOperators.cmmf;
 import edu.utep.trustlab.toolkitOperators.ToolkitOperator;
 import edu.utep.trustlab.toolkitOperators.util.CommandRunner;
+import edu.utep.trustlab.toolkitOperators.util.FileUtils;
 
 
 public class GenGeo extends ToolkitOperator
@@ -47,7 +48,7 @@ public class GenGeo extends ToolkitOperator
 		//FileUtils.getOutputURLPrefix();
 		//FileUtils.getWorkspace();
 		
-		CommandRunner.run(cmd);
+		CommandRunner.run(cmd, FileUtils.getWorkspace());
 		
 		String[] outputFileNames = { jobname + ".pts", jobname + ".cfg", jobname + ".vtk"};
 		setUpMultipleOutputs(outputFileNames);
