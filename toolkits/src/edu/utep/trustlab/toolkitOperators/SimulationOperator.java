@@ -24,7 +24,9 @@ public abstract class SimulationOperator {
 	protected String outputURL;
 	
 	public SimulationOperator(String contextURL, String outputFileName){
-		extractInputDatasetPaths(contextURL);
+		if(contextURL != null)
+			extractInputDatasetPaths(contextURL);
+		
 		setUpOutputs(outputFileName);
 	}
 	
