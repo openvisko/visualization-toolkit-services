@@ -1,6 +1,7 @@
 package edu.utep.trustlab.toolkitOperators.cmmf;
 import edu.utep.trustlab.toolkitOperators.SimulationOperator;
 import edu.utep.trustlab.toolkitOperators.util.CommandRunner;
+import edu.utep.trustlab.toolkitOperators.util.FileUtils;
 
 
 public class PolyMesh_py extends SimulationOperator
@@ -40,7 +41,7 @@ public class PolyMesh_py extends SimulationOperator
 			 " -mid_edge " + mid + " " +
 			 " -edge_factor " + edge + " ";
 		
-		CommandRunner.run(cmd);
+		CommandRunner.run(cmd, FileUtils.getWorkspace());
 
 		/*
 		     Vertices – CSV file containing the vertex id’s and coordinates
