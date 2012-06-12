@@ -2,8 +2,6 @@ package edu.utep.trustlab.services;
 
 import javax.jws.WebParam;
 
-import edu.utep.trustlab.toolkitOperators.cmmf.GenGeo;
-import edu.utep.trustlab.toolkitOperators.cmmf.PolyMesh_py;
 import edu.utep.trustlab.toolkitOperators.custom.CSVToTabularASCII;
 import edu.utep.trustlab.toolkitOperators.custom.Float2ShortThr;
 import edu.utep.trustlab.toolkitOperators.custom.Int2Short;
@@ -28,27 +26,7 @@ import edu.utep.trustlab.toolkitOperators.vtk.VTKTIFFReader;
 import edu.utep.trustlab.toolkitOperators.vtk.VTKVolume;
 
 public class ToolkitServices {
-	
-	//cmmf services
-	public String GenGeo(
-			@WebParam(name="jobname") String jobname,
-			@WebParam(name="ngrains") String ngrains,
-			@WebParam(name="scale") String scale){
 		
-		GenGeo service = new GenGeo(null);
-		return service.transform(jobname, ngrains, scale);	
-	}
-	
-	public String PolyMesh(
-			@WebParam(name="url") String url,
-			@WebParam(name="cel") String cel,
-			@WebParam(name="mid") String mid,
-			@WebParam(name="edge") String edge){
-		
-		PolyMesh_py service = new PolyMesh_py(url);
-		return service.transform(cel, mid, edge);
-	}
-	
 	//GMT Services
 	public String grdimage(
 			@WebParam(name="url") String url,
