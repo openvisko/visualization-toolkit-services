@@ -13,7 +13,6 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import edu.utep.trustlab.toolkitOperators.util.FileUtils;
-import edu.utep.trustlab.toolkitOperators.util.GetURLContents;
 
 public abstract class SimulationOperator {
 
@@ -24,37 +23,34 @@ public abstract class SimulationOperator {
 	protected String outputURL;
 	
 	public SimulationOperator(String contextURL, String outputFileName){
+		datasetPaths = new HashMap<String,String>();
+		
 		if(contextURL != null)
 			extractInputDatasetPaths(contextURL);
 		
 		setUpOutputs(outputFileName);
 	}
-	
+		
 	protected void extractInputDatasetPaths(String contextURL){
-		
-		datasetPaths = new HashMap<String,String>();
-		
 		String inputFileName = contextURL.substring(contextURL.lastIndexOf("/") + 1);
 		String inputPath;
-		String contextXML;
 		System.out.println(inputFileName);
 		
 		if(FileUtils.existsOnLocalFileSystem(contextURL)){
 			inputPath = FileUtils.getWorkspace() + inputFileName;			
-			contextXML = FileUtils.readTextFile(inputPath);	
+			setInputDatasets(inputPath);	
 		}
 		else{
-			contextXML = GetURLContents.downloadText(contextURL);
+			setInputDatasets(contextURL);
 		}
-		
-		setInputDatasets(contextXML);
 	}
 	
-	private void setInputDatasets(String contextXML){
+	private void setInputDatasets(String contextXMLPath){
 		try{
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-			Document doc = dBuilder.parse(contextXML);
+			Document doc = dBuilder.parse(contextXMLPath);
+			
 			doc.getDocumentElement().normalize();
 			
 			NodeList fileElements = doc.getElementsByTagName("File");
@@ -88,7 +84,7 @@ public abstract class SimulationOperator {
 	protected void setUpOutputs(String outputFileName){
 		this.outputFileName = FileUtils.createRandomFileNameFromExistingName(outputFileName);
 		outputPath = FileUtils.makeFullPath(FileUtils.getWorkspace(), outputFileName);
-		outputURL = FileUtils.getOutputURLPrefix() + outputFileName;
+		outputURL = FileUtils.getOutputURLPrefix() + this.outputFileName;
 	}
 	
 	protected String writeOutputContextXML(){
@@ -104,8 +100,10 @@ public abstract class SimulationOperator {
 			fileType = fileTypes.next();
 			filePath = datasetPaths.get(fileType);
 			
-			xmlOutput += "<File fileType=\"" + fileType + "\" filePath=\"" + filePath + "\" />";
+			xmlOutput += "\t<File fileType=\"" + fileType + "\" filePath=\"" + filePath + "\" />\n";
 		}
+		
+		xmlOutput += "</Files>";
 		
 		FileUtils.writeTextFile(xmlOutput, FileUtils.getWorkspace(), outputFileName);
 		return outputURL;
