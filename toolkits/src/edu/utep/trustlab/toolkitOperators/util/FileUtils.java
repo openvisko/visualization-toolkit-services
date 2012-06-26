@@ -61,7 +61,7 @@ public class FileUtils{
 	}
 	
 	public static boolean existsOnLocalFileSystem(String datasetURL){
-		return datasetURL.contains(getOutputURLPrefix());
+		return datasetURL.startsWith(getOutputURLPrefix());
 	}
 	
 	public static String createRandomFileNameFromExistingName(String fileName){
