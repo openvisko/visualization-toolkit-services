@@ -19,8 +19,8 @@ import edu.utep.trustlab.services.ToolkitServices;
 
 @Name("pdf2png")
 @ContactEmail("nicholas.delrio@gmail.com")
-@InputClass("https://raw.github.com/nicholasdelrio/visko-rdf/master/rdf/datasets/dataset.owl#PDFDocument")
-@OutputClass("https://raw.github.com/nicholasdelrio/visko-rdf/master/rdf/datasets/dataset.owl#PNGImage")
+@InputClass("https://raw.github.com/nicholasdelrio/visko-rdf/master/rdf/ontology/dataset.owl#PDFDocument")
+@OutputClass("https://raw.github.com/nicholasdelrio/visko-rdf/master/rdf/ontology/dataset.owl#PNGImage")
 public class PDF2PNG extends SimpleSynchronousServiceServlet
 {
 	private static final Logger log = Logger.getLogger(PDF2PNG.class);
@@ -45,7 +45,7 @@ public class PDF2PNG extends SimpleSynchronousServiceServlet
 		public static final Resource PNGFormat = m_model.createResource("https://raw.github.com/nicholasdelrio/visko-rdf/master/rdf/formats/PNG.owl#PNG");
 		public static final Property hasFormat = m_model.createProperty("http://inference-web.org/2.0/pml-provenance.owl#hasFormat");
 		public static final Property hasURL = m_model.createProperty("http://inference-web.org/2.0/pml-provenance.owl#hasURL");
-		public static final Resource PNGImage = m_model.createResource("https://raw.github.com/nicholasdelrio/visko-rdf/master/rdf/datasets/dataset.owl#PNGImage");
-		public static final Resource PDFDocument = m_model.createResource("https://raw.github.com/nicholasdelrio/visko-rdf/master/rdf/datasets/dataset.owl#PDFDocument");
+		public static final Resource PDFDocument = m_model.createResource("https://raw.github.com/nicholasdelrio/visko-rdf/master/rdf/ontology/dataset.owl#PDFDocument");
+		public static final Resource PNGImage = m_model.createResource("https://raw.github.com/nicholasdelrio/visko-rdf/master/rdf/ontology/dataset.owl#PNGImage");
 	}
 }

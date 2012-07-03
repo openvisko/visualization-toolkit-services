@@ -19,8 +19,8 @@ import edu.utep.trustlab.services.ToolkitServices;
 
 @Name("ps2pdf")
 @ContactEmail("nicholas.delrio@gmail.com")
-@InputClass("https://raw.github.com/nicholasdelrio/visko-rdf/master/rdf/datasets/dataset.owl#PSDocument")
-@OutputClass("https://raw.github.com/nicholasdelrio/visko-rdf/master/rdf/datasets/dataset.owl#PDFDocument")
+@InputClass("https://raw.github.com/nicholasdelrio/visko-rdf/master/rdf/ontology/dataset.owl#PSDocument")
+@OutputClass("https://raw.github.com/nicholasdelrio/visko-rdf/master/rdf/ontology/dataset.owl#PDFDocument")
 public class PS2PDF extends SimpleSynchronousServiceServlet
 {
 	private static final Logger log = Logger.getLogger(PS2PDF.class);
@@ -32,7 +32,6 @@ public class PS2PDF extends SimpleSynchronousServiceServlet
 		String inputPSURL = input.getProperty(Vocab.hasURL).getObject().toString();
 		ToolkitServices services = new ToolkitServices();
 		String outputPDFURL = services.getToolkitServicesHttpSoap11Endpoint().ps2Pdf(inputPSURL);
-		//String outputPDFURL = "http://iw.cs.utep.edu:8080/toolkits/output/pdfDocument_1341243493454.pdf";
 		
 		output.addProperty(Vocab.hasURL, outputPDFURL);
 		output.addProperty(Vocab.hasFormat, Vocab.PDFFormat);
@@ -42,11 +41,10 @@ public class PS2PDF extends SimpleSynchronousServiceServlet
 	private static final class Vocab
 	{
 		private static Model m_model = ModelFactory.createDefaultModel();
-
 		public static final Resource PDFFormat = m_model.createResource("https://raw.github.com/nicholasdelrio/visko-rdf/master/rdf/formats/PDF.owl#PDF");
 		public static final Property hasFormat = m_model.createProperty("http://inference-web.org/2.0/pml-provenance.owl#hasFormat");
 		public static final Property hasURL = m_model.createProperty("http://inference-web.org/2.0/pml-provenance.owl#hasURL");
-		public static final Resource PDFDocument = m_model.createResource("https://raw.github.com/nicholasdelrio/visko-rdf/master/rdf/datasets/dataset.owl#PDFDocument");
-		public static final Resource PSDocument = m_model.createResource("https://raw.github.com/nicholasdelrio/visko-rdf/master/rdf/datasets/dataset.owl#PSDocument");
+		public static final Resource PDFDocument = m_model.createResource("https://raw.github.com/nicholasdelrio/visko-rdf/master/rdf/ontology/dataset.owl#PDFDocument");
+		public static final Resource PSDocument = m_model.createResource("https://raw.github.com/nicholasdelrio/visko-rdf/master/rdf/ontology/dataset.owl#PSDocument");
 	}
 }
