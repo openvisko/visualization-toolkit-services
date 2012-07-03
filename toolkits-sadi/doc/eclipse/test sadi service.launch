@@ -7,8 +7,8 @@
 <stringAttribute key="M2_PROFILES" value=""/>
 <listAttribute key="M2_PROPERTIES">
 <listEntry value="serviceURL=http://localhost:8080/toolkits-sadi/ps2pdf"/>
-<listEntry value="input=https://raw.github.com/nicholasdelrio/visko-rdf/master/rdf/datasets/sadi-test-datasets/ps2pdf-input.owl"/>
-<listEntry value="expected=https://raw.github.com/nicholasdelrio/visko-rdf/master/rdf/datasets/sadi-test-datasets/ps2pdf-output.owl"/>
+<listEntry value="input=https://raw.github.com/nicholasdelrio/visko-rdf/master/rdf/datasets/ps2pdf-input.owl"/>
+<listEntry value="expected=https://raw.github.com/nicholasdelrio/visko-rdf/master/rdf/datasets/ps2pdf-output.owl"/>
 </listAttribute>
 <stringAttribute key="M2_RUNTIME" value="EMBEDDED"/>
 <booleanAttribute key="M2_SKIP_TESTS" value="false"/>
