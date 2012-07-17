@@ -10,7 +10,7 @@ public class Nearneighbor extends ToolkitOperator
 	private static final String SCRIPT_GRAVITY_NN = FileUtils.getGMTScripts() + "wrapper-nearneighbor.sh";
 
 	public Nearneighbor(String asciiDataURL){	
-		super(asciiDataURL, true, true, "gridded-netcdf.nc");
+		super(asciiDataURL, "xyzData.txt", true, true, "gridded-netcdf.nc");
 	}
 
 	public String transform(

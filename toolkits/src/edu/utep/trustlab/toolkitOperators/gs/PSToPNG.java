@@ -8,7 +8,7 @@ public class PSToPNG extends ToolkitOperator{
 	private static final String GHOSTSCRIPT = "gs";
 
 	public PSToPNG(String psFileURL){	
-		super(psFileURL, true, false, "image.png");
+		super(psFileURL, "document.ps", true, false, "image.png");
 	}
 	
 	

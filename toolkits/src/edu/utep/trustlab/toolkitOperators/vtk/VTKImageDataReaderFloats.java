@@ -5,7 +5,7 @@ import vtk.*;
 
 public class VTKImageDataReaderFloats extends VTKOperator{
 	public VTKImageDataReaderFloats(String coverageModelShortIntURL){
-		super(coverageModelShortIntURL, false, false, "imageData3d.xml");
+		super(coverageModelShortIntURL, "arrayData.bin", false, false, "imageData.xml");
 	}
 
 	public String transform(String littleEndian, String dim, String dataOrigin, String dataSpacing, String dataExtent, String numScalarComponents, String readLowerLeft){	

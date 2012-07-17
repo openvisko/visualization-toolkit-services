@@ -192,6 +192,18 @@ public class FileUtils{
 			}
 		}
 	}
+	
+	public static String getRandomFileNameFromFileName(String fileName){
+		if(fileName.contains("\\.")){
+			String[] fileNameParts = fileName.split("\\.");
+			String name = fileNameParts[0];
+			String extension = fileNameParts[1];
+			
+			return name + "_" + FileUtils.getRandomString() + "." + extension;
+		}
+		
+		return fileName + "_" + FileUtils.getRandomString();
+	}
 
 	public static String makePathWellFormedURI(String path)
 	{

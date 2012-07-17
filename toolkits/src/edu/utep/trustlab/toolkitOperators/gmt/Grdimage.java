@@ -16,7 +16,7 @@ public class Grdimage extends ToolkitOperator{
 	private static final String SCRIPT_XYZ2IMAGE = FileUtils.getGMTScripts() + "wrapper-grdimage.sh";
 
 	public Grdimage(String netCDFDataURL){	
-		super(netCDFDataURL, false, false, "raster-map.ps");
+		super(netCDFDataURL, "griddedData.nc", false, false, "raster-map.ps");
 	}
 		
 	public String transform(

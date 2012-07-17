@@ -9,7 +9,7 @@ public class Gsn_csm_contour_map_raster extends NCLOperator{
 	private static final String SCRIPT_CONTOUR = FileUtils.getNCLScripts() +  "gsn_csm_contour_map_raster.sh ";
 	
 	public Gsn_csm_contour_map_raster(String netCDFURL){	
-		super(netCDFURL, false, false, "rasterMap");
+		super(netCDFURL, "griddedData.nc", false, false, "rasterMap.ps");
 	}
 	
 	public String transform(

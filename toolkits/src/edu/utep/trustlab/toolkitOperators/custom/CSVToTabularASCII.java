@@ -8,7 +8,7 @@ public class CSVToTabularASCII extends ToolkitOperator
 {
 
 	public CSVToTabularASCII(String esriGriddedURL){	
-		super(esriGriddedURL, true, true, "tabularASCII.txt");
+		super(esriGriddedURL, "asciiTable.csv", true, true, "tabularASCII.txt");
 	}
 		
 	public String transform()

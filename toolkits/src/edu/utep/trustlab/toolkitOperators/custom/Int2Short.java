@@ -12,7 +12,7 @@ import edu.utep.trustlab.toolkitOperators.ToolkitOperator;
 public class Int2Short extends ToolkitOperator{
 	
 	public Int2Short(String datasetOfIntsURL){
-		super(datasetOfIntsURL, false, true, "unsignedShortsFromInts");
+		super(datasetOfIntsURL, "binaryShortIntArray.bin", false, true, "unsignedShortsFromInts");
 	}
 	
 	public String transform(){

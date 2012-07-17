@@ -9,7 +9,7 @@ public class Gsn_csm_xy2_time_series extends NCLOperator
 	private static final String SCRIPT_TIMESERIES = FileUtils.getNCLScripts() +  "gsn_csm_xy2_time_series.sh ";
 	
 	public Gsn_csm_xy2_time_series(String netCDFURL){	
-		super(netCDFURL, false, false, "timeSeries");
+		super(netCDFURL, "timeSeries.nc", false, false, "timeSeries.ps");
 	}
 	
 	public String transform(

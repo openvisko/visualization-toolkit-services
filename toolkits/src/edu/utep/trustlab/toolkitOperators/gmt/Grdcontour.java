@@ -14,7 +14,7 @@ public class Grdcontour extends ToolkitOperator{
 	private static final String SCRIPT_CONTOUR = FileUtils.getGMTScripts() + "wrapper-grdcontour.sh";
 
 	public Grdcontour(String netCDFDataURL){	
-		super(netCDFDataURL, false, false, "contour-map.ps");
+		super(netCDFDataURL, "griddedData.nc", false, false, "contour-map.ps");
 	}
 	
 	public String transform(

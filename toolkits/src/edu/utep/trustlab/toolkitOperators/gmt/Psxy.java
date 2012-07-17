@@ -8,11 +8,11 @@ import gravityMapScenario.gravityDataset.Dataset;
 public class Psxy extends ToolkitOperator{
 	
 	/* ASUMPTION: the input dataset is in tabular space delimited ASCII file */
-		
+	
 	private static final String PLOTTER_2D = FileUtils.getGMTScripts() + "wrapper-psxy.sh";
 
 	public Psxy(String asciiDataURL){	
-		super(asciiDataURL, true, true, "2DPlot.ps");
+		super(asciiDataURL, "xyData.txt", true, true, "2DPlot.ps");
 	}
 	
 	public String transform(

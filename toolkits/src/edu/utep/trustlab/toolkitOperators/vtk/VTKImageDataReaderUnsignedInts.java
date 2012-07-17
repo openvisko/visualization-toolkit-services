@@ -4,7 +4,7 @@ import vtk.*;
 
 public class VTKImageDataReaderUnsignedInts extends VTKOperator{
 	public VTKImageDataReaderUnsignedInts(String unsignedIntArrayURL){
-		super(unsignedIntArrayURL, false, false, "imageData.xml");
+		super(unsignedIntArrayURL, "arrayData.bin", false, false, "imageData.xml");
 	}
 	
 	public String transform(String littleEndian, String dim, String dataOrigin, String dataSpacing, String dataExtent, String numScalarComponents, String readLowerLeft){	

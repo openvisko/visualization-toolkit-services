@@ -5,7 +5,7 @@ import vtk.*;
 
 public class VTKTIFFReader extends VTKOperator{
 	public VTKTIFFReader(String tiffDataURL){
-		super(tiffDataURL, false, false, "imageData3D.xml");
+		super(tiffDataURL, "image.tiff", false, false, "imageData.xml");
 	}
 	
 	public String transform(String littleEndian){			

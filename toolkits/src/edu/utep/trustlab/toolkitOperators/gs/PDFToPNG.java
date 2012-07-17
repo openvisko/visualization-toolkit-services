@@ -8,7 +8,7 @@ public class PDFToPNG extends ToolkitOperator{
 	private static final String GHOSTSCRIPT = "gs";
 
 	public PDFToPNG(String pdfFileURL){	
-		super(pdfFileURL, false, false, "image.png");
+		super(pdfFileURL, "document.pdf", false, false, "image.png");
 	}
 		
 	public String transform(){

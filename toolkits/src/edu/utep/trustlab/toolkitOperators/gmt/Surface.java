@@ -11,7 +11,7 @@ public class Surface extends ToolkitOperator
 	private static final String SCRIPT_GRAVITY = FileUtils.getGMTScripts() + "wrapper-surface.sh";
 
 	public Surface(String asciiDataURL){	
-		super(asciiDataURL, true, true, "gridded-netcdf-surface.nc");
+		super(asciiDataURL, "xyzData.txt", true, true, "gridded-netcdf-surface.nc");
 	}
 		
 	public String transform(

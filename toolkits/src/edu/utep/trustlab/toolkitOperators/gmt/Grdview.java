@@ -15,7 +15,7 @@ public class Grdview extends ToolkitOperator{
 	private static final String SCRIPT_CONTOUR = FileUtils.getGMTScripts() + "wrapper-grdview.sh";
 
 	public Grdview(String netCDFDataURL){	
-		super(netCDFDataURL, false, false, "3D-mesh.ps");
+		super(netCDFDataURL, "griddedData.nc", false, false, "3D-mesh.ps");
 	}
 	
 	public String transform(

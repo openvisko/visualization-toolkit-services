@@ -3,9 +3,9 @@ package edu.utep.trustlab.toolkitOperators;
 
 public abstract class VTKOperator extends ToolkitOperator
 {
-	public VTKOperator(String inputDataURL, boolean isTextualInput, boolean shouldBePersistedInMemory, String outputFileName)
+	public VTKOperator(String inputDataURL, String baseInputFileName, boolean isTextualInput, boolean shouldBePersistedInMemory, String baseOutputFileName)
 	{
-		super(inputDataURL, isTextualInput, shouldBePersistedInMemory, outputFileName);
+		super(inputDataURL, baseInputFileName, isTextualInput, shouldBePersistedInMemory, baseOutputFileName);
 		loadVTKNativeLibs();
 	}
 	

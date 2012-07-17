@@ -8,7 +8,7 @@ public class Gsn_csm_contour_map extends NCLOperator{
 	private static final String SCRIPT_CONTOUR = FileUtils.getNCLScripts() +  "gsn_csm_contour_map.sh ";
 	
 	public Gsn_csm_contour_map(String netCDFURL){	
-		super(netCDFURL, false, false, "contourMap");
+		super(netCDFURL, "griddedData.nc", false, false, "contourMap.ps");
 	}
 	
 	public String transform(
