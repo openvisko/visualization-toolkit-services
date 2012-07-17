@@ -40,7 +40,7 @@ public abstract class ToolkitOperator {
 			else{
 				System.out.println("file doesn't exist on file system of server...need to http get it");
 	
-				inputFileName = FileUtils.createRandomFileNameFromExistingName(inputFileName);
+				inputFileName = "downloadedInputFile_" + FileUtils.getRandomString();
 				inputPath = FileUtils.getWorkspace() + inputFileName;
 			
 				if(textualData){
@@ -60,7 +60,7 @@ public abstract class ToolkitOperator {
 	}
 	
 	protected void setUpOutputs(String outputFileName){		
-		this.outputFileName = FileUtils.createRandomFileNameFromExistingName(outputFileName);
+		this.outputFileName = "outputFile_" + FileUtils.getRandomString() + "_" + outputFileName;
 		outputPath = FileUtils.makeFullPath(FileUtils.getWorkspace(), outputFileName);
 		outputURL = FileUtils.getOutputURLPrefix() + outputFileName;
 	}

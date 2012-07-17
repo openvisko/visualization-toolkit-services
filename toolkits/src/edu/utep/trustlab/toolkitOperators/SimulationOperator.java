@@ -82,7 +82,7 @@ public abstract class SimulationOperator {
 	}
 	
 	protected void setUpOutputs(String outputFileName){
-		this.outputFileName = FileUtils.createRandomFileNameFromExistingName(outputFileName);
+		this.outputFileName = "outputFile_" + FileUtils.getRandomString() + "_" + outputFileName;
 		outputPath = FileUtils.makeFullPath(FileUtils.getWorkspace(), outputFileName);
 		outputURL = FileUtils.getOutputURLPrefix() + this.outputFileName;
 	}

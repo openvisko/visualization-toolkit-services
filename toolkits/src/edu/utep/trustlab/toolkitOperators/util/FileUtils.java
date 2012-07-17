@@ -63,17 +63,7 @@ public class FileUtils{
 	public static boolean existsOnLocalFileSystem(String datasetURL){
 		return datasetURL.startsWith(getOutputURLPrefix());
 	}
-	
-	public static String createRandomFileNameFromExistingName(String fileName){
-		if(fileName.contains(".")){
-			String[] parts = fileName.split("\\.");
-			return parts[parts.length - 2] + "_" + getRandomString() + "." + parts[parts.length - 1]; 
-		}
-		else{
-			return fileName + "_" + getRandomString();
-		}
-	}
-		
+			
 	public static String writeTextFile(String fileContents, String dirName, String fileName)
 	{
 		File dirFile = new File(dirName);
