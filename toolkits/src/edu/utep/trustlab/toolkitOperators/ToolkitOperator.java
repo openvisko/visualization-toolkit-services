@@ -22,9 +22,13 @@ public abstract class ToolkitOperator {
 	
 	protected void setUpInputs(String datasetURL, boolean textualData, boolean persistInputDataInMemory){
 		if(datasetURL != null){
+			
 			inputFileName = datasetURL.substring(datasetURL.lastIndexOf("/") + 1);
-			System.out.println(inputFileName);
+			System.out.println("input file name: " + inputFileName);
+			
 			if(FileUtils.existsOnLocalFileSystem(datasetURL)){
+				System.out.println("file exists on file system of server...don't need to http get!");
+				
 				inputPath = FileUtils.getWorkspace() + inputFileName;
 			
 				if(persistInputDataInMemory && textualData)
@@ -34,7 +38,8 @@ public abstract class ToolkitOperator {
 			
 			}
 			else{
-			
+				System.out.println("file doesn't exist on file system of server...need to http get it");
+	
 				inputFileName = FileUtils.createRandomFileNameFromExistingName(inputFileName);
 				inputPath = FileUtils.getWorkspace() + inputFileName;
 			
