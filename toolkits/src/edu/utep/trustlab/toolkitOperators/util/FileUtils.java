@@ -68,11 +68,7 @@ public class FileUtils{
 		File dirFile = new File(dirName);
 		dirFile.mkdirs();
 		
-		String filePath;
-		if(dirName.endsWith("/") || fileName.startsWith("/"))
-			filePath = dirFile + fileName;
-		else
-			filePath = dirFile + File.separator + fileName;
+		String filePath = makeFullPath(dirName, fileName);
 		
 		try{
 			BufferedWriter out = new BufferedWriter(new FileWriter(filePath));
@@ -107,11 +103,7 @@ public class FileUtils{
 		File dirFile = new File(dirName);
 		dirFile.mkdirs();
 		
-		String filePath;
-		if(dirName.endsWith(File.separator) || fileName.startsWith(File.separator))
-			filePath = dirFile + fileName;
-		else
-			filePath = dirFile + File.separator + fileName;
+		String filePath = makeFullPath(dirName, fileName);
 
 		try{
 			FileOutputStream out = new FileOutputStream(filePath);
@@ -211,14 +203,10 @@ public class FileUtils{
 	}
 
 	public static String makeFullPath(String dir, String fileName){
-		String filePath;
-
-		if(dir.endsWith("/") || fileName.startsWith("/"))
-			filePath = dir + fileName;
-		else
-			filePath = dir + File.separator + fileName;
-
-		return filePath;
+		File directory = new File(dir);
+		File file = new File(fileName);
+		
+		return directory.getAbsolutePath() + File.separator + file.getName();
 	}
 
 	public static int fileSize(String fileName){
