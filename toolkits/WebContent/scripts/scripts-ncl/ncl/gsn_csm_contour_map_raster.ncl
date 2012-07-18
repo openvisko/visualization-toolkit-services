@@ -24,9 +24,9 @@ begin
 	;**************************************************
 	if(isvar("netCDFFilePath") .and. isvar("outputFilePath") .and. isvar("plotVariable") .and. isvar("font") .and. isvar("lbOrientation") .and. isvar("colorTable") .and. isvar("latVariable") .and. isvar("lonVariable") .and. isvar("indexOfX") .and. isvar("indexOfY") .and. isvar("indexOfZ")) then
 		
-		indexOfX = stringtointeger(indexOfX)
-		indexOfY = stringtointeger(indexOfY)
-		indexOfZ = stringtointeger(indexOfZ)
+		indexOfXInt = stringtointeger(indexOfX)
+		indexOfYInt = stringtointeger(indexOfY)
+		indexOfZInt = stringtointeger(indexOfZ)
 	
 		;***********************************************
 		; Configure Workspace
