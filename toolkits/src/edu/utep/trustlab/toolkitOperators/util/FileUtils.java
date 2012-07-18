@@ -194,7 +194,7 @@ public class FileUtils{
 	}
 	
 	public static String getRandomFileNameFromFileName(String fileName){
-		if(fileName.contains("\\.")){
+		if(fileName.contains(".")){
 			String[] fileNameParts = fileName.split("\\.");
 			String name = fileNameParts[0];
 			String extension = fileNameParts[1];
