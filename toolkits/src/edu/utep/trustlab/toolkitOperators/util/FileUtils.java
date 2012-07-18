@@ -202,6 +202,7 @@ public class FileUtils{
 			return name + "_" + FileUtils.getRandomString() + "." + extension;
 		}
 		
+		System.out.println("fileName: " + fileName + " doesn't have a file extension...bad move man.");
 		return fileName + "_" + FileUtils.getRandomString();
 	}
 
