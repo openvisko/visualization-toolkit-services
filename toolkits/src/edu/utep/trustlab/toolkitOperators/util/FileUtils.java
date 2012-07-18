@@ -64,109 +64,105 @@ public class FileUtils{
 		return datasetURL.startsWith(getOutputURLPrefix());
 	}
 			
-	public static String writeTextFile(String fileContents, String dirName, String fileName)
-	{
+	public static String writeTextFile(String fileContents, String dirName, String fileName){
 		File dirFile = new File(dirName);
 		dirFile.mkdirs();
-		String filePath = dirFile + File.separator + fileName;
-
-		try
-		{
+		
+		String filePath;
+		if(dirName.endsWith("/") || fileName.startsWith("/"))
+			filePath = dirFile + fileName;
+		else
+			filePath = dirFile + File.separator + fileName;
+		
+		try{
 			BufferedWriter out = new BufferedWriter(new FileWriter(filePath));
 			out.write(fileContents);
 			out.close();
 			return filePath;
-		} catch (Exception e)
-		{
+		}
+		catch (Exception e){
 			e.printStackTrace();
 			return e.toString();
 		}
 	}
 
-	public static boolean exists(String filePath)
-	{
+	public static boolean exists(String filePath){
 		File file = new File(filePath);
 		if (file.exists())
 			return true;
 		return false;
 	}
 
-	public static FileOutputStream getLoggingStream()
-	{
-		try
-		{
+	public static FileOutputStream getLoggingStream(){
+		try{
 			return new FileOutputStream(getLoggingDir() + "/log.txt");
-		} catch (Exception e)
-		{
+		}
+		catch (Exception e){
 			e.printStackTrace();
 			return null;
 		}
 	}
 
-	public static String writeBinaryFile(byte[] fileContents, String dirName,
-			String fileName)
-	{
+	public static String writeBinaryFile(byte[] fileContents, String dirName, String fileName){
 		File dirFile = new File(dirName);
 		dirFile.mkdirs();
-		String filePath = dirFile + File.separator + fileName;
+		
+		String filePath;
+		if(dirName.endsWith("/") || fileName.startsWith("/"))
+			filePath = dirFile + fileName;
+		else
+			filePath = dirFile + File.separator + fileName;
 
-		try
-		{
+		try{
 			FileOutputStream out = new FileOutputStream(filePath);
 			out.write(fileContents);
 			out.close();
 			return filePath;
 		}
-		catch (Exception e)
-		{
+		catch (Exception e){
 			e.printStackTrace();
 			return e.toString();
 		}
 	}
 
-	public static byte[] readBinaryFile(String fileName)
-	{
-		try
-		{
+	public static byte[] readBinaryFile(String fileName){
+		try{
 			FileInputStream in = new FileInputStream(fileName);
 			byte[] fileContents = new byte[fileSize(fileName)];
 			in.read(fileContents);
 			in.close();
 			return fileContents;
-		} catch (Exception e)
-		{
+		}
+		catch (Exception e){
 			e.printStackTrace();
 			return null;
 		}
 	}
 
-	public static String readTextFile(String fileName)
-	{
-		try
-		{
+	public static String readTextFile(String fileName){
+		try{
 			BufferedReader in = new BufferedReader(new FileReader(fileName));
 			String line, fileContents;
 
 			fileContents = null;
 
-			while ((line = in.readLine()) != null)
-			{
+			while ((line = in.readLine()) != null){
 				if (fileContents == null)
 					fileContents = line + "\n";
 				else
 					fileContents = fileContents + line + "\n";
 			}
+			
 			in.close();
 			return fileContents;
-		} catch (Exception e)
-		{
+		}
+		catch (Exception e){
 			e.printStackTrace();
 			return null;
 		}
 	}
 
-	public static String getRandomString()
-	{
+	public static String getRandomString(){
 		// get the current time in milliseconds to use as data source temp file
 		// name
 		long miliseconds = (new Date()).getTime();
@@ -174,20 +170,16 @@ public class FileUtils{
 		return localFileName;
 	}
 
-	public static void deleteFile(String fileName)
-	{
+	public static void deleteFile(String fileName){
 		File file = new File(fileName);
 		file.delete();
 	}
 
-	public static void cleanWorkspace(String workspace)
-	{
+	public static void cleanWorkspace(String workspace){
 		File file = new File(workspace);
 		String[] wsFiles = file.list();
-		if (wsFiles != null)
-		{
-			for (String aFile : wsFiles)
-			{
+		if (wsFiles != null){
+			for (String aFile : wsFiles){
 				deleteFile(FileUtils.makeFullPath(workspace, aFile));
 			}
 		}
@@ -206,30 +198,30 @@ public class FileUtils{
 		return fileName + "_" + FileUtils.getRandomString();
 	}
 
-	public static String makePathWellFormedURI(String path)
-	{
-		try
-		{
+	public static String makePathWellFormedURI(String path){
+		try{
 			String uri = path.replaceAll("\"", "");
 			return uri.replaceAll(" ", "%20");
-			/*
-			 * uri = URLEncoder.encode(uri, "UTF-8"); uri =
-			 * uri.replaceAll("%3A", ":"); uri = uri.replaceAll("%2F", "/");
-			 */
-		} catch (Exception e)
-		{
+
+		}
+		catch (Exception e){
 			e.printStackTrace();
 			return null;
 		}
 	}
 
-	public static String makeFullPath(String dir, String fileName)
-	{
-		return dir + File.separator + fileName;
+	public static String makeFullPath(String dir, String fileName){
+		String filePath;
+
+		if(dir.endsWith("/") || fileName.startsWith("/"))
+			filePath = dir + fileName;
+		else
+			filePath = dir + File.separator + fileName;
+
+		return filePath;
 	}
 
-	public static int fileSize(String fileName)
-	{
+	public static int fileSize(String fileName){
 		File file = new File(fileName);
 		return (int) file.length();
 	}
