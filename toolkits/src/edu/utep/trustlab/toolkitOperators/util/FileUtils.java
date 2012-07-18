@@ -108,7 +108,7 @@ public class FileUtils{
 		dirFile.mkdirs();
 		
 		String filePath;
-		if(dirName.endsWith("/") || fileName.startsWith("/"))
+		if(dirName.endsWith(File.separator) || fileName.startsWith(File.separator))
 			filePath = dirFile + fileName;
 		else
 			filePath = dirFile + File.separator + fileName;

@@ -11,7 +11,7 @@ import edu.utep.trustlab.toolkitOperators.ToolkitOperator;
 public class Float2ShortThr extends ToolkitOperator{
 		
 	public Float2ShortThr(String datasetOfFloatsURL){
-		super(datasetOfFloatsURL, "binaryFloatArray.bin", false, true, "unsignedShortsFromFloats.dat");
+		super(datasetOfFloatsURL, "binaryFloatArray.bin", false, true, "unsignedShortsFromFloats.bin");
 	}
 	
 	public String transform(String scalingFactor, String offset){
