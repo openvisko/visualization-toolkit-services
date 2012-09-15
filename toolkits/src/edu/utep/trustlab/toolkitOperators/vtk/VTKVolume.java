@@ -6,7 +6,7 @@ import vtk.*;
 
 public class VTKVolume extends VTKOperator{
 	public VTKVolume(String velocityImageData3DURL){
-		super(velocityImageData3DURL, "vtkImageData.xml", true, false, "volumeImage.jpg");
+		super(velocityImageData3DURL, "imageData.xml", true, false, "image.jpg");
 	}
 	public String transform(
 			String xRotation,

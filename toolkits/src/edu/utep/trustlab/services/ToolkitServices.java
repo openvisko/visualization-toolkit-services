@@ -17,13 +17,17 @@ import edu.utep.trustlab.toolkitOperators.ncl.Gsn_csm_contour_map;
 import edu.utep.trustlab.toolkitOperators.ncl.Gsn_csm_contour_map_raster;
 import edu.utep.trustlab.toolkitOperators.ncl.Gsn_csm_xy2_time_series;
 import edu.utep.trustlab.toolkitOperators.vtk.VTKContourFilter;
+import edu.utep.trustlab.toolkitOperators.vtk.VTKDataObjectToDataSetFilter3DGravityData;
 import edu.utep.trustlab.toolkitOperators.vtk.VTKDataSetMapper;
-import edu.utep.trustlab.toolkitOperators.vtk.VTKImageDataReader;
-import edu.utep.trustlab.toolkitOperators.vtk.VTKImageDataReaderFloats;
-import edu.utep.trustlab.toolkitOperators.vtk.VTKImageDataReaderUnsignedInts;
+import edu.utep.trustlab.toolkitOperators.vtk.VTKExtractVOI2D;
+import edu.utep.trustlab.toolkitOperators.vtk.VTKExtractVOI3D;
+import edu.utep.trustlab.toolkitOperators.vtk.VTKImageDataReader3DUnsignedShortIntegers;
+import edu.utep.trustlab.toolkitOperators.vtk.VTKImageDataReader3DFloats;
+import edu.utep.trustlab.toolkitOperators.vtk.VTKImageDataReader3DUnsignedIntegers;
 import edu.utep.trustlab.toolkitOperators.vtk.VTKPolyDataMapper;
-import edu.utep.trustlab.toolkitOperators.vtk.VTKTIFFReader;
+import edu.utep.trustlab.toolkitOperators.vtk.VTKSurfaceReconstructionFilter;
 import edu.utep.trustlab.toolkitOperators.vtk.VTKVolume;
+import edu.utep.trustlab.toolkitOperators.vtk.VTKShepardMethod;
 
 public class ToolkitServices {
 		
@@ -113,6 +117,40 @@ public class ToolkitServices {
 	}
 	
 	//VTK Services
+	public String vtkDataObjectToDataSetFilter3DGravityData(@WebParam(name = "url") String url){
+		VTKDataObjectToDataSetFilter3DGravityData transformer = new VTKDataObjectToDataSetFilter3DGravityData(url);
+		return transformer.transform();
+	}
+	
+	public String vtkExtractVOI2D(
+			@WebParam(name = "url") String url,
+			@WebParam(name="dataExtent") String dataExtent
+			){
+		VTKExtractVOI2D transformer = new VTKExtractVOI2D(url);
+		return transformer.transform(dataExtent);
+	}
+	
+	public String vtkExtractVOI3D(
+			@WebParam(name = "url") String url,
+			@WebParam(name="dataExtent") String dataExtent
+			){
+		VTKExtractVOI3D transformer = new VTKExtractVOI3D(url);
+		return transformer.transform(dataExtent);
+	}
+	
+	public String vtkShepardMethod(
+			@WebParam(name = "url") String url,
+			@WebParam(name="sampleDimensions") String sampleDimensions
+			){
+		VTKShepardMethod transformer = new VTKShepardMethod(url);
+		return transformer.transform(sampleDimensions);
+	}
+	
+	public String vtkSurfaceReconstructionFilter(@WebParam(name = "url") String url){
+		VTKSurfaceReconstructionFilter transformer = new VTKSurfaceReconstructionFilter(url);
+		return transformer.transform();
+	}
+	
 	public String vtkVolume(
 			@WebParam(name="url") String url,
 			@WebParam(name="xRotation") String xRotation,
@@ -200,53 +238,43 @@ public class ToolkitServices {
 		return transformer.transform();
 	}
 
-	public String vtkTIFFReader(
-			@WebParam(name="url") String url,
-			@WebParam(name="littleEndian") String littleEndian){
-		VTKTIFFReader transformer = new VTKTIFFReader(url);
-		return transformer.transform(littleEndian);
-	}
-
-	public String vtkImageDataReaderUnsignedInts(
+	public String vtkImageDataReader3DUnsignedIntegers(
 			@WebParam(name="url") String url,
 			@WebParam(name="littleEndian") String littleEndian,
-			@WebParam(name="dim") String dim,
 			@WebParam(name="dataOrigin") String dataOrigin,
 			@WebParam(name="dataSpacing") String dataSpacing,
 			@WebParam(name="dataExtent") String dataExtent,
 			@WebParam(name="numScalarComponents") String numScalarComponents,
 			@WebParam(name="readLowerLeft") String readLowerLeft)
 	{
-		VTKImageDataReaderUnsignedInts transformer = new VTKImageDataReaderUnsignedInts(url);
-		return transformer.transform(littleEndian, dim, dataOrigin, dataSpacing, dataExtent, numScalarComponents, readLowerLeft);
+		VTKImageDataReader3DUnsignedIntegers transformer = new VTKImageDataReader3DUnsignedIntegers(url);
+		return transformer.transform(littleEndian, dataOrigin, dataSpacing, dataExtent, numScalarComponents, readLowerLeft);
 	}
 	
-	public String vtkImageDataReader(
+	public String vtkImageDataReader3DUnsignedShortIntegers(
 			@WebParam(name="url") String url,
 			@WebParam(name="littleEndian") String littleEndian,
-			@WebParam(name="dim") String dim,
 			@WebParam(name="dataOrigin") String dataOrigin,
 			@WebParam(name="dataSpacing") String dataSpacing,
 			@WebParam(name="dataExtent") String dataExtent,
 			@WebParam(name="numScalarComponents") String numScalarComponents,
 			@WebParam(name="readLowerLeft") String readLowerLeft)
 	{
-		VTKImageDataReader transformer = new VTKImageDataReader(url);
-		return transformer.transform(littleEndian, dim, dataOrigin, dataSpacing, dataExtent, numScalarComponents, readLowerLeft);
+		VTKImageDataReader3DUnsignedShortIntegers transformer = new VTKImageDataReader3DUnsignedShortIntegers(url);
+		return transformer.transform(littleEndian, dataOrigin, dataSpacing, dataExtent, numScalarComponents, readLowerLeft);
 	}
 	
-	public String vtkImageDataReaderFloat(
+	public String vtkImageDataReader3DFloats(
 			@WebParam(name="url") String url,
 			@WebParam(name="littleEndian") String littleEndian,
-			@WebParam(name="dim") String dim,
 			@WebParam(name="dataOrigin") String dataOrigin,
 			@WebParam(name="dataSpacing") String dataSpacing,
 			@WebParam(name="dataExtent") String dataExtent,
 			@WebParam(name="numScalarComponents") String numScalarComponents,
 			@WebParam(name="readLowerLeft") String readLowerLeft)
 	{
-		VTKImageDataReaderFloats transformer = new VTKImageDataReaderFloats(url);
-		return transformer.transform(littleEndian, dim, dataOrigin, dataSpacing, dataExtent, numScalarComponents, readLowerLeft);
+		VTKImageDataReader3DFloats transformer = new VTKImageDataReader3DFloats(url);
+		return transformer.transform(littleEndian, dataOrigin, dataSpacing, dataExtent, numScalarComponents, readLowerLeft);
 	}
 	
 	//NCL Services	

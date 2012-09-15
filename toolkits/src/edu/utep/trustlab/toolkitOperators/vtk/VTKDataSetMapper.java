@@ -5,8 +5,8 @@ import vtk.*;
 
 public class VTKDataSetMapper extends VTKOperator{
 	
-	public VTKDataSetMapper(String tiffDataURL){
-		super(tiffDataURL, "arrayData.bin", false, false, "imageData.xml");
+	public VTKDataSetMapper(String imageDataURL){
+		super(imageDataURL, "imageData.xml", false, false, "image.jpg");
 	}
 	
 	public String transform(

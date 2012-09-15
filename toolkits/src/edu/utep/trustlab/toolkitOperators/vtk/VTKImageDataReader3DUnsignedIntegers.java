@@ -1,19 +1,17 @@
 package edu.utep.trustlab.toolkitOperators.vtk;
-
 import edu.utep.trustlab.toolkitOperators.VTKOperator;
 import vtk.*;
 
-public class VTKImageDataReader extends VTKOperator{
-
-	public VTKImageDataReader(String coverageModelShortIntURL){
-		super(coverageModelShortIntURL, "arrayData.bin", false, false, "imageData.xml");
+public class VTKImageDataReader3DUnsignedIntegers extends VTKOperator{
+	public VTKImageDataReader3DUnsignedIntegers(String unsignedIntArrayURL){
+		super(unsignedIntArrayURL, "arrayData.bin", false, false, "imageData.xml");
 	}
 	
-	public String transform(String littleEndian, String dim, String dataOrigin, String dataSpacing, String dataExtent, String numScalarComponents, String readLowerLeft){	
+	public String transform(String littleEndian, String dataOrigin, String dataSpacing, String dataExtent, String numScalarComponents, String readLowerLeft){	
 		// Create the reader for the data
 		vtkImageReader reader = new vtkImageReader();
 		reader.SetFileName(inputPath);
-		reader.SetDataScalarTypeToUnsignedShort();
+		reader.SetDataScalarTypeToUnsignedInt();
 		
 		//set byte endian
 		if(littleEndian.equalsIgnoreCase("true"))
@@ -22,8 +20,7 @@ public class VTKImageDataReader extends VTKOperator{
 			reader.SetDataByteOrderToBigEndian();
 		
 		//set dimension
-		int dimension = Integer.valueOf(dim);
-		reader.SetFileDimensionality(dimension);
+		reader.SetFileDimensionality(3);
 		
 		//set data origin indices 
 		String[] indices = dataOrigin.split("/");
