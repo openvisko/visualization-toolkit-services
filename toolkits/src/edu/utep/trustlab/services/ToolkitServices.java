@@ -23,7 +23,7 @@ import edu.utep.trustlab.toolkitOperators.vtk.VTKExtractVOI2D;
 import edu.utep.trustlab.toolkitOperators.vtk.VTKExtractVOI3D;
 import edu.utep.trustlab.toolkitOperators.vtk.VTKImageDataReader3DUnsignedShortIntegers;
 import edu.utep.trustlab.toolkitOperators.vtk.VTKImageDataReader3DFloats;
-import edu.utep.trustlab.toolkitOperators.vtk.VTKImageDataReader3DUnsignedIntegers;
+import edu.utep.trustlab.toolkitOperators.vtk.VTKImageDataReader3DIntegers;
 import edu.utep.trustlab.toolkitOperators.vtk.VTKPolyDataMapper;
 import edu.utep.trustlab.toolkitOperators.vtk.VTKSurfaceReconstructionFilter;
 import edu.utep.trustlab.toolkitOperators.vtk.VTKVolume;
@@ -238,7 +238,7 @@ public class ToolkitServices {
 		return transformer.transform();
 	}
 
-	public String vtkImageDataReader3DUnsignedIntegers(
+	public String vtkImageDataReader3DIntegers(
 			@WebParam(name="url") String url,
 			@WebParam(name="littleEndian") String littleEndian,
 			@WebParam(name="dataOrigin") String dataOrigin,
@@ -247,7 +247,7 @@ public class ToolkitServices {
 			@WebParam(name="numScalarComponents") String numScalarComponents,
 			@WebParam(name="readLowerLeft") String readLowerLeft)
 	{
-		VTKImageDataReader3DUnsignedIntegers transformer = new VTKImageDataReader3DUnsignedIntegers(url);
+		VTKImageDataReader3DIntegers transformer = new VTKImageDataReader3DIntegers(url);
 		return transformer.transform(littleEndian, dataOrigin, dataSpacing, dataExtent, numScalarComponents, readLowerLeft);
 	}
 	

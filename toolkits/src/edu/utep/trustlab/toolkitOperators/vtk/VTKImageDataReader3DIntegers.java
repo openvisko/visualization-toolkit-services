@@ -2,8 +2,8 @@ package edu.utep.trustlab.toolkitOperators.vtk;
 import edu.utep.trustlab.toolkitOperators.VTKOperator;
 import vtk.*;
 
-public class VTKImageDataReader3DUnsignedIntegers extends VTKOperator{
-	public VTKImageDataReader3DUnsignedIntegers(String unsignedIntArrayURL){
+public class VTKImageDataReader3DIntegers extends VTKOperator{
+	public VTKImageDataReader3DIntegers(String unsignedIntArrayURL){
 		super(unsignedIntArrayURL, "arrayData.bin", false, false, "imageData.xml");
 	}
 	
