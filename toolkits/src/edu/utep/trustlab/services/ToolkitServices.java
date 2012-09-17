@@ -140,10 +140,11 @@ public class ToolkitServices {
 	
 	public String vtkShepardMethod(
 			@WebParam(name = "url") String url,
-			@WebParam(name="sampleDimensions") String sampleDimensions
+			@WebParam(name="sampleDimensions") String sampleDimensions,
+			@WebParam(name="maximumDistance") String maximumDistance
 			){
 		VTKShepardMethod transformer = new VTKShepardMethod(url);
-		return transformer.transform(sampleDimensions);
+		return transformer.transform(sampleDimensions, maximumDistance);
 	}
 	
 	public String vtkSurfaceReconstructionFilter(@WebParam(name = "url") String url){

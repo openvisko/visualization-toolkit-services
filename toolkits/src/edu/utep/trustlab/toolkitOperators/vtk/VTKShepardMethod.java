@@ -8,7 +8,7 @@ public class VTKShepardMethod extends VTKOperator{
 		super(polyDataURL, "polyData.xml", false, false, "imageData.xml");
 	}
 
-	public String transform(String sampleDimensions){	
+	public String transform(String sampleDimensions, String maximumDistance){	
 		// Create the reader for the data
 		vtkXMLPolyDataReader dr = new vtkXMLPolyDataReader();
 		dr.SetFileName(inputPath);
