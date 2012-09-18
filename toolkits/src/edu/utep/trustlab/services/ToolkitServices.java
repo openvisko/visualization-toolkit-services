@@ -25,7 +25,7 @@ import edu.utep.trustlab.toolkitOperators.vtk.VTKImageDataReader3DUnsignedShortI
 import edu.utep.trustlab.toolkitOperators.vtk.VTKImageDataReader3DFloats;
 import edu.utep.trustlab.toolkitOperators.vtk.VTKImageDataReader3DIntegers;
 import edu.utep.trustlab.toolkitOperators.vtk.VTKPolyDataMapper;
-import edu.utep.trustlab.toolkitOperators.vtk.VTKSurfaceReconstructionFilter;
+import edu.utep.trustlab.toolkitOperators.vtk.VTKSurfaceReconstructionAndContourFilter;
 import edu.utep.trustlab.toolkitOperators.vtk.VTKVolume;
 import edu.utep.trustlab.toolkitOperators.vtk.VTKShepardMethod;
 
@@ -148,7 +148,7 @@ public class ToolkitServices {
 	}
 	
 	public String vtkSurfaceReconstructionFilter(@WebParam(name = "url") String url){
-		VTKSurfaceReconstructionFilter transformer = new VTKSurfaceReconstructionFilter(url);
+		VTKSurfaceReconstructionAndContourFilter transformer = new VTKSurfaceReconstructionAndContourFilter(url);
 		return transformer.transform();
 	}
 	
