@@ -148,7 +148,7 @@ public class ToolkitServices {
 		return transformer.transform(sampleDimensions, maximumDistance);
 	}
 	
-	public String vtkGlyph3DSphereSurface(
+	public String vtkGlyph3DSphereSource(
 			@WebParam(name = "url") String url,
 			@WebParam(name="radius") String radius,
 			@WebParam(name="scaleFactor") String scaleFactor
