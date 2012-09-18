@@ -14,14 +14,16 @@ public class VTKGlyph3DSphereSource extends VTKOperator{
 		dr.Update();
 
         vtkSphereSource sphereSource = new vtkSphereSource();
-        sphereSource.SetRadius(0.07);
+        double doubleRadius = Double.valueOf(radius);
+        sphereSource.SetRadius(doubleRadius);
 
         vtkGlyph3D glyphs = new vtkGlyph3D();
         glyphs.SetInputConnection(dr.GetOutputPort());
         glyphs.SetSourceConnection(sphereSource.GetOutputPort());
         glyphs.SetVectorModeToUseNormal();
         glyphs.SetScaleModeToDataScalingOff();
-        glyphs.SetScaleFactor(0.25);
+        double doubleScaleFactor = Double.valueOf(scaleFactor);
+        glyphs.SetScaleFactor(doubleScaleFactor);
         glyphs.Update();
 
 		vtkXMLPolyDataWriter polyDataWriter = new vtkXMLPolyDataWriter();
