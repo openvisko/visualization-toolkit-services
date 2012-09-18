@@ -21,6 +21,7 @@ import edu.utep.trustlab.toolkitOperators.vtk.VTKDataObjectToDataSetFilter3DGrav
 import edu.utep.trustlab.toolkitOperators.vtk.VTKDataSetMapper;
 import edu.utep.trustlab.toolkitOperators.vtk.VTKExtractVOI2D;
 import edu.utep.trustlab.toolkitOperators.vtk.VTKExtractVOI3D;
+import edu.utep.trustlab.toolkitOperators.vtk.VTKGlyph3DSphereSource;
 import edu.utep.trustlab.toolkitOperators.vtk.VTKImageDataReader3DUnsignedShortIntegers;
 import edu.utep.trustlab.toolkitOperators.vtk.VTKImageDataReader3DFloats;
 import edu.utep.trustlab.toolkitOperators.vtk.VTKImageDataReader3DIntegers;
@@ -147,7 +148,16 @@ public class ToolkitServices {
 		return transformer.transform(sampleDimensions, maximumDistance);
 	}
 	
-	public String vtkSurfaceReconstructionFilter(@WebParam(name = "url") String url){
+	public String vtkGlyph3DSphereSurface(
+			@WebParam(name = "url") String url,
+			@WebParam(name="radius") String radius,
+			@WebParam(name="scaleFactor") String scaleFactor
+			){
+		VTKGlyph3DSphereSource transformer = new VTKGlyph3DSphereSource(url);
+		return transformer.transform(radius, scaleFactor);
+	}
+	
+	public String vtkSurfaceReconstructionAndContourFilter(@WebParam(name = "url") String url){
 		VTKSurfaceReconstructionAndContourFilter transformer = new VTKSurfaceReconstructionAndContourFilter(url);
 		return transformer.transform();
 	}
