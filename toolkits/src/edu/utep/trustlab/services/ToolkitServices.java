@@ -22,6 +22,8 @@ import edu.utep.trustlab.toolkitOperators.vtk.VTKDataObjectToDataSetFilter3DGrav
 import edu.utep.trustlab.toolkitOperators.vtk.VTKDataSetMapper;
 import edu.utep.trustlab.toolkitOperators.vtk.VTKExtractVOIXYPlane;
 import edu.utep.trustlab.toolkitOperators.vtk.VTKExtractVOI3D;
+import edu.utep.trustlab.toolkitOperators.vtk.VTKExtractVOIXZPlane;
+import edu.utep.trustlab.toolkitOperators.vtk.VTKExtractVOIYZPlane;
 import edu.utep.trustlab.toolkitOperators.vtk.VTKGlyph3DSphereSource;
 import edu.utep.trustlab.toolkitOperators.vtk.VTKImageDataReader3DUnsignedShortIntegers;
 import edu.utep.trustlab.toolkitOperators.vtk.VTKImageDataReader3DFloats;
@@ -145,6 +147,22 @@ public class ToolkitServices {
 		return transformer.transform();
 	}
 	
+	public String vtkExtractVOIXZPlane(
+			@WebParam(name = "url") String url,
+			@WebParam(name="dataExtent") String dataExtent
+			){
+		VTKExtractVOIXZPlane transformer = new VTKExtractVOIXZPlane(url);
+		return transformer.transform(dataExtent);
+	}
+	
+	public String vtkExtractVOIYZPlane(
+			@WebParam(name = "url") String url,
+			@WebParam(name="dataExtent") String dataExtent
+			){
+		VTKExtractVOIYZPlane transformer = new VTKExtractVOIYZPlane(url);
+		return transformer.transform(dataExtent);
+	}
+
 	public String vtkExtractVOIXYPlane(
 			@WebParam(name = "url") String url,
 			@WebParam(name="dataExtent") String dataExtent
@@ -152,6 +170,7 @@ public class ToolkitServices {
 		VTKExtractVOIXYPlane transformer = new VTKExtractVOIXYPlane(url);
 		return transformer.transform(dataExtent);
 	}
+
 	
 	public String vtkExtractVOI3D(
 			@WebParam(name = "url") String url,
