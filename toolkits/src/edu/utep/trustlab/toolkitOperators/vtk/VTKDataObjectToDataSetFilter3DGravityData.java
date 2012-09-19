@@ -82,7 +82,14 @@ public class  VTKDataObjectToDataSetFilter3DGravityData extends VTKOperator{
 		for (int i = 0; i < ds.getNumRecords(); i++) {
 			Row aRow = dataset[i];
 			for (int j = 0; j < 4; j++) {
-				double value = Double.valueOf(aRow.getValue(j));
+
+				double value = 0;
+				try{
+					value = Double.valueOf(aRow.getValue(j));
+				}catch(Exception e){
+					e.printStackTrace();
+					System.out.println("details, i=" + i + ", j=" + j);
+				}
 
 				if (j == 0)
 					lon.InsertNextValue(value);
