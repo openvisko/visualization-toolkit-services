@@ -63,6 +63,9 @@ public class  VTKDataObjectToDataSetFilter3DGravityData extends VTKOperator{
 	public void loadFieldData()
 	{
 		String asciiDataset = stringData;
+		
+		System.out.println(stringData);
+		
 		Dataset ds = new Dataset(asciiDataset, true);
 		Row[] dataset = ds.getDataset();
 
@@ -81,6 +84,7 @@ public class  VTKDataObjectToDataSetFilter3DGravityData extends VTKOperator{
 		for (int i = 0; i < ds.getNumRecords(); i++) {
 			Row aRow = dataset[i];
 			for (int j = 0; j < 4; j++) {
+				System.out.println("value: " + aRow.getValue(j));
 				double value = Double.valueOf(aRow.getValue(j));
 
 				if (j == 0)
