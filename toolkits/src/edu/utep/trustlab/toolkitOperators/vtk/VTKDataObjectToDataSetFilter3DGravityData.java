@@ -19,6 +19,7 @@ public class  VTKDataObjectToDataSetFilter3DGravityData extends VTKOperator{
 
 	public String transform (){  
 		// Create the reader for the data
+		dos = new vtkProgrammableDataObjectSource();
 		dos.DebugOn();
 		dos.SetExecuteMethod(this, "loadFieldData");
 		dos.Update();
