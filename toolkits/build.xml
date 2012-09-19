@@ -8,12 +8,12 @@
 	<!-- DO NOT CHANGE SETTINGS BELOW -->
 	
 	<!-- web.xml paths -->
-	<property name="web-xml-template" value="web.xml"/>
-	<property name="web-xml-deployment-dir" value="WebContent/WEB-INF/"/>
-	<property name="config-file" value="WebContent/WEB-INF/web.xml"/>
+	<property name="web-xml-template" value="webxml-template/web.xml"/>
+	<property name="web-xml-deployment-dir" value="webxml-complete/"/>
+	<property name="config-file" value="webxml-complete/web.xml"/>
 	
 	<!-- build properties -->
-	<property name="web-content" value="WebContent"/>
+	<property name="web-content" value="WebContent/"/>
 	<property name="toolkits-war" value="toolkits.war"/>
 	<property name="lib" value="WebContent/WEB-INF/lib/"/>
 	<property name="build" value="build"/>
