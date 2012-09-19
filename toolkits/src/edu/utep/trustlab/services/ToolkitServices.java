@@ -4,6 +4,7 @@ import javax.jws.WebParam;
 
 import edu.utep.trustlab.toolkitOperators.custom.CSVToTabularASCII;
 import edu.utep.trustlab.toolkitOperators.custom.Float2ShortThr;
+import edu.utep.trustlab.toolkitOperators.custom.GravityDataFieldFilter;
 import edu.utep.trustlab.toolkitOperators.custom.Int2Short;
 import edu.utep.trustlab.toolkitOperators.gmt.Grdcontour;
 import edu.utep.trustlab.toolkitOperators.gmt.Grdimage;
@@ -77,26 +78,21 @@ public class ToolkitServices {
 			@WebParam(name="I")String I,
 			@WebParam(name="T")String T,
 			@WebParam(name="C")String C,
-			@WebParam(name="R")String R,
-			@WebParam(name="indexOfX")String indexOfX,
-			@WebParam(name="indexOfY")String indexOfY,
-			@WebParam(name="indexOfZ")String indexOfZ){
+			@WebParam(name="R")String R){
 		Surface service = new Surface(url);
-		return service.transform(I, T, C, R, indexOfX, indexOfY, indexOfZ);
+		return service.transform(I, T, C, R);
 	}
 	
 	public String nearneighbor(
 			@WebParam(name="url")String url,
 			@WebParam(name="I")String I,
 			@WebParam(name="S")String S,
-			@WebParam(name="R")String R,
-			@WebParam(name="indexOfX")String indexOfX,
-			@WebParam(name="indexOfY")String indexOfY,
-			@WebParam(name="indexOfZ")String indexOfZ){
+			@WebParam(name="R")String R){
 		Nearneighbor service = new Nearneighbor(url);
-		return service.transform(I, S, R, indexOfX, indexOfY, indexOfZ);
+		return service.transform(I, S, R);
 	}
 	
+	// gmt Services	
 	public String pdf2png(@WebParam(name="url") String url){
 		PDFToPNG service = new PDFToPNG(url);
 		return service.transform();
@@ -112,9 +108,35 @@ public class ToolkitServices {
 		return service.transform();
 	}
 	
+	// custom Services
 	public String csv2tabular(@WebParam(name = "url") String url){
 		CSVToTabularASCII service = new CSVToTabularASCII(url);
 		return service.transform();
+	}
+	
+	public String GravityDataFieldFilter(
+			@WebParam(name = "url") String url,
+			@WebParam(name = "indexOfX") String indexOfX,
+			@WebParam(name = "indexOfY") String indexOfY,
+			@WebParam(name = "indexOfZ") String indexOfZ){
+		GravityDataFieldFilter transformer = new GravityDataFieldFilter(url);
+		return transformer.transform(indexOfX, indexOfY, indexOfZ);
+	}
+	
+	public String int2Short(@WebParam(name="url") String url)
+	{
+		Int2Short transformer = new Int2Short(url);
+		return transformer.transform();
+	}
+
+	
+	public String float2ShortThr(
+			@WebParam(name="url") String url,
+			@WebParam(name="scalingFactor") String scalingFactor,
+			@WebParam(name="offset") String offset)
+	{
+		Float2ShortThr transformer = new Float2ShortThr(url);
+		return transformer.transform(scalingFactor, offset);
 	}
 	
 	//VTK Services
@@ -224,16 +246,7 @@ public class ToolkitServices {
 				backgroundColor,
 				magnification);
 	}
-	
-	public String float2ShortThr(
-			@WebParam(name="url") String url,
-			@WebParam(name="scalingFactor") String scalingFactor,
-			@WebParam(name="offset") String offset)
-	{
-		Float2ShortThr transformer = new Float2ShortThr(url);
-		return transformer.transform(scalingFactor, offset);
-	}
-	
+		
 	public String vtkContourFilter(
 			@WebParam(name="url") String url,
 			@WebParam(name="numContours") String numContours,
@@ -243,12 +256,6 @@ public class ToolkitServices {
 		return transformer.transform(numContours, scalarRange);
 	}
 	
-	public String int2Short(@WebParam(name="url") String url)
-	{
-		Int2Short transformer = new Int2Short(url);
-		return transformer.transform();
-	}
-
 	public String vtkImageDataReader3DIntegers(
 			@WebParam(name="url") String url,
 			@WebParam(name="littleEndian") String littleEndian,

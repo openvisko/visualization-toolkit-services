@@ -2,7 +2,6 @@ package edu.utep.trustlab.toolkitOperators.gmt;
 import edu.utep.trustlab.toolkitOperators.ToolkitOperator;
 import edu.utep.trustlab.toolkitOperators.util.CommandRunner;
 import edu.utep.trustlab.toolkitOperators.util.FileUtils;
-import gravityMapScenario.gravityDataset.Dataset;
 
 public class Surface extends ToolkitOperator
 {
@@ -18,21 +17,12 @@ public class Surface extends ToolkitOperator
 			String gridSpacing,
 			String tension,
 			String convergenceLimit,
-			String region,
-			String indexOfX,
-			String indexOfY,
-			String indexOfZ)
+			String region)
 	{
-		
-		Dataset ds = new Dataset(stringData.trim(), true);
-		int[] fieldsOfInterest = new int[] {Integer.valueOf(indexOfX), Integer.valueOf(indexOfY), Integer.valueOf(indexOfZ)};
-		ds.disableHeader();
-		String asciiTrimmed = ds.backToAscii(fieldsOfInterest);
-		String asciiDataPath = FileUtils.writeTextFile(asciiTrimmed, FileUtils.getWorkspace(), inputFileName);
 		
 		String cmd = 
 			SCRIPT_GRAVITY + " "
-			+ asciiDataPath + " "
+			+ inputPath + " "
 			+ outputPath + " "
 			+ gridSpacing + " " 
 			+ tension + " "
