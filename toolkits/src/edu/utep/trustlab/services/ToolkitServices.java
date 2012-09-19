@@ -19,7 +19,7 @@ import edu.utep.trustlab.toolkitOperators.ncl.Gsn_csm_xy2_time_series;
 import edu.utep.trustlab.toolkitOperators.vtk.VTKContourFilter;
 import edu.utep.trustlab.toolkitOperators.vtk.VTKDataObjectToDataSetFilter3DGravityData;
 import edu.utep.trustlab.toolkitOperators.vtk.VTKDataSetMapper;
-import edu.utep.trustlab.toolkitOperators.vtk.VTKExtractVOI2D;
+import edu.utep.trustlab.toolkitOperators.vtk.VTKExtractVOIXYPlane;
 import edu.utep.trustlab.toolkitOperators.vtk.VTKExtractVOI3D;
 import edu.utep.trustlab.toolkitOperators.vtk.VTKGlyph3DSphereSource;
 import edu.utep.trustlab.toolkitOperators.vtk.VTKImageDataReader3DUnsignedShortIntegers;
@@ -123,11 +123,11 @@ public class ToolkitServices {
 		return transformer.transform();
 	}
 	
-	public String vtkExtractVOI2D(
+	public String vtkExtractVOIXYPlane(
 			@WebParam(name = "url") String url,
 			@WebParam(name="dataExtent") String dataExtent
 			){
-		VTKExtractVOI2D transformer = new VTKExtractVOI2D(url);
+		VTKExtractVOIXYPlane transformer = new VTKExtractVOIXYPlane(url);
 		return transformer.transform(dataExtent);
 	}
 	

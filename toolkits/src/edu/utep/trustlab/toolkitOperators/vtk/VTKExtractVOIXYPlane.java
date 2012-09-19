@@ -3,8 +3,8 @@ package edu.utep.trustlab.toolkitOperators.vtk;
 import edu.utep.trustlab.toolkitOperators.VTKOperator;
 import vtk.*;
 
-public class VTKExtractVOI2D extends VTKOperator{
-	public VTKExtractVOI2D(String imageDataURL){
+public class VTKExtractVOIXYPlane extends VTKOperator{
+	public VTKExtractVOIXYPlane(String imageDataURL){
 		super(imageDataURL, "imageData.xml", false, false, "imageData.xml");
 	}
 
