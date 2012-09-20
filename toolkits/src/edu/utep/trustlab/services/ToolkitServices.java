@@ -19,7 +19,6 @@ import edu.utep.trustlab.toolkitOperators.ncl.Gsn_csm_contour_map_raster;
 import edu.utep.trustlab.toolkitOperators.ncl.Gsn_csm_xy2_time_series;
 import edu.utep.trustlab.toolkitOperators.vtk.VTKContourFilter;
 import edu.utep.trustlab.toolkitOperators.vtk.VTKDataObjectToDataSetFilter3DGravityData;
-import edu.utep.trustlab.toolkitOperators.vtk.VTKDataSetMapper;
 import edu.utep.trustlab.toolkitOperators.vtk.VTKExtractVOIXYPlane;
 import edu.utep.trustlab.toolkitOperators.vtk.VTKExtractVOI3D;
 import edu.utep.trustlab.toolkitOperators.vtk.VTKExtractVOIXZPlane;
@@ -224,25 +223,6 @@ public class ToolkitServices {
 				magnification,
 				opacityFunction,
 				colorFunction);
-	}
-
-	public String vtkDataSetMapper(
-			@WebParam(name="url") String url,
-			@WebParam(name="xRotation") String xRotation,
-			@WebParam(name="yRotation") String yRotation,
-			@WebParam(name="zRotation") String zRotation,
-			@WebParam(name="size") String size,
-			@WebParam(name="backgroundColor") String backgroundColor,
-			@WebParam(name="magnification")  String magnification)
-	{
-		VTKDataSetMapper transformer = new VTKDataSetMapper(url);
-		return transformer.transform(
-				xRotation,
-				yRotation,
-				zRotation,
-				size,
-				backgroundColor,
-				magnification);
 	}
 	
 	public String vtkPolyDataMapper(
