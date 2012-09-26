@@ -6,6 +6,9 @@ import edu.utep.trustlab.toolkitOperators.custom.CSVToTabularASCII;
 import edu.utep.trustlab.toolkitOperators.custom.Float2ShortThr;
 import edu.utep.trustlab.toolkitOperators.custom.GravityDataFieldFilter;
 import edu.utep.trustlab.toolkitOperators.custom.Int2Short;
+import edu.utep.trustlab.toolkitOperators.custom.JSONBars_Instances;
+import edu.utep.trustlab.toolkitOperators.custom.JSONGraph_DataTransformations;
+import edu.utep.trustlab.toolkitOperators.custom.JSONGraph_OperatorPaths;
 import edu.utep.trustlab.toolkitOperators.gmt.Grdcontour;
 import edu.utep.trustlab.toolkitOperators.gmt.Grdimage;
 import edu.utep.trustlab.toolkitOperators.gmt.Nearneighbor;
@@ -93,7 +96,7 @@ public class ToolkitServices {
 		return service.transform(I, S, R);
 	}
 	
-	// gmt Services	
+	// GS Services	
 	public String pdf2png(@WebParam(name="url") String url){
 		PDFToPNG service = new PDFToPNG(url);
 		return service.transform();
@@ -110,6 +113,21 @@ public class ToolkitServices {
 	}
 	
 	// custom Services
+	public String jsonBars_Instances(){
+		JSONBars_Instances service = new JSONBars_Instances();
+		return service.transform();
+	}
+	
+	public String jsonGraph_DataTransformations(){
+		JSONGraph_DataTransformations service = new JSONGraph_DataTransformations();
+		return service.transform();
+	}
+	
+	public String jsonGraph_OperatorPaths(){
+		JSONGraph_OperatorPaths service = new JSONGraph_OperatorPaths();
+		return service.transform();
+	}
+	
 	public String csv2tabular(@WebParam(name = "url") String url){
 		CSVToTabularASCII service = new CSVToTabularASCII(url);
 		return service.transform();
