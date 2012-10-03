@@ -39,79 +39,51 @@ public interface ToolkitServicesPortType {
 
     /**
      * 
-     * @param dim
-     * @param dataSpacing
+     * @return
+     *     returns java.lang.String
+     */
+    @WebMethod(operationName = "jsonBars_Instances", action = "urn:jsonBars_Instances")
+    @WebResult(targetNamespace = "http://services.trustlab.utep.edu")
+    @RequestWrapper(localName = "jsonBars_Instances", targetNamespace = "http://services.trustlab.utep.edu", className = "edu.utep.trustlab.services.JsonBarsInstances")
+    @ResponseWrapper(localName = "jsonBars_InstancesResponse", targetNamespace = "http://services.trustlab.utep.edu", className = "edu.utep.trustlab.services.JsonBarsInstancesResponse")
+    public String jsonBarsInstances();
+
+    /**
+     * 
+     * @param url
+     * @return
+     *     returns java.lang.String
+     */
+    @WebMethod(action = "urn:vtkSurfaceReconstructionAndContourFilter")
+    @WebResult(targetNamespace = "http://services.trustlab.utep.edu")
+    @RequestWrapper(localName = "vtkSurfaceReconstructionAndContourFilter", targetNamespace = "http://services.trustlab.utep.edu", className = "edu.utep.trustlab.services.VtkSurfaceReconstructionAndContourFilter")
+    @ResponseWrapper(localName = "vtkSurfaceReconstructionAndContourFilterResponse", targetNamespace = "http://services.trustlab.utep.edu", className = "edu.utep.trustlab.services.VtkSurfaceReconstructionAndContourFilterResponse")
+    public String vtkSurfaceReconstructionAndContourFilter(
+        @WebParam(name = "url", targetNamespace = "http://services.trustlab.utep.edu")
+        String url);
+
+    /**
+     * 
      * @param dataExtent
-     * @param dataOrigin
-     * @param littleEndian
-     * @param readLowerLeft
-     * @param numScalarComponents
      * @param url
      * @return
      *     returns java.lang.String
      */
-    @WebMethod(action = "urn:vtkImageDataReaderFloat")
+    @WebMethod(action = "urn:vtkExtractVOIXZPlane")
     @WebResult(targetNamespace = "http://services.trustlab.utep.edu")
-    @RequestWrapper(localName = "vtkImageDataReaderFloat", targetNamespace = "http://services.trustlab.utep.edu", className = "edu.utep.trustlab.services.VtkImageDataReaderFloat")
-    @ResponseWrapper(localName = "vtkImageDataReaderFloatResponse", targetNamespace = "http://services.trustlab.utep.edu", className = "edu.utep.trustlab.services.VtkImageDataReaderFloatResponse")
-    public String vtkImageDataReaderFloat(
+    @RequestWrapper(localName = "vtkExtractVOIXZPlane", targetNamespace = "http://services.trustlab.utep.edu", className = "edu.utep.trustlab.services.VtkExtractVOIXZPlane")
+    @ResponseWrapper(localName = "vtkExtractVOIXZPlaneResponse", targetNamespace = "http://services.trustlab.utep.edu", className = "edu.utep.trustlab.services.VtkExtractVOIXZPlaneResponse")
+    public String vtkExtractVOIXZPlane(
         @WebParam(name = "url", targetNamespace = "http://services.trustlab.utep.edu")
         String url,
-        @WebParam(name = "littleEndian", targetNamespace = "http://services.trustlab.utep.edu")
-        String littleEndian,
-        @WebParam(name = "dim", targetNamespace = "http://services.trustlab.utep.edu")
-        String dim,
-        @WebParam(name = "dataOrigin", targetNamespace = "http://services.trustlab.utep.edu")
-        String dataOrigin,
-        @WebParam(name = "dataSpacing", targetNamespace = "http://services.trustlab.utep.edu")
-        String dataSpacing,
         @WebParam(name = "dataExtent", targetNamespace = "http://services.trustlab.utep.edu")
-        String dataExtent,
-        @WebParam(name = "numScalarComponents", targetNamespace = "http://services.trustlab.utep.edu")
-        String numScalarComponents,
-        @WebParam(name = "readLowerLeft", targetNamespace = "http://services.trustlab.utep.edu")
-        String readLowerLeft);
+        String dataExtent);
 
     /**
      * 
-     * @param magnification
-     * @param zRotation
-     * @param backgroundColor
-     * @param xRotation
-     * @param yRotation
-     * @param url
-     * @param size
-     * @return
-     *     returns java.lang.String
-     */
-    @WebMethod(action = "urn:vtkDataSetMapper")
-    @WebResult(targetNamespace = "http://services.trustlab.utep.edu")
-    @RequestWrapper(localName = "vtkDataSetMapper", targetNamespace = "http://services.trustlab.utep.edu", className = "edu.utep.trustlab.services.VtkDataSetMapper")
-    @ResponseWrapper(localName = "vtkDataSetMapperResponse", targetNamespace = "http://services.trustlab.utep.edu", className = "edu.utep.trustlab.services.VtkDataSetMapperResponse")
-    public String vtkDataSetMapper(
-        @WebParam(name = "url", targetNamespace = "http://services.trustlab.utep.edu")
-        String url,
-        @WebParam(name = "xRotation", targetNamespace = "http://services.trustlab.utep.edu")
-        String xRotation,
-        @WebParam(name = "yRotation", targetNamespace = "http://services.trustlab.utep.edu")
-        String yRotation,
-        @WebParam(name = "zRotation", targetNamespace = "http://services.trustlab.utep.edu")
-        String zRotation,
-        @WebParam(name = "size", targetNamespace = "http://services.trustlab.utep.edu")
-        String size,
-        @WebParam(name = "backgroundColor", targetNamespace = "http://services.trustlab.utep.edu")
-        String backgroundColor,
-        @WebParam(name = "magnification", targetNamespace = "http://services.trustlab.utep.edu")
-        String magnification);
-
-    /**
-     * 
-     * @param indexOfY
-     * @param indexOfZ
      * @param t
      * @param r
      * @param c
-     * @param indexOfX
      * @param url
      * @param i
      * @return
@@ -131,13 +103,7 @@ public interface ToolkitServicesPortType {
         @WebParam(name = "C", targetNamespace = "http://services.trustlab.utep.edu")
         String c,
         @WebParam(name = "R", targetNamespace = "http://services.trustlab.utep.edu")
-        String r,
-        @WebParam(name = "indexOfX", targetNamespace = "http://services.trustlab.utep.edu")
-        String indexOfX,
-        @WebParam(name = "indexOfY", targetNamespace = "http://services.trustlab.utep.edu")
-        String indexOfY,
-        @WebParam(name = "indexOfZ", targetNamespace = "http://services.trustlab.utep.edu")
-        String indexOfZ);
+        String r);
 
     /**
      * 
@@ -225,11 +191,33 @@ public interface ToolkitServicesPortType {
 
     /**
      * 
-     * @param indexOfY
-     * @param indexOfZ
+     * @return
+     *     returns java.lang.String
+     */
+    @WebMethod(operationName = "jsonGraph_OperatorPaths", action = "urn:jsonGraph_OperatorPaths")
+    @WebResult(targetNamespace = "http://services.trustlab.utep.edu")
+    @RequestWrapper(localName = "jsonGraph_OperatorPaths", targetNamespace = "http://services.trustlab.utep.edu", className = "edu.utep.trustlab.services.JsonGraphOperatorPaths")
+    @ResponseWrapper(localName = "jsonGraph_OperatorPathsResponse", targetNamespace = "http://services.trustlab.utep.edu", className = "edu.utep.trustlab.services.JsonGraphOperatorPathsResponse")
+    public String jsonGraphOperatorPaths();
+
+    /**
+     * 
+     * @param url
+     * @return
+     *     returns java.lang.String
+     */
+    @WebMethod(action = "urn:int2Short")
+    @WebResult(targetNamespace = "http://services.trustlab.utep.edu")
+    @RequestWrapper(localName = "int2Short", targetNamespace = "http://services.trustlab.utep.edu", className = "edu.utep.trustlab.services.Int2Short")
+    @ResponseWrapper(localName = "int2ShortResponse", targetNamespace = "http://services.trustlab.utep.edu", className = "edu.utep.trustlab.services.Int2ShortResponse")
+    public String int2Short(
+        @WebParam(name = "url", targetNamespace = "http://services.trustlab.utep.edu")
+        String url);
+
+    /**
+     * 
      * @param s
      * @param r
-     * @param indexOfX
      * @param url
      * @param i
      * @return
@@ -247,13 +235,39 @@ public interface ToolkitServicesPortType {
         @WebParam(name = "S", targetNamespace = "http://services.trustlab.utep.edu")
         String s,
         @WebParam(name = "R", targetNamespace = "http://services.trustlab.utep.edu")
-        String r,
-        @WebParam(name = "indexOfX", targetNamespace = "http://services.trustlab.utep.edu")
-        String indexOfX,
-        @WebParam(name = "indexOfY", targetNamespace = "http://services.trustlab.utep.edu")
-        String indexOfY,
-        @WebParam(name = "indexOfZ", targetNamespace = "http://services.trustlab.utep.edu")
-        String indexOfZ);
+        String r);
+
+    /**
+     * 
+     * @param dataSpacing
+     * @param dataExtent
+     * @param dataOrigin
+     * @param littleEndian
+     * @param readLowerLeft
+     * @param numScalarComponents
+     * @param url
+     * @return
+     *     returns java.lang.String
+     */
+    @WebMethod(action = "urn:vtkImageDataReader3DIntegers")
+    @WebResult(targetNamespace = "http://services.trustlab.utep.edu")
+    @RequestWrapper(localName = "vtkImageDataReader3DIntegers", targetNamespace = "http://services.trustlab.utep.edu", className = "edu.utep.trustlab.services.VtkImageDataReader3DIntegers")
+    @ResponseWrapper(localName = "vtkImageDataReader3DIntegersResponse", targetNamespace = "http://services.trustlab.utep.edu", className = "edu.utep.trustlab.services.VtkImageDataReader3DIntegersResponse")
+    public String vtkImageDataReader3DIntegers(
+        @WebParam(name = "url", targetNamespace = "http://services.trustlab.utep.edu")
+        String url,
+        @WebParam(name = "littleEndian", targetNamespace = "http://services.trustlab.utep.edu")
+        String littleEndian,
+        @WebParam(name = "dataOrigin", targetNamespace = "http://services.trustlab.utep.edu")
+        String dataOrigin,
+        @WebParam(name = "dataSpacing", targetNamespace = "http://services.trustlab.utep.edu")
+        String dataSpacing,
+        @WebParam(name = "dataExtent", targetNamespace = "http://services.trustlab.utep.edu")
+        String dataExtent,
+        @WebParam(name = "numScalarComponents", targetNamespace = "http://services.trustlab.utep.edu")
+        String numScalarComponents,
+        @WebParam(name = "readLowerLeft", targetNamespace = "http://services.trustlab.utep.edu")
+        String readLowerLeft);
 
     /**
      * 
@@ -261,13 +275,30 @@ public interface ToolkitServicesPortType {
      * @return
      *     returns java.lang.String
      */
-    @WebMethod(action = "urn:int2Short")
+    @WebMethod(action = "urn:vtkDataObjectToDataSetFilter3DGravityData")
     @WebResult(targetNamespace = "http://services.trustlab.utep.edu")
-    @RequestWrapper(localName = "int2Short", targetNamespace = "http://services.trustlab.utep.edu", className = "edu.utep.trustlab.services.Int2Short")
-    @ResponseWrapper(localName = "int2ShortResponse", targetNamespace = "http://services.trustlab.utep.edu", className = "edu.utep.trustlab.services.Int2ShortResponse")
-    public String int2Short(
+    @RequestWrapper(localName = "vtkDataObjectToDataSetFilter3DGravityData", targetNamespace = "http://services.trustlab.utep.edu", className = "edu.utep.trustlab.services.VtkDataObjectToDataSetFilter3DGravityData")
+    @ResponseWrapper(localName = "vtkDataObjectToDataSetFilter3DGravityDataResponse", targetNamespace = "http://services.trustlab.utep.edu", className = "edu.utep.trustlab.services.VtkDataObjectToDataSetFilter3DGravityDataResponse")
+    public String vtkDataObjectToDataSetFilter3DGravityData(
         @WebParam(name = "url", targetNamespace = "http://services.trustlab.utep.edu")
         String url);
+
+    /**
+     * 
+     * @param dataExtent
+     * @param url
+     * @return
+     *     returns java.lang.String
+     */
+    @WebMethod(action = "urn:vtkExtractVOIXYPlane")
+    @WebResult(targetNamespace = "http://services.trustlab.utep.edu")
+    @RequestWrapper(localName = "vtkExtractVOIXYPlane", targetNamespace = "http://services.trustlab.utep.edu", className = "edu.utep.trustlab.services.VtkExtractVOIXYPlane")
+    @ResponseWrapper(localName = "vtkExtractVOIXYPlaneResponse", targetNamespace = "http://services.trustlab.utep.edu", className = "edu.utep.trustlab.services.VtkExtractVOIXYPlaneResponse")
+    public String vtkExtractVOIXYPlane(
+        @WebParam(name = "url", targetNamespace = "http://services.trustlab.utep.edu")
+        String url,
+        @WebParam(name = "dataExtent", targetNamespace = "http://services.trustlab.utep.edu")
+        String dataExtent);
 
     /**
      * 
@@ -326,69 +357,23 @@ public interface ToolkitServicesPortType {
 
     /**
      * 
-     * @param littleEndian
+     * @param scaleFactor
+     * @param radius
      * @param url
      * @return
      *     returns java.lang.String
      */
-    @WebMethod(action = "urn:vtkTIFFReader")
+    @WebMethod(action = "urn:vtkGlyph3DSphereSource")
     @WebResult(targetNamespace = "http://services.trustlab.utep.edu")
-    @RequestWrapper(localName = "vtkTIFFReader", targetNamespace = "http://services.trustlab.utep.edu", className = "edu.utep.trustlab.services.VtkTIFFReader")
-    @ResponseWrapper(localName = "vtkTIFFReaderResponse", targetNamespace = "http://services.trustlab.utep.edu", className = "edu.utep.trustlab.services.VtkTIFFReaderResponse")
-    public String vtkTIFFReader(
+    @RequestWrapper(localName = "vtkGlyph3DSphereSource", targetNamespace = "http://services.trustlab.utep.edu", className = "edu.utep.trustlab.services.VtkGlyph3DSphereSource")
+    @ResponseWrapper(localName = "vtkGlyph3DSphereSourceResponse", targetNamespace = "http://services.trustlab.utep.edu", className = "edu.utep.trustlab.services.VtkGlyph3DSphereSourceResponse")
+    public String vtkGlyph3DSphereSource(
         @WebParam(name = "url", targetNamespace = "http://services.trustlab.utep.edu")
         String url,
-        @WebParam(name = "littleEndian", targetNamespace = "http://services.trustlab.utep.edu")
-        String littleEndian);
-
-    /**
-     * 
-     * @param dim
-     * @param dataSpacing
-     * @param dataExtent
-     * @param dataOrigin
-     * @param littleEndian
-     * @param readLowerLeft
-     * @param numScalarComponents
-     * @param url
-     * @return
-     *     returns java.lang.String
-     */
-    @WebMethod(action = "urn:vtkImageDataReader")
-    @WebResult(targetNamespace = "http://services.trustlab.utep.edu")
-    @RequestWrapper(localName = "vtkImageDataReader", targetNamespace = "http://services.trustlab.utep.edu", className = "edu.utep.trustlab.services.VtkImageDataReader")
-    @ResponseWrapper(localName = "vtkImageDataReaderResponse", targetNamespace = "http://services.trustlab.utep.edu", className = "edu.utep.trustlab.services.VtkImageDataReaderResponse")
-    public String vtkImageDataReader(
-        @WebParam(name = "url", targetNamespace = "http://services.trustlab.utep.edu")
-        String url,
-        @WebParam(name = "littleEndian", targetNamespace = "http://services.trustlab.utep.edu")
-        String littleEndian,
-        @WebParam(name = "dim", targetNamespace = "http://services.trustlab.utep.edu")
-        String dim,
-        @WebParam(name = "dataOrigin", targetNamespace = "http://services.trustlab.utep.edu")
-        String dataOrigin,
-        @WebParam(name = "dataSpacing", targetNamespace = "http://services.trustlab.utep.edu")
-        String dataSpacing,
-        @WebParam(name = "dataExtent", targetNamespace = "http://services.trustlab.utep.edu")
-        String dataExtent,
-        @WebParam(name = "numScalarComponents", targetNamespace = "http://services.trustlab.utep.edu")
-        String numScalarComponents,
-        @WebParam(name = "readLowerLeft", targetNamespace = "http://services.trustlab.utep.edu")
-        String readLowerLeft);
-
-    /**
-     * 
-     * @param url
-     * @return
-     *     returns java.lang.String
-     */
-    @WebMethod(operationName = "ps2pdf", action = "urn:ps2pdf")
-    @WebResult(targetNamespace = "http://services.trustlab.utep.edu")
-    @RequestWrapper(localName = "ps2pdf", targetNamespace = "http://services.trustlab.utep.edu", className = "edu.utep.trustlab.services.Ps2Pdf")
-    @ResponseWrapper(localName = "ps2pdfResponse", targetNamespace = "http://services.trustlab.utep.edu", className = "edu.utep.trustlab.services.Ps2PdfResponse")
-    public String ps2Pdf(
-        @WebParam(name = "url", targetNamespace = "http://services.trustlab.utep.edu")
-        String url);
+        @WebParam(name = "radius", targetNamespace = "http://services.trustlab.utep.edu")
+        String radius,
+        @WebParam(name = "scaleFactor", targetNamespace = "http://services.trustlab.utep.edu")
+        String scaleFactor);
 
     /**
      * 
@@ -401,6 +386,20 @@ public interface ToolkitServicesPortType {
     @RequestWrapper(localName = "pdf2png", targetNamespace = "http://services.trustlab.utep.edu", className = "edu.utep.trustlab.services.Pdf2Png")
     @ResponseWrapper(localName = "pdf2pngResponse", targetNamespace = "http://services.trustlab.utep.edu", className = "edu.utep.trustlab.services.Pdf2PngResponse")
     public String pdf2Png(
+        @WebParam(name = "url", targetNamespace = "http://services.trustlab.utep.edu")
+        String url);
+
+    /**
+     * 
+     * @param url
+     * @return
+     *     returns java.lang.String
+     */
+    @WebMethod(operationName = "ps2pdf", action = "urn:ps2pdf")
+    @WebResult(targetNamespace = "http://services.trustlab.utep.edu")
+    @RequestWrapper(localName = "ps2pdf", targetNamespace = "http://services.trustlab.utep.edu", className = "edu.utep.trustlab.services.Ps2Pdf")
+    @ResponseWrapper(localName = "ps2pdfResponse", targetNamespace = "http://services.trustlab.utep.edu", className = "edu.utep.trustlab.services.Ps2PdfResponse")
+    public String ps2Pdf(
         @WebParam(name = "url", targetNamespace = "http://services.trustlab.utep.edu")
         String url);
 
@@ -447,7 +446,26 @@ public interface ToolkitServicesPortType {
 
     /**
      * 
-     * @param dim
+     * @param maximumDistance
+     * @param sampleDimensions
+     * @param url
+     * @return
+     *     returns java.lang.String
+     */
+    @WebMethod(action = "urn:vtkShepardMethod")
+    @WebResult(targetNamespace = "http://services.trustlab.utep.edu")
+    @RequestWrapper(localName = "vtkShepardMethod", targetNamespace = "http://services.trustlab.utep.edu", className = "edu.utep.trustlab.services.VtkShepardMethod")
+    @ResponseWrapper(localName = "vtkShepardMethodResponse", targetNamespace = "http://services.trustlab.utep.edu", className = "edu.utep.trustlab.services.VtkShepardMethodResponse")
+    public String vtkShepardMethod(
+        @WebParam(name = "url", targetNamespace = "http://services.trustlab.utep.edu")
+        String url,
+        @WebParam(name = "sampleDimensions", targetNamespace = "http://services.trustlab.utep.edu")
+        String sampleDimensions,
+        @WebParam(name = "maximumDistance", targetNamespace = "http://services.trustlab.utep.edu")
+        String maximumDistance);
+
+    /**
+     * 
      * @param dataSpacing
      * @param dataExtent
      * @param dataOrigin
@@ -458,17 +476,15 @@ public interface ToolkitServicesPortType {
      * @return
      *     returns java.lang.String
      */
-    @WebMethod(action = "urn:vtkImageDataReaderUnsignedInts")
+    @WebMethod(action = "urn:vtkImageDataReader3DUnsignedShortIntegers")
     @WebResult(targetNamespace = "http://services.trustlab.utep.edu")
-    @RequestWrapper(localName = "vtkImageDataReaderUnsignedInts", targetNamespace = "http://services.trustlab.utep.edu", className = "edu.utep.trustlab.services.VtkImageDataReaderUnsignedInts")
-    @ResponseWrapper(localName = "vtkImageDataReaderUnsignedIntsResponse", targetNamespace = "http://services.trustlab.utep.edu", className = "edu.utep.trustlab.services.VtkImageDataReaderUnsignedIntsResponse")
-    public String vtkImageDataReaderUnsignedInts(
+    @RequestWrapper(localName = "vtkImageDataReader3DUnsignedShortIntegers", targetNamespace = "http://services.trustlab.utep.edu", className = "edu.utep.trustlab.services.VtkImageDataReader3DUnsignedShortIntegers")
+    @ResponseWrapper(localName = "vtkImageDataReader3DUnsignedShortIntegersResponse", targetNamespace = "http://services.trustlab.utep.edu", className = "edu.utep.trustlab.services.VtkImageDataReader3DUnsignedShortIntegersResponse")
+    public String vtkImageDataReader3DUnsignedShortIntegers(
         @WebParam(name = "url", targetNamespace = "http://services.trustlab.utep.edu")
         String url,
         @WebParam(name = "littleEndian", targetNamespace = "http://services.trustlab.utep.edu")
         String littleEndian,
-        @WebParam(name = "dim", targetNamespace = "http://services.trustlab.utep.edu")
-        String dim,
         @WebParam(name = "dataOrigin", targetNamespace = "http://services.trustlab.utep.edu")
         String dataOrigin,
         @WebParam(name = "dataSpacing", targetNamespace = "http://services.trustlab.utep.edu")
@@ -532,6 +548,107 @@ public interface ToolkitServicesPortType {
 
     /**
      * 
+     * @param indexOfY
+     * @param indexOfZ
+     * @param indexOfX
+     * @param url
+     * @return
+     *     returns java.lang.String
+     */
+    @WebMethod(operationName = "GravityDataFieldFilter", action = "urn:GravityDataFieldFilter")
+    @WebResult(targetNamespace = "http://services.trustlab.utep.edu")
+    @RequestWrapper(localName = "GravityDataFieldFilter", targetNamespace = "http://services.trustlab.utep.edu", className = "edu.utep.trustlab.services.GravityDataFieldFilter")
+    @ResponseWrapper(localName = "GravityDataFieldFilterResponse", targetNamespace = "http://services.trustlab.utep.edu", className = "edu.utep.trustlab.services.GravityDataFieldFilterResponse")
+    public String gravityDataFieldFilter(
+        @WebParam(name = "url", targetNamespace = "http://services.trustlab.utep.edu")
+        String url,
+        @WebParam(name = "indexOfX", targetNamespace = "http://services.trustlab.utep.edu")
+        String indexOfX,
+        @WebParam(name = "indexOfY", targetNamespace = "http://services.trustlab.utep.edu")
+        String indexOfY,
+        @WebParam(name = "indexOfZ", targetNamespace = "http://services.trustlab.utep.edu")
+        String indexOfZ);
+
+    /**
+     * 
+     * @param dataSpacing
+     * @param dataExtent
+     * @param dataOrigin
+     * @param littleEndian
+     * @param readLowerLeft
+     * @param numScalarComponents
+     * @param url
+     * @return
+     *     returns java.lang.String
+     */
+    @WebMethod(action = "urn:vtkImageDataReader3DFloats")
+    @WebResult(targetNamespace = "http://services.trustlab.utep.edu")
+    @RequestWrapper(localName = "vtkImageDataReader3DFloats", targetNamespace = "http://services.trustlab.utep.edu", className = "edu.utep.trustlab.services.VtkImageDataReader3DFloats")
+    @ResponseWrapper(localName = "vtkImageDataReader3DFloatsResponse", targetNamespace = "http://services.trustlab.utep.edu", className = "edu.utep.trustlab.services.VtkImageDataReader3DFloatsResponse")
+    public String vtkImageDataReader3DFloats(
+        @WebParam(name = "url", targetNamespace = "http://services.trustlab.utep.edu")
+        String url,
+        @WebParam(name = "littleEndian", targetNamespace = "http://services.trustlab.utep.edu")
+        String littleEndian,
+        @WebParam(name = "dataOrigin", targetNamespace = "http://services.trustlab.utep.edu")
+        String dataOrigin,
+        @WebParam(name = "dataSpacing", targetNamespace = "http://services.trustlab.utep.edu")
+        String dataSpacing,
+        @WebParam(name = "dataExtent", targetNamespace = "http://services.trustlab.utep.edu")
+        String dataExtent,
+        @WebParam(name = "numScalarComponents", targetNamespace = "http://services.trustlab.utep.edu")
+        String numScalarComponents,
+        @WebParam(name = "readLowerLeft", targetNamespace = "http://services.trustlab.utep.edu")
+        String readLowerLeft);
+
+    /**
+     * 
+     * @return
+     *     returns java.lang.String
+     */
+    @WebMethod(operationName = "jsonGraph_DataTransformations", action = "urn:jsonGraph_DataTransformations")
+    @WebResult(targetNamespace = "http://services.trustlab.utep.edu")
+    @RequestWrapper(localName = "jsonGraph_DataTransformations", targetNamespace = "http://services.trustlab.utep.edu", className = "edu.utep.trustlab.services.JsonGraphDataTransformations")
+    @ResponseWrapper(localName = "jsonGraph_DataTransformationsResponse", targetNamespace = "http://services.trustlab.utep.edu", className = "edu.utep.trustlab.services.JsonGraphDataTransformationsResponse")
+    public String jsonGraphDataTransformations();
+
+    /**
+     * 
+     * @param b
+     * @param s
+     * @param c
+     * @param a
+     * @param wa
+     * @param j
+     * @param wc
+     * @param url
+     * @return
+     *     returns java.lang.String
+     */
+    @WebMethod(action = "urn:grdcontour")
+    @WebResult(targetNamespace = "http://services.trustlab.utep.edu")
+    @RequestWrapper(localName = "grdcontour", targetNamespace = "http://services.trustlab.utep.edu", className = "edu.utep.trustlab.services.Grdcontour")
+    @ResponseWrapper(localName = "grdcontourResponse", targetNamespace = "http://services.trustlab.utep.edu", className = "edu.utep.trustlab.services.GrdcontourResponse")
+    public String grdcontour(
+        @WebParam(name = "url", targetNamespace = "http://services.trustlab.utep.edu")
+        String url,
+        @WebParam(name = "C", targetNamespace = "http://services.trustlab.utep.edu")
+        String c,
+        @WebParam(name = "A", targetNamespace = "http://services.trustlab.utep.edu")
+        String a,
+        @WebParam(name = "J", targetNamespace = "http://services.trustlab.utep.edu")
+        String j,
+        @WebParam(name = "S", targetNamespace = "http://services.trustlab.utep.edu")
+        String s,
+        @WebParam(name = "B", targetNamespace = "http://services.trustlab.utep.edu")
+        String b,
+        @WebParam(name = "Wa", targetNamespace = "http://services.trustlab.utep.edu")
+        String wa,
+        @WebParam(name = "Wc", targetNamespace = "http://services.trustlab.utep.edu")
+        String wc);
+
+    /**
+     * 
      * @param colorFunction
      * @param magnification
      * @param zRotation
@@ -570,38 +687,20 @@ public interface ToolkitServicesPortType {
 
     /**
      * 
-     * @param b
-     * @param s
-     * @param c
-     * @param a
-     * @param wa
-     * @param j
-     * @param wc
+     * @param dataExtent
      * @param url
      * @return
      *     returns java.lang.String
      */
-    @WebMethod(action = "urn:grdcontour")
+    @WebMethod(action = "urn:vtkExtractVOIYZPlane")
     @WebResult(targetNamespace = "http://services.trustlab.utep.edu")
-    @RequestWrapper(localName = "grdcontour", targetNamespace = "http://services.trustlab.utep.edu", className = "edu.utep.trustlab.services.Grdcontour")
-    @ResponseWrapper(localName = "grdcontourResponse", targetNamespace = "http://services.trustlab.utep.edu", className = "edu.utep.trustlab.services.GrdcontourResponse")
-    public String grdcontour(
+    @RequestWrapper(localName = "vtkExtractVOIYZPlane", targetNamespace = "http://services.trustlab.utep.edu", className = "edu.utep.trustlab.services.VtkExtractVOIYZPlane")
+    @ResponseWrapper(localName = "vtkExtractVOIYZPlaneResponse", targetNamespace = "http://services.trustlab.utep.edu", className = "edu.utep.trustlab.services.VtkExtractVOIYZPlaneResponse")
+    public String vtkExtractVOIYZPlane(
         @WebParam(name = "url", targetNamespace = "http://services.trustlab.utep.edu")
         String url,
-        @WebParam(name = "C", targetNamespace = "http://services.trustlab.utep.edu")
-        String c,
-        @WebParam(name = "A", targetNamespace = "http://services.trustlab.utep.edu")
-        String a,
-        @WebParam(name = "J", targetNamespace = "http://services.trustlab.utep.edu")
-        String j,
-        @WebParam(name = "S", targetNamespace = "http://services.trustlab.utep.edu")
-        String s,
-        @WebParam(name = "B", targetNamespace = "http://services.trustlab.utep.edu")
-        String b,
-        @WebParam(name = "Wa", targetNamespace = "http://services.trustlab.utep.edu")
-        String wa,
-        @WebParam(name = "Wc", targetNamespace = "http://services.trustlab.utep.edu")
-        String wc);
+        @WebParam(name = "dataExtent", targetNamespace = "http://services.trustlab.utep.edu")
+        String dataExtent);
 
     /**
      * 
@@ -651,5 +750,22 @@ public interface ToolkitServicesPortType {
         String t,
         @WebParam(name = "R", targetNamespace = "http://services.trustlab.utep.edu")
         String r);
+
+    /**
+     * 
+     * @param dataExtent
+     * @param url
+     * @return
+     *     returns java.lang.String
+     */
+    @WebMethod(action = "urn:vtkExtractVOI3D")
+    @WebResult(targetNamespace = "http://services.trustlab.utep.edu")
+    @RequestWrapper(localName = "vtkExtractVOI3D", targetNamespace = "http://services.trustlab.utep.edu", className = "edu.utep.trustlab.services.VtkExtractVOI3D")
+    @ResponseWrapper(localName = "vtkExtractVOI3DResponse", targetNamespace = "http://services.trustlab.utep.edu", className = "edu.utep.trustlab.services.VtkExtractVOI3DResponse")
+    public String vtkExtractVOI3D(
+        @WebParam(name = "url", targetNamespace = "http://services.trustlab.utep.edu")
+        String url,
+        @WebParam(name = "dataExtent", targetNamespace = "http://services.trustlab.utep.edu")
+        String dataExtent);
 
 }
