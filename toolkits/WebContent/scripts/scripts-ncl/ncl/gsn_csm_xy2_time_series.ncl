@@ -41,7 +41,7 @@ begin
 		timeSeriesData = addfile(netCDFFilePath, "r")
 
 		; left plot data
-		lPlotData = new((/lPlotVariableCount, xDimSize/), double)
+		lPlotData = new((/lPlotVariableCount, xDimSizeInteger/), double)
 
 		do i = 0, lPlotVariableCount - 1
 			plotVariableName = lPlotVariableNames(i);
@@ -50,7 +50,7 @@ begin
 		end do
 
 		; right plot data
-		rPlotData = new ((/rPlotVariableCount, xDimSize/), double)
+		rPlotData = new ((/rPlotVariableCount, xDimSizeInteger/), double)
 
 		if(existsRightAxis) then
 			do i = 0, rPlotVariableCount - 1
@@ -61,7 +61,7 @@ begin
 		end if
 
 		; make time array
-		times = ispan(1, xDimSize, 1)
+		times = ispan(1, xDimSizeInteger, 1)
 		times@long_name = "Time"
 
 		; resources for "left" variable

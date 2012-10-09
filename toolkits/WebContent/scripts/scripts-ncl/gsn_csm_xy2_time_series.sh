@@ -17,7 +17,7 @@ yLAxisLabel=$8
 yRAxisLabel=$9
 scriptsPath=${10}
 
-useNCLFile=$scriptsPath/gsn_csm_contour_map.ncl
+useNCLFile=$scriptsPath/gsn_csm_xy2_time_series.ncl
 
 ncl netCDFFilePath=\"$netCDFFilePath\" outputFilePath=\"$outputFilePath\" lPlotVariablesList=\"$lPlotVariablesList\" rPlotVariablesList=\"$rPlotVariablesList\" xDimName=\"$xDimName\" xDimSize=\"$xDimSize\" title=\"$title\" yLAxisLabel=\"$yLAxisLabel\" yRAxisLabel=\"$yRAxisLabel\" $useNCLFile <<$end
 $blank
