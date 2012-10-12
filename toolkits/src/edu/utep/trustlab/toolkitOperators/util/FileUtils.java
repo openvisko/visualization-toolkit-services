@@ -39,6 +39,10 @@ public class FileUtils{
 	public static String getWorkspace(){
 		return OUTPUT;
 	}
+	
+	public static String getImageMagickScripts(){
+		return SCRIPTS + "scripts-imageMagick/";
+	}
 		
 	public static String getGMTScripts(){
 		return SCRIPTS + "scripts-gmt/";

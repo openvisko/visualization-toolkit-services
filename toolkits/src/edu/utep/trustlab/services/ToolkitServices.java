@@ -18,6 +18,7 @@ import edu.utep.trustlab.toolkitOperators.gs.PDFToPNG;
 import edu.utep.trustlab.toolkitOperators.gs.PSToPDF;
 import edu.utep.trustlab.toolkitOperators.gs.PSToPNG;
 import edu.utep.trustlab.toolkitOperators.imageMagick.FITSToPNG;
+import edu.utep.trustlab.toolkitOperators.imageMagick.Spherize;
 import edu.utep.trustlab.toolkitOperators.ncl.Gsn_csm_contour_map;
 import edu.utep.trustlab.toolkitOperators.ncl.Gsn_csm_contour_map_raster;
 import edu.utep.trustlab.toolkitOperators.ncl.Gsn_csm_xy2_time_series;
@@ -41,6 +42,11 @@ public class ToolkitServices {
 	// ImageMagick Services
 	public String fits2png(@WebParam(name="url") String url){
 		FITSToPNG service = new FITSToPNG(url);
+		return service.transform();
+	}
+	
+	public String spherize(@WebParam(name="url") String url){
+		Spherize service = new Spherize(url);
 		return service.transform();
 	}
 	
