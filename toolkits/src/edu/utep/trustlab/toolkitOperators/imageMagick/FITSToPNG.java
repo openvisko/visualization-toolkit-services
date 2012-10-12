@@ -8,7 +8,7 @@ public class FITSToPNG extends ToolkitOperator{
 	private static final String IMAGEMAGICK = "convert";
 
 	public FITSToPNG(String fitsFileURL){	
-		super(fitsFileURL, "data.fits", true, false, "image.png");
+		super(fitsFileURL, "data.fits", false, false, "image.png");
 	}
 
 	public String transform(){
