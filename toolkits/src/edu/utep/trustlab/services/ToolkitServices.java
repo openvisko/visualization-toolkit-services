@@ -17,6 +17,7 @@ import edu.utep.trustlab.toolkitOperators.gmt.Surface;
 import edu.utep.trustlab.toolkitOperators.gs.PDFToPNG;
 import edu.utep.trustlab.toolkitOperators.gs.PSToPDF;
 import edu.utep.trustlab.toolkitOperators.gs.PSToPNG;
+import edu.utep.trustlab.toolkitOperators.imageMagick.FITSToPNG;
 import edu.utep.trustlab.toolkitOperators.ncl.Gsn_csm_contour_map;
 import edu.utep.trustlab.toolkitOperators.ncl.Gsn_csm_contour_map_raster;
 import edu.utep.trustlab.toolkitOperators.ncl.Gsn_csm_xy2_time_series;
@@ -36,7 +37,13 @@ import edu.utep.trustlab.toolkitOperators.vtk.VTKVolume;
 import edu.utep.trustlab.toolkitOperators.vtk.VTKShepardMethod;
 
 public class ToolkitServices {
-		
+	
+	// ImageMagick Services
+	public String fits2png(@WebParam(name="url") String url){
+		FITSToPNG service = new FITSToPNG(url);
+		return service.transform();
+	}
+	
 	//GMT Services
 	public String grdimage(
 			@WebParam(name="url") String url,
