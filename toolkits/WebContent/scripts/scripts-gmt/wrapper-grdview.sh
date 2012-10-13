@@ -28,5 +28,4 @@ colorsFile=$workspace/colors.cpt
 makecpt -C$colorPallet -T$colorrange > $colorsFile
 grdimage $infile -J$projection -P -B$boundaryAnnotationInterval -C$colorsFile > $outfile
 
-rm $infile
 rm $colorsFile

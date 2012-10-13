@@ -23,5 +23,3 @@ plottingSymbolFill=$6
 boundaryAnnotationInterval=$7
 
 psxy $infile -P -R$region -S$plottingSymbolAndSize -J$projection -G$plottingSymbolFill -B$boundaryAnnotationInterval > $outfile
-
-rm $infile

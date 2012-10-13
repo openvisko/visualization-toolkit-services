@@ -27,3 +27,6 @@ contourPen=$9
 # produce contour ps file out of gridded data
 # P flag is for portrait orientation, B2 flag is for ticks every two units
 grdcontour $infile -J$projection -P -S$smoothing -B$boundaryAnnotationInterval -C$contourInterval -A$annotationInterval -Wa$annotationPen -Wc$contourPen  > $outfile
+
+# remove temp files and input files
+rm $infile

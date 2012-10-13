@@ -21,6 +21,3 @@ searchradius=$4
 region=$5
 
 nearneighbor -R$region -I$gridspacing -S$searchradius -G$outfile $infile
-
-# remove temp files and input files
-rm $infile

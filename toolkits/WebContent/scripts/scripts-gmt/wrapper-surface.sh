@@ -25,6 +25,5 @@ tmpfile=${infile}.tmp
 blockmean $infile -R$region -I$gridspacing > $tmpfile
 surface -R$region -I$gridspacing -G$outfile -T$tension -C$convergenceLimit $tmpfile
 
-# remove temp files and input files
-rm $infile
+# remove temp file
 rm $tmpfile
