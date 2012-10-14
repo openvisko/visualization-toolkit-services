@@ -23,6 +23,6 @@ region=$6
 azimuthElevation=$7
 plotSymbol=$8
 penAttributes=$9
-filling=$10
+filling=${10}
 
-psxyz -B$boundaryAnnotationInterval -J$projection -J$height -R$region -E$azimuthElevation -S$plotSymbol $infile -W$penAttributes -G$filling > $outfile
+psxyz -B$boundaryAnnotationInterval -J$projection -JZ$height -R$region -E$azimuthElevation -S$plotSymbol $infile -W$penAttributes -G$filling > $outfile
