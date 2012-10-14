@@ -6,7 +6,7 @@ import edu.utep.trustlab.toolkitOperators.util.FileUtils;
 
 public class Spherize extends ToolkitOperator{
 
-	private static final String SCRIPT_SPHERIZE = FileUtils.getImageMagickScripts() + "spherize";
+	private static final String SCRIPT_SPHERIZE = FileUtils.getImageMagickScripts() + "spherize.sh";
 
 	public Spherize(String fitsFileURL){	
 		super(fitsFileURL, "image.png", false, false, "spherizedImage.png");

@@ -90,7 +90,8 @@ trim="no"				# trim output to diameters
 
 # set directory for temporary files
 #dir="."    # suggestions are 
-dir="." or dir="/tmp"
+#dir="." or 
+dir="/tmp"
 
 # set up functions to report Usage and Usage with Description
 PROGNAME=`type $0 | awk '{print $3}'`  # search for executable on path
