@@ -9,10 +9,13 @@ import edu.utep.trustlab.toolkitOperators.custom.Int2Short;
 import edu.utep.trustlab.toolkitOperators.custom.JSONBars_Instances;
 import edu.utep.trustlab.toolkitOperators.custom.JSONGraph_DataTransformations;
 import edu.utep.trustlab.toolkitOperators.custom.JSONGraph_OperatorPaths;
+import edu.utep.trustlab.toolkitOperators.gmt.Grd2xyz;
+import edu.utep.trustlab.toolkitOperators.gmt.Grd2xyz_esri;
 import edu.utep.trustlab.toolkitOperators.gmt.Grdcontour;
 import edu.utep.trustlab.toolkitOperators.gmt.Grdimage;
 import edu.utep.trustlab.toolkitOperators.gmt.Nearneighbor;
 import edu.utep.trustlab.toolkitOperators.gmt.Psxy;
+import edu.utep.trustlab.toolkitOperators.gmt.Psxyz;
 import edu.utep.trustlab.toolkitOperators.gmt.Surface;
 import edu.utep.trustlab.toolkitOperators.gs.PDFToPNG;
 import edu.utep.trustlab.toolkitOperators.gs.PSToPDF;
@@ -51,6 +54,35 @@ public class ToolkitServices {
 	}
 	
 	//GMT Services
+	public String grd2xyz(
+			@WebParam(name="url") String url,
+			@WebParam(name="N")String N){
+		Grd2xyz service = new Grd2xyz(url);
+		return service.transform(N);
+	}
+
+	public String grd2xyz_esri(
+			@WebParam(name="url") String url,
+			@WebParam(name="N")String N){
+		Grd2xyz_esri service = new Grd2xyz_esri(url);
+		return service.transform(N);
+	}
+	
+	public String psxyz(
+			@WebParam(name="url") String url,
+			@WebParam(name="B") String B,
+			@WebParam(name="J") String J,
+			@WebParam(name="JZ") String JZ,
+			@WebParam(name="R") String R,
+			@WebParam(name="E") String E,
+			@WebParam(name="S") String S,
+			@WebParam(name="W") String W,
+			@WebParam(name="G") String G
+			){
+		Psxyz service = new Psxyz(url);
+		return service.transform(B, J, JZ, R, E, S, W, G);
+	}
+	
 	public String grdimage(
 			@WebParam(name="url") String url,
 			@WebParam(name="C")String C,
