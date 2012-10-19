@@ -39,6 +39,7 @@ public class SurfacePlotterService extends ToolkitOperator{
 		ImageProcessor processor = image.getProcessor();
 		System.out.println("got image processor");
 		
+		System.out.println("setting roi");
 		setROI(image, processor);
 		System.out.println("set roi");
 		
