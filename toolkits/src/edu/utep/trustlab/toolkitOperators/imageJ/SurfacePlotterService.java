@@ -47,7 +47,7 @@ public class SurfacePlotterService extends ToolkitOperator{
 		boolean booleanBlackFill = Boolean.getBoolean(blackFill);
 		boolean booleanSmooth = Boolean.getBoolean(smooth);
 		
-		plotter.setParameters(intPlotWidth, intPolygonMultiplier, booleanShowWireframe, booleanShowGrayscale, booleanShowAxis, booleanWhiteBackground, booleanBlackFill, booleanSmooth);
+		//plotter.setParameters(intPlotWidth, intPolygonMultiplier, booleanShowWireframe, booleanShowGrayscale, booleanShowAxis, booleanWhiteBackground, booleanBlackFill, booleanSmooth);
 		plotter.setImage(image);
 		
 		ImageProcessor newProcessor = plotter.makeSurfacePlot(processor);
