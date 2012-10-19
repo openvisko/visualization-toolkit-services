@@ -39,13 +39,13 @@ public class SurfacePlotterService extends ToolkitOperator{
 		
 		int intPlotWidth = Integer.parseInt(plotWidth);
 		int intPolygonMultiplier = Integer.parseInt(polygonMultiplier);
-
-		boolean booleanShowWireframe = Boolean.getBoolean(showWireframe);
-		boolean booleanShowGrayscale = Boolean.getBoolean(showGrayscale);
-		boolean booleanShowAxis = Boolean.getBoolean(showAxis);
-		boolean booleanWhiteBackground = Boolean.getBoolean(whiteBackground);
-		boolean booleanBlackFill = Boolean.getBoolean(blackFill);
-		boolean booleanSmooth = Boolean.getBoolean(smooth);
+		
+		boolean booleanShowWireframe = Boolean.parseBoolean(showWireframe);
+		boolean booleanShowGrayscale = Boolean.parseBoolean(showGrayscale);
+		boolean booleanShowAxis = Boolean.parseBoolean(showAxis);
+		boolean booleanWhiteBackground = Boolean.parseBoolean(whiteBackground);
+		boolean booleanBlackFill = Boolean.parseBoolean(blackFill);
+		boolean booleanSmooth = Boolean.parseBoolean(smooth);
 		
 		plotter.setParameters(intPlotWidth, intPolygonMultiplier, booleanShowWireframe, booleanShowGrayscale, booleanShowAxis, booleanWhiteBackground, booleanBlackFill, booleanSmooth);
 		plotter.setImage(image);
