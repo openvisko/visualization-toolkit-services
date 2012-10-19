@@ -30,8 +30,15 @@ public class SurfacePlotterService extends ToolkitOperator{
 			String smooth
 			){
 		
+		System.out.println("input image: " + inputPath);
+		
 		ImagePlus image = new ImagePlus(inputPath);
+	
+		System.out.println("got image plut object");
+		
 		ImageProcessor processor = image.getProcessor();
+		System.out.println("got image processor");
+		
 		setROI(image, processor);
 		
 		SurfacePlotter plotter = new SurfacePlotter();
@@ -46,9 +53,11 @@ public class SurfacePlotterService extends ToolkitOperator{
 		boolean booleanBlackFill = Boolean.getBoolean(blackFill);
 		boolean booleanSmooth = Boolean.getBoolean(smooth);
 		
-		plotter.setParameters(intPlotWidth, intPolygonMultiplier, booleanShowWireframe, booleanShowGrayscale, booleanShowAxis, booleanWhiteBackground, booleanBlackFill, booleanSmooth);
+		System.out.println("got parameters");
 		
+		plotter.setParameters(intPlotWidth, intPolygonMultiplier, booleanShowWireframe, booleanShowGrayscale, booleanShowAxis, booleanWhiteBackground, booleanBlackFill, booleanSmooth);
 		plotter.setImage(image);
+		
 		ImageProcessor newProcessor = plotter.makeSurfacePlot(processor);
 	    dumpSurfacePlot(newProcessor);
 		
