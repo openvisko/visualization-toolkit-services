@@ -30,48 +30,22 @@ public class SurfacePlotterService extends ToolkitOperator{
 			String smooth
 			){
 		
-		System.out.println("input image: " + inputPath);
 		
 		ImagePlus image = new ImagePlus(inputPath);
-	
-		System.out.println("got image plut object");
-		
 		ImageProcessor processor = image.getProcessor();
-		System.out.println("got image processor");
-		
-		System.out.println("setting roi");
 		setROI(image, processor);
-		System.out.println("set roi");
-		
+	
 		SurfacePlotter plotter = new SurfacePlotter();
 		
-		System.out.println("got plotter");
-		
-		System.out.println("plot width: " + plotWidth);
-		
-		int intPlotWidth = Integer.getInteger(plotWidth);
-		System.out.println("got param1");
-		int intPolygonMultiplier = Integer.getInteger(polygonMultiplier);
-		System.out.println("got param2");
+		int intPlotWidth = Integer.parseInt(plotWidth);
+		int intPolygonMultiplier = Integer.parseInt(polygonMultiplier);
+
 		boolean booleanShowWireframe = Boolean.getBoolean(showWireframe);
-		System.out.println("got param3");
-
 		boolean booleanShowGrayscale = Boolean.getBoolean(showGrayscale);
-		System.out.println("got param4");
-
 		boolean booleanShowAxis = Boolean.getBoolean(showAxis);
-		System.out.println("got param5");
-
 		boolean booleanWhiteBackground = Boolean.getBoolean(whiteBackground);
-		System.out.println("got param6");
-
 		boolean booleanBlackFill = Boolean.getBoolean(blackFill);
-		System.out.println("got param7");
-
 		boolean booleanSmooth = Boolean.getBoolean(smooth);
-		System.out.println("got param8");
-		
-		System.out.println("got parameters");
 		
 		plotter.setParameters(intPlotWidth, intPolygonMultiplier, booleanShowWireframe, booleanShowGrayscale, booleanShowAxis, booleanWhiteBackground, booleanBlackFill, booleanSmooth);
 		plotter.setImage(image);
