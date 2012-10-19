@@ -47,6 +47,8 @@ public class SurfacePlotterService extends ToolkitOperator{
 		
 		System.out.println("got plotter");
 		
+		System.out.println("plot width: " + plotWidth);
+		
 		int intPlotWidth = Integer.getInteger(plotWidth);
 		System.out.println("got param1");
 		int intPolygonMultiplier = Integer.getInteger(polygonMultiplier);
