@@ -20,6 +20,7 @@ import edu.utep.trustlab.toolkitOperators.gmt.Surface;
 import edu.utep.trustlab.toolkitOperators.gs.PDFToPNG;
 import edu.utep.trustlab.toolkitOperators.gs.PSToPDF;
 import edu.utep.trustlab.toolkitOperators.gs.PSToPNG;
+import edu.utep.trustlab.toolkitOperators.imageJ.SurfacePlotterService;
 import edu.utep.trustlab.toolkitOperators.imageMagick.FITSToPNG;
 import edu.utep.trustlab.toolkitOperators.imageMagick.Spherize;
 import edu.utep.trustlab.toolkitOperators.ncl.Gsn_csm_contour_map;
@@ -41,6 +42,21 @@ import edu.utep.trustlab.toolkitOperators.vtk.VTKVolume;
 import edu.utep.trustlab.toolkitOperators.vtk.VTKShepardMethod;
 
 public class ToolkitServices {
+	//imageJ services
+	public String surfacePlotter(
+			@WebParam(name="url") String url,
+			@WebParam(name="plotWidth") int plotWidth,
+			@WebParam(name="polygonMultiplier") int polygonMultiplier,			
+			@WebParam(name="showWireframe") boolean showWireframe,
+			@WebParam(name="showGrayscale") boolean showGrayscale,
+			@WebParam(name="showAxis") boolean showAxis,
+			@WebParam(name="whiteBackground") boolean whiteBackground,
+			@WebParam(name="blackFill") boolean blackFill,
+			@WebParam(name="smooth") boolean smooth
+			){
+		SurfacePlotterService service = new SurfacePlotterService(url);
+		return service.transform(plotWidth, polygonMultiplier, showWireframe, showGrayscale, showAxis, whiteBackground, blackFill, smooth);
+	}
 	
 	// ImageMagick Services
 	public String fits2png(@WebParam(name="url") String url){
