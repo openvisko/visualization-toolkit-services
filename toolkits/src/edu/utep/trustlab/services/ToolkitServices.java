@@ -45,14 +45,14 @@ public class ToolkitServices {
 	//imageJ services
 	public String surfacePlotter(
 			@WebParam(name="url") String url,
-			@WebParam(name="plotWidth") int plotWidth,
-			@WebParam(name="polygonMultiplier") int polygonMultiplier,			
-			@WebParam(name="showWireframe") boolean showWireframe,
-			@WebParam(name="showGrayscale") boolean showGrayscale,
-			@WebParam(name="showAxis") boolean showAxis,
-			@WebParam(name="whiteBackground") boolean whiteBackground,
-			@WebParam(name="blackFill") boolean blackFill,
-			@WebParam(name="smooth") boolean smooth
+			@WebParam(name="plotWidth") String plotWidth,
+			@WebParam(name="polygonMultiplier") String polygonMultiplier,			
+			@WebParam(name="showWireframe") String showWireframe,
+			@WebParam(name="showGrayscale") String showGrayscale,
+			@WebParam(name="showAxis") String showAxis,
+			@WebParam(name="whiteBackground") String whiteBackground,
+			@WebParam(name="blackFill") String blackFill,
+			@WebParam(name="smooth") String smooth
 			){
 		SurfacePlotterService service = new SurfacePlotterService(url);
 		return service.transform(plotWidth, polygonMultiplier, showWireframe, showGrayscale, showAxis, whiteBackground, blackFill, smooth);

@@ -19,14 +19,15 @@ public class SurfacePlotterService extends ToolkitOperator{
 	}
 	
 	public String transform(
-			int plotWidth,
-			int polygonMultiplier,			
-			boolean showWireframe,
-			boolean showGrayscale,
-			boolean showAxis,
-			boolean whiteBackground,
-			boolean blackFill,
-			boolean smooth
+			String plotWidth,
+			String polygonMultiplier,			
+			
+			String showWireframe,
+			String showGrayscale,
+			String showAxis,
+			String whiteBackground,
+			String blackFill,
+			String smooth
 			){
 		
 		ImagePlus image = new ImagePlus(inputPath);
@@ -34,7 +35,19 @@ public class SurfacePlotterService extends ToolkitOperator{
 		setROI(image, processor);
 		
 		SurfacePlotter plotter = new SurfacePlotter();
-		plotter.setParameters(plotWidth, polygonMultiplier, showWireframe, showGrayscale, showAxis, whiteBackground, blackFill, smooth);
+		
+		int intPlotWidth = Integer.getInteger(plotWidth);
+		int intPolygonMultiplier = Integer.getInteger(polygonMultiplier);
+		
+		boolean booleanShowWireframe = Boolean.getBoolean(showWireframe);
+		boolean booleanShowGrayscale = Boolean.getBoolean(showGrayscale);
+		boolean booleanShowAxis = Boolean.getBoolean(showAxis);
+		boolean booleanWhiteBackground = Boolean.getBoolean(whiteBackground);
+		boolean booleanBlackFill = Boolean.getBoolean(blackFill);
+		boolean booleanSmooth = Boolean.getBoolean(smooth);
+		
+		plotter.setParameters(intPlotWidth, intPolygonMultiplier, booleanShowWireframe, booleanShowGrayscale, booleanShowAxis, booleanWhiteBackground, booleanBlackFill, booleanSmooth);
+		
 		plotter.setImage(image);
 		ImageProcessor newProcessor = plotter.makeSurfacePlot(processor);
 	    dumpSurfacePlot(newProcessor);
