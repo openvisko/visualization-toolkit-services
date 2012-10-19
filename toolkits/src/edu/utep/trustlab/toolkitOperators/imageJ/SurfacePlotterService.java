@@ -40,18 +40,33 @@ public class SurfacePlotterService extends ToolkitOperator{
 		System.out.println("got image processor");
 		
 		setROI(image, processor);
+		System.out.println("set roi");
 		
 		SurfacePlotter plotter = new SurfacePlotter();
 		
-		int intPlotWidth = Integer.getInteger(plotWidth);
-		int intPolygonMultiplier = Integer.getInteger(polygonMultiplier);
+		System.out.println("got plotter");
 		
+		int intPlotWidth = Integer.getInteger(plotWidth);
+		System.out.println("got param1");
+		int intPolygonMultiplier = Integer.getInteger(polygonMultiplier);
+		System.out.println("got param2");
 		boolean booleanShowWireframe = Boolean.getBoolean(showWireframe);
+		System.out.println("got param3");
+
 		boolean booleanShowGrayscale = Boolean.getBoolean(showGrayscale);
+		System.out.println("got param4");
+
 		boolean booleanShowAxis = Boolean.getBoolean(showAxis);
+		System.out.println("got param5");
+
 		boolean booleanWhiteBackground = Boolean.getBoolean(whiteBackground);
+		System.out.println("got param6");
+
 		boolean booleanBlackFill = Boolean.getBoolean(blackFill);
+		System.out.println("got param7");
+
 		boolean booleanSmooth = Boolean.getBoolean(smooth);
+		System.out.println("got param8");
 		
 		System.out.println("got parameters");
 		
