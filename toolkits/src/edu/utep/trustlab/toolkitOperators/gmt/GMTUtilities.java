@@ -1,4 +1,4 @@
-package edu.utep.trustlab.toolkitOperators.util;
+package edu.utep.trustlab.toolkitOperators.gmt;
 import java.io.*;
 
 import gravityMapScenario.gravityDataset.*;
